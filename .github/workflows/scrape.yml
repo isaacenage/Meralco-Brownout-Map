@@ -1,9 +1,11 @@
 name: Scrape Meralco rotational brownout schedule
 
 on:
-  # 00:00 UTC = 08:00 PHT — runs once daily, well after Meralco posts.
+  # Every 3 hours, aligned to Philippine midnight (UTC+8).
+  # PHT  00:00 03:00 06:00 09:00 12:00 15:00 18:00 21:00
+  # UTC  16:00 19:00 22:00 01:00 04:00 07:00 10:00 13:00
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 1,4,7,10,13,16,19,22 * * *"
   # Allow manual runs from the Actions tab too.
   workflow_dispatch:
 
