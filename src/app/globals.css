@@ -29,6 +29,19 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Disable double-tap-to-zoom and other non-standard mobile gestures.
+     The map's own container resets this so MapLibre pinch still works. */
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
+}
+
+/* Restore default touch behavior for the map so MapLibre can handle
+   pinch-zoom, rotate, and pitch gestures on its own canvas. */
+.maplibregl-map,
+.maplibregl-canvas-container,
+.maplibregl-canvas {
+  touch-action: none;
+  -ms-touch-action: none;
 }
 
 /* Live pulse dot used in header */

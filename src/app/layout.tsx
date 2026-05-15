@@ -74,14 +74,48 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
+  minimumScale: 1,
+  maximumScale: 1,
+  userScalable: false,
   viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ea580c" },
     { media: "(prefers-color-scheme: dark)", color: "#ea580c" },
   ],
 };
+
+// iOS Safari ignores user-scalable=no in regular web pages, so we also
+// block its non-standard gesture events. MapLibre handles pinch via
+// standard touch events on its own canvas, so map zoom is unaffected.
+const disableZoomScript = `(function(){
+  if (typeof window === 'undefined') return;
+  var stop = function(e){ e.preventDefault(); };
+  ['gesturestart','gesturechange','gestureend'].forEach(function(n){
+    document.addEventListener(n, stop, { passive: false });
+  });
+  function inMap(el){
+    while (el && el.nodeType === 1) {
+      if (el.classList && el.classList.contains('maplibregl-map')) return true;
+      el = el.parentElement;
+    }
+    return false;
+  }
+  document.addEventListener('touchmove', function(e){
+    if (e.touches && e.touches.length > 1 && !inMap(e.target)) e.preventDefault();
+  }, { passive: false });
+  var lastTouchEnd = 0;
+  document.addEventListener('touchend', function(e){
+    var now = Date.now();
+    if (now - lastTouchEnd <= 350 && !inMap(e.target)) e.preventDefault();
+    lastTouchEnd = now;
+  }, { passive: false });
+  document.addEventListener('dblclick', function(e){
+    if (!inMap(e.target)) e.preventDefault();
+  }, { passive: false });
+  window.addEventListener('wheel', function(e){
+    if (e.ctrlKey && !inMap(e.target)) e.preventDefault();
+  }, { passive: false });
+})();`;
 
 export default function RootLayout({
   children,
@@ -90,7 +124,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="app-body">{children}</body>
+      <body className="app-body">
+        <script dangerouslySetInnerHTML={{ __html: disableZoomScript }} />
+        {children}
+      </body>
     </html>
   );
 }
