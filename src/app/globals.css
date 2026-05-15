@@ -92,6 +92,13 @@ body {
   box-shadow: 0 4px 14px rgba(234, 88, 12, 0.18) !important;
   border: 1px solid #fed7aa !important;
 }
+/* On mobile, the bottom-right geolocate control must sit above the
+   "Tap to view affected barangays" pill so both remain reachable. */
+@media (max-width: 1023px) {
+  .maplibregl-ctrl-bottom-right {
+    bottom: calc(60px + env(safe-area-inset-bottom)) !important;
+  }
+}
 .maplibregl-ctrl-group button {
   background: #ffffff !important;
 }

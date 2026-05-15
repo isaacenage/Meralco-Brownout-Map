@@ -236,18 +236,24 @@ async function buildFeatureCollection(
 function ensureLayers(map: MapLibreMap) {
   const fillColor: DataDrivenPropertyValueSpecification<string> = [
     "case",
+    ["boolean", ["feature-state", "selected"], false],
+    FILL_COLOR_HOVER,
     ["boolean", ["feature-state", "hover"], false],
     FILL_COLOR_HOVER,
     FILL_COLOR_DEFAULT,
   ];
   const fillOpacity: DataDrivenPropertyValueSpecification<number> = [
     "case",
+    ["boolean", ["feature-state", "selected"], false],
+    FILL_OPACITY_HOVER,
     ["boolean", ["feature-state", "hover"], false],
     FILL_OPACITY_HOVER,
     FILL_OPACITY_DEFAULT,
   ];
   const lineWidth: DataDrivenPropertyValueSpecification<number> = [
     "case",
+    ["boolean", ["feature-state", "selected"], false],
+    OUTLINE_WIDTH_HOVER,
     ["boolean", ["feature-state", "hover"], false],
     OUTLINE_WIDTH_HOVER,
     OUTLINE_WIDTH_DEFAULT,
@@ -442,6 +448,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
   const mapRef = useRef<MapLibreMap | null>(null);
   const mapReadyRef = useRef(false);
   const hoveredIdRef = useRef<number | string | null>(null);
+  const selectedIdRef = useRef<number | string | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [matchedCount, setMatchedCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
@@ -451,6 +458,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
   const [openCities, setOpenCities] = useState<Set<string>>(new Set());
   const [now, setNow] = useState(() => new Date());
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [advisoryOpen, setAdvisoryOpen] = useState(false);
   const [windowDropdownOpen, setWindowDropdownOpen] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<{
     barangay: string;
@@ -710,6 +718,27 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
           windows = [rawWindows];
         }
       }
+      // Touch devices have no hover signal, so persist the tapped feature
+      // visually until the sheet is dismissed.
+      if (isTouchRef.current) {
+        const fid = feature.id;
+        if (
+          selectedIdRef.current !== null &&
+          selectedIdRef.current !== fid
+        ) {
+          map.setFeatureState(
+            { source: SOURCE_ID, id: selectedIdRef.current },
+            { selected: false }
+          );
+        }
+        if (fid !== undefined) {
+          map.setFeatureState(
+            { source: SOURCE_ID, id: fid },
+            { selected: true }
+          );
+          selectedIdRef.current = fid;
+        }
+      }
       setSelectedFeature({ barangay, city, windows });
     });
 
@@ -720,8 +749,23 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
       mapRef.current = null;
       mapReadyRef.current = false;
       hoveredIdRef.current = null;
+      selectedIdRef.current = null;
     };
   }, []);
+
+  // Clear the map's selected feature-state when the bottom sheet closes
+  // (via X button, backdrop tap, or window switch).
+  useEffect(() => {
+    if (selectedFeature !== null) return;
+    const map = mapRef.current;
+    if (!map) return;
+    if (selectedIdRef.current === null) return;
+    map.setFeatureState(
+      { source: SOURCE_ID, id: selectedIdRef.current },
+      { selected: false }
+    );
+    selectedIdRef.current = null;
+  }, [selectedFeature]);
 
   useEffect(() => {
     if (!selected) return;
@@ -752,6 +796,14 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
           );
           hoveredIdRef.current = null;
         }
+        if (selectedIdRef.current !== null) {
+          map.setFeatureState(
+            { source: SOURCE_ID, id: selectedIdRef.current },
+            { selected: false }
+          );
+          selectedIdRef.current = null;
+        }
+        setSelectedFeature(null);
         const source = map.getSource(SOURCE_ID) as GeoJSONSource | undefined;
         source?.setData(fc);
         setMatchedCount(fc.features.length);
@@ -964,11 +1016,37 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
         </div>
 
       {schedule.advisory && (
-        <div className="px-4 py-3 border-t border-amber-200 bg-yellow-50 text-[11px] text-[var(--bo-ink-soft)] leading-relaxed flex-shrink-0">
-          <span className="font-bold text-orange-700 uppercase tracking-wider text-[10px] block mb-1">
-            Advisory
-          </span>
-          {schedule.advisory}
+        <div className="border-t border-amber-200 bg-yellow-50 flex-shrink-0">
+          <button
+            type="button"
+            onClick={() => setAdvisoryOpen((v) => !v)}
+            aria-expanded={advisoryOpen}
+            className="w-full flex items-center gap-2 px-4 py-2.5 text-left hover:bg-yellow-100 active:bg-yellow-200 transition"
+          >
+            <svg
+              className={`bo-chev ${advisoryOpen ? "open" : ""} w-3 h-3 text-orange-700 flex-shrink-0`}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <path d="m9 6 6 6-6 6" />
+            </svg>
+            <span className="font-bold text-orange-700 uppercase tracking-wider text-[10px]">
+              Advisory
+            </span>
+            <span className="ml-auto text-[10px] text-[var(--bo-ink-soft)] font-medium">
+              {advisoryOpen ? "Hide" : "Show"}
+            </span>
+          </button>
+          {advisoryOpen && (
+            <div className="bo-accordion-content px-4 pb-3 text-[11px] text-[var(--bo-ink-soft)] leading-relaxed">
+              {schedule.advisory}
+            </div>
+          )}
         </div>
       )}
       <div className="px-4 py-3 border-t border-amber-200 bg-white text-[11px] text-[var(--bo-ink-soft)] leading-relaxed flex-shrink-0 flex items-center gap-2">
@@ -1130,27 +1208,8 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
             </div>
           </div>
         )}
-        <div className="px-3 sm:px-4 py-2 sm:py-3 flex flex-wrap items-center gap-x-3 sm:gap-x-5 gap-y-0.5 text-[10px] sm:text-xs text-[var(--bo-ink-soft)]">
-          <div>
-            <span className="font-semibold text-[var(--bo-ink)]">
-              {schedule.schedule_date ?? "Date unknown"}
-            </span>
-          </div>
-          <div>
-            <span className="font-semibold text-[var(--bo-ink)]">
-              {schedule.windows.length}
-            </span>{" "}
-            time windows
-          </div>
-          <div className="ml-auto text-[11px] hidden sm:block">
-            Updated{" "}
-            <span className="font-semibold text-[var(--bo-ink)]">
-              {new Date(schedule.scraped_at).toLocaleString()}
-            </span>
-          </div>
-        </div>
         {(status === "loading" || status === "error") && (
-          <div className="px-3 sm:px-4 pb-2 sm:pb-3 -mt-1 text-[10px] sm:text-[11px] font-medium">
+          <div className="px-3 sm:px-4 py-2 sm:py-3 text-[10px] sm:text-[11px] font-medium">
             {status === "loading" && (
               <span className="inline-flex items-center gap-1.5 text-orange-700">
                 <span className="inline-block w-2 h-2 rounded-none bg-orange-500 animate-pulse" />
@@ -1246,17 +1305,15 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
           type="button"
           onClick={() => setDrawerOpen(true)}
           className="lg:hidden fixed mobile-pill-pos z-30 bg-white border border-amber-200 rounded-none shadow-[0_8px_24px_rgba(234,88,12,0.22)] px-4 py-3 active:bg-orange-50 transition text-left flex items-center gap-3"
-          aria-label="Open schedule"
+          aria-label="Tap to view affected barangays"
         >
           <div className="flex items-center gap-2 min-w-0 flex-1">
             <span className="text-[10px] font-bold uppercase tracking-widest text-orange-700 flex-shrink-0">
-              Schedule
+              Tap to view
             </span>
-            {selected && (
-              <span className="text-[12px] font-bold text-[var(--bo-ink)] tabular-nums truncate">
-                {shortTime(selected.start)} → {shortTime(selected.end)}
-              </span>
-            )}
+            <span className="text-[12px] font-bold text-[var(--bo-ink)] truncate">
+              Affected Barangays
+            </span>
             <span className="text-[10px] font-semibold text-orange-700 bg-orange-100 rounded-none px-2 py-0.5 flex-shrink-0">
               {totalBarangaysFiltered}
             </span>
