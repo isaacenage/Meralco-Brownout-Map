@@ -402,12 +402,14 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
   const [openCities, setOpenCities] = useState<Set<string>>(new Set());
   const [now, setNow] = useState(() => new Date());
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [windowDropdownOpen, setWindowDropdownOpen] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<{
     barangay: string;
     city: string;
     windows: string[];
   } | null>(null);
   const isTouchRef = useRef(false);
+  const windowDropdownRef = useRef<HTMLDivElement | null>(null);
 
   // Refresh "now" every 30 seconds so the LIVE badge updates as time passes.
   useEffect(() => {
@@ -421,6 +423,30 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
     if (typeof window === "undefined") return;
     isTouchRef.current = window.matchMedia("(hover: none)").matches;
   }, []);
+
+  // Close the time-window dropdown on outside click or Escape.
+  useEffect(() => {
+    if (!windowDropdownOpen) return;
+    const onPointer = (e: MouseEvent | TouchEvent) => {
+      if (
+        windowDropdownRef.current &&
+        !windowDropdownRef.current.contains(e.target as Node)
+      ) {
+        setWindowDropdownOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setWindowDropdownOpen(false);
+    };
+    document.addEventListener("mousedown", onPointer);
+    document.addEventListener("touchstart", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onPointer);
+      document.removeEventListener("touchstart", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [windowDropdownOpen]);
 
   // Compute the initially selected window: the one currently live if any,
   // else the earliest window.
@@ -692,78 +718,8 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
 
   const sidebarBody = (
     <>
-      {/* Time window picker */}
-      <div className="p-4 border-b border-amber-200 bg-gradient-to-b from-yellow-50 to-white flex-shrink-0">
-          <div className="flex items-baseline justify-between mb-2">
-            <h2 className="text-[11px] font-bold uppercase tracking-widest text-orange-700">
-              Time Window
-            </h2>
-            {liveWindowIdx >= 0 && (
-              <button
-                onClick={() => setSelectedIdx(liveWindowIdx)}
-                className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-500 text-white inline-flex items-center gap-1 hover:bg-red-600 transition"
-                title="Jump to currently active window"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                Live now
-              </button>
-            )}
-          </div>
-          <div className="grid grid-cols-2 gap-1.5">
-            {schedule.windows.map((w, i) => {
-              const live = i === liveWindowIdx;
-              const isSelected = i === selectedIdx;
-              const count = countBarangays(w);
-              return (
-                <button
-                  key={w.label}
-                  onClick={() => setSelectedIdx(i)}
-                  className={
-                    "group relative text-left rounded-xl border px-3 py-2 transition focus:outline-none focus:ring-2 focus:ring-orange-400 " +
-                    (isSelected
-                      ? "bg-gradient-to-br from-orange-500 to-orange-600 border-orange-600 text-white shadow-md shadow-orange-300"
-                      : "bg-white border-amber-200 text-[var(--bo-ink)] hover:border-orange-400 hover:bg-orange-50")
-                  }
-                >
-                  {live && (
-                    <span
-                      className={
-                        "absolute -top-1 -right-1 text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-full " +
-                        (isSelected
-                          ? "bg-yellow-300 text-orange-900"
-                          : "bg-red-500 text-white")
-                      }
-                    >
-                      Live
-                    </span>
-                  )}
-                  <div
-                    className={
-                      "text-[10px] uppercase tracking-wider font-semibold " +
-                      (isSelected ? "text-orange-100" : "text-orange-600")
-                    }
-                  >
-                    {shortTime(w.start)}
-                  </div>
-                  <div className="text-sm font-bold leading-tight">
-                    → {shortTime(w.end)}
-                  </div>
-                  <div
-                    className={
-                      "mt-1 text-[10px] font-medium " +
-                      (isSelected ? "text-orange-100" : "text-[var(--bo-ink-soft)]")
-                    }
-                  >
-                    {count} barangay{count === 1 ? "" : "s"}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Summary + Search */}
-        <div className="px-4 pt-3 pb-2 border-b border-amber-100">
+      {/* Summary + Search (topmost) */}
+      <div className="px-4 pt-4 pb-3 border-b border-amber-100 flex-shrink-0">
           <div className="grid grid-cols-3 gap-2 mb-3">
             <SummaryCard
               label="Provinces"
@@ -949,11 +905,28 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
           {schedule.advisory}
         </div>
       )}
+      <div className="px-4 py-2.5 border-t border-amber-200 bg-white text-[10px] text-[var(--bo-ink-soft)] flex items-center justify-between gap-2 flex-shrink-0">
+        <span>
+          Unofficial · Not affiliated with Meralco or NGCP
+        </span>
+        <a
+          href="/legal"
+          className="font-bold uppercase tracking-widest text-orange-700 hover:text-orange-900"
+        >
+          Terms &amp; Privacy
+        </a>
+      </div>
     </>
   );
 
   const liveHeader = (
-    <div className="absolute top-3 left-3 right-3 lg:top-4 lg:left-4 lg:right-auto lg:max-w-[520px] z-20">
+    <div
+      ref={windowDropdownRef}
+      className={
+        "absolute top-3 left-3 right-3 lg:top-4 lg:left-4 lg:right-auto lg:max-w-[520px] " +
+        (windowDropdownOpen ? "z-40" : "z-20")
+      }
+    >
       <div className="bg-white/95 backdrop-blur-md border border-amber-200 rounded-2xl shadow-[0_10px_30px_rgba(234,88,12,0.18)] overflow-hidden">
         <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400">
           <span className="live-dot" aria-hidden />
@@ -988,10 +961,49 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
                 Window {selectedIdx + 1} of {schedule.windows.length}
               </div>
             </div>
-            <div className="mt-1 text-xl sm:text-2xl lg:text-3xl font-extrabold tabular-nums text-[var(--bo-ink)] leading-tight whitespace-nowrap">
-              {shortTime(selected.start)}{" "}
-              <span className="text-orange-500">→</span>{" "}
-              {shortTime(selected.end)}
+            <div className="mt-1 flex items-center gap-2 flex-wrap">
+              <button
+                type="button"
+                onClick={() => setWindowDropdownOpen((v) => !v)}
+                className="group flex items-center gap-2 text-xl sm:text-2xl lg:text-3xl font-extrabold tabular-nums text-[var(--bo-ink)] leading-tight whitespace-nowrap rounded-lg px-2 -mx-2 py-0.5 hover:bg-orange-100/60 transition focus:outline-none focus:ring-2 focus:ring-orange-400"
+                aria-haspopup="listbox"
+                aria-expanded={windowDropdownOpen}
+              >
+                <span>
+                  {shortTime(selected.start)}{" "}
+                  <span className="text-orange-500">→</span>{" "}
+                  {shortTime(selected.end)}
+                </span>
+                <svg
+                  className={
+                    "w-4 h-4 sm:w-5 sm:h-5 text-orange-500 transition-transform " +
+                    (windowDropdownOpen ? "rotate-180" : "")
+                  }
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              {liveWindowIdx >= 0 && selectedIdx !== liveWindowIdx && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedIdx(liveWindowIdx);
+                    setWindowDropdownOpen(false);
+                  }}
+                  className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-red-500 text-white inline-flex items-center gap-1.5 hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400 flex-shrink-0"
+                  title="Jump to the currently live time window"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                  Go Live
+                </button>
+              )}
             </div>
           </div>
         )}
@@ -1028,6 +1040,67 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
           </div>
         )}
       </div>
+      {windowDropdownOpen && (
+        <div
+          role="listbox"
+          aria-label="Select time window"
+          className="mt-2 bg-white border border-amber-200 rounded-2xl shadow-[0_14px_36px_rgba(234,88,12,0.28)] overflow-hidden"
+        >
+          <ul className="max-h-[60vh] overflow-y-auto bo-scroll divide-y divide-amber-100">
+            {schedule.windows.map((w, i) => {
+              const live = i === liveWindowIdx;
+              const isSelected = i === selectedIdx;
+              const count = countBarangays(w);
+              return (
+                <li key={w.label}>
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={isSelected}
+                    onClick={() => {
+                      setSelectedIdx(i);
+                      setWindowDropdownOpen(false);
+                    }}
+                    className={
+                      "w-full px-3 py-2.5 text-left flex items-center gap-3 transition focus:outline-none " +
+                      (isSelected
+                        ? "bg-gradient-to-r from-orange-50 to-yellow-50"
+                        : "hover:bg-yellow-50")
+                    }
+                  >
+                    <div className="flex-1 min-w-0">
+                      <div
+                        className={
+                          "text-[14px] font-bold tabular-nums whitespace-nowrap " +
+                          (isSelected ? "text-orange-700" : "text-[var(--bo-ink)]")
+                        }
+                      >
+                        {shortTime(w.start)}{" "}
+                        <span className="text-orange-500">→</span>{" "}
+                        {shortTime(w.end)}
+                      </div>
+                      <div className="text-[10px] text-[var(--bo-ink-soft)] mt-0.5">
+                        {count} barangay{count === 1 ? "" : "s"} affected
+                      </div>
+                    </div>
+                    {live && (
+                      <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-red-500 text-white inline-flex items-center gap-1 flex-shrink-0">
+                        <span className="w-1 h-1 rounded-full bg-white animate-pulse" />
+                        Live
+                      </span>
+                    )}
+                    {isSelected && !live && (
+                      <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-orange-100 text-orange-700 flex-shrink-0">
+                        Active
+                      </span>
+                    )}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
     </div>
   );
 

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import BrownoutMap from "@/components/BrownoutMap";
@@ -34,6 +35,15 @@ export default async function Page() {
             </code>{" "}
             to fetch the latest brownout schedule.
           </p>
+          <div className="mt-5 pt-4 border-t border-amber-100 text-[10px] text-[var(--bo-ink-soft)] flex items-center justify-between gap-2">
+            <span>Unofficial · Not affiliated with Meralco or NGCP</span>
+            <Link
+              href="/legal"
+              className="font-bold uppercase tracking-widest text-orange-700 hover:text-orange-900"
+            >
+              Terms &amp; Privacy
+            </Link>
+          </div>
         </div>
       </main>
     );
