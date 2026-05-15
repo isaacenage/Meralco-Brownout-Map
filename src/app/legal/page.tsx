@@ -267,9 +267,14 @@ export default function LegalPage() {
         <footer className="mt-12 pt-6 border-t border-amber-200 text-xs text-[var(--bo-ink-soft)] flex flex-wrap items-center justify-between gap-3">
           <div>
             Built by{" "}
-            <span className="font-semibold text-[var(--bo-ink)]">
+            <a
+              href="https://www.facebook.com/profile.php?id=61583498451424"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-[var(--bo-ink)] underline hover:text-orange-700"
+            >
               Zenterra Systems
-            </span>
+            </a>
             . Independent &amp; unaffiliated.
           </div>
           <Link
