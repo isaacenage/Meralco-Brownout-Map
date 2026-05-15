@@ -51,7 +51,10 @@ const ROMAN_VALUES: Record<string, number> = {
 };
 const ROMAN_RE = /^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/;
 const PAREN_RE = /\([^)]*\)/g;
+// Internal apostrophes (Iba O'Este) stripped to align with Meralco's "OESTE".
+const APOSTROPHE_RE = /['‘’]/g;
 const PUNCT_TRIM_RE = /^[.,;:'"]+|[.,;:'"]+$/g;
+const ORDINAL_SUFFIX_RE = /^(\d+)(?:ST|ND|RD|TH)$/i;
 const SPACE_RE = /\s+/g;
 // Single-letter-with-dot run, e.g. "B. F." or "N.S." — collapse to "BF" / "NS"
 // before tokenization. Matches sequences of >=2 single letters each followed
@@ -63,11 +66,19 @@ const PHRASE_REWRITES: Array<[RegExp, string]> = [
   [/\bPULANG\s+LUPA\b/g, "PULANGLUPA"],
   [/\bDUYAN\s+DUYAN\b/g, "DUYAN-DUYAN"],
   [/\bDAMAYAN\s+LAGI\b/g, "DAMAYANG LAGI"],
-  [/\bMARIKINA\s+HEIGHTS\b/g, "MARIKINA HEIGHTS"],
+  [/\bDELA\s+PAZ\b/g, "DE LA PAZ"],
+  [/\bCARUHATAN\b/g, "KARUHATAN"],
+  [/\bGENERAL\s+M\s+ALVAREZ\b/g, "GENERAL MARIANO ALVAREZ"],
+  [/\bTRECE\s+MARTIREZ\b/g, "TRECE MARTIRES"],
+  [/\bMARIANO\s+ESPELETA\b/g, "ESPELETA"],
 ];
 
 function toAsciiUpper(value: string): string {
-  return value.normalize("NFD").replace(/\p{M}+/gu, "").toUpperCase();
+  return value
+    .normalize("NFD")
+    .replace(/\p{M}+/gu, "")
+    .replace(APOSTROPHE_RE, "")
+    .toUpperCase();
 }
 
 // Splits Meralco's "<NAME>/<DISTRICT-HINT>" or "<A>/<B>/<HINT>" forms (mostly
@@ -90,9 +101,9 @@ function preNormalize(upper: string): string {
   // off the end of the name, e.g. "AMIHAN-PROJ 3".
   out = out.replace(/[-\s]+PROJ(?:ECT)?\.?\s*\d+\s*$/i, "");
   // Collapse runs of single-letter initials with periods: "B. F." -> "BF",
-  // "N.S." -> "NS". Runs of length 3 (e.g. "U.P.B.") handled by the second
-  // capture group.
-  out = out.replace(INITIALS_RUN_RE, (_m, a, b, c) => (c ? a + b + c : a + b));
+  // "N.S." -> "NS". Trailing space ensures the next character is treated as
+  // its own token (e.g. "N.S.AMORANTO" -> "NS AMORANTO" not "NSAMORANTO").
+  out = out.replace(INITIALS_RUN_RE, (_m, a, b, c) => (c ? a + b + c : a + b) + " ");
   // Replace any remaining internal periods with spaces ("STA.QUITERIA" ->
   // "STA QUITERIA"), then collapse multi-space.
   out = out.replace(/\./g, " ").replace(SPACE_RE, " ").trim();
@@ -104,8 +115,12 @@ function tokens(value: string): string[] {
   const pre = preNormalize(noParens);
   const out: string[] = [];
   for (const raw of pre.split(/\s+/)) {
-    const token = raw.replace(PUNCT_TRIM_RE, "");
+    let token = raw.replace(PUNCT_TRIM_RE, "");
     if (!token) continue;
+    // Strip ordinal suffix on digits: "2ND" -> "2", "1ST" -> "1". PSGC writes
+    // "Maitim 2nd East" where Meralco writes "MAITIM II EAST".
+    const ord = ORDINAL_SUFFIX_RE.exec(token);
+    if (ord) token = ord[1];
     if (token in ABBREV) {
       const replacement = ABBREV[token];
       if (replacement) out.push(replacement);
@@ -145,10 +160,10 @@ function romanToInt(token: string): number | null {
   return total;
 }
 
-function convertNumeralTail(token: string): string {
-  // Single-token Spanish numeral ("Uno", "Dos") at the tail -> Arabic.
+function convertNumeral(token: string): string {
+  // Single-token Spanish numeral ("Uno", "Dos") -> Arabic.
   if (token in SPANISH_NUMERALS) return SPANISH_NUMERALS[token];
-  // Hyphenated tail like "II-A": convert each part if Roman.
+  // Hyphenated like "II-A": convert each part if Roman/Spanish.
   const parts = token.split("-");
   let changed = false;
   const out = parts.map((p) => {
@@ -188,11 +203,10 @@ export function normalizeCity(value: string | null | undefined): string {
 function normalizeBarangaySingle(value: string): string {
   const tks = tokens(toAsciiUpper(value));
   if (!tks.length) return "";
-  if (tks.length >= 2 && tks[tks.length - 2] === "TOWN" && tks[tks.length - 1] === "PROPER") {
-    return "POBLACION";
-  }
-  tks[tks.length - 1] = convertNumeralTail(tks[tks.length - 1]);
-  return applyPhraseRewrites(tks.join(" ").replace(SPACE_RE, " ").trim());
+  // "<CITY> CITY PROPER" / "<CITY> TOWN PROPER" stay as-is so they hit the
+  // city-wide auto-aliases the parquet emits for every barangay.
+  const converted = tks.map((t) => convertNumeral(t));
+  return applyPhraseRewrites(converted.join(" ").replace(SPACE_RE, " ").trim());
 }
 
 export function normalizeBarangay(value: string | null | undefined): string {
@@ -203,7 +217,9 @@ export function normalizeBarangay(value: string | null | undefined): string {
   return normalizeBarangaySingle(variants[0] ?? value);
 }
 
-/** Return every normalized variant of `value` (handles "/"-separated forms). */
+/** Return every normalized variant of `value` (handles "/"-separated forms
+ * and "(paren alias)" hints). Meralco occasionally writes a name like
+ * "PULO NI SARA (PANTIHAN 4)" — the paren is its own searchable alias. */
 export function normalizeBarangayVariants(
   value: string | null | undefined
 ): string[] {
@@ -212,6 +228,16 @@ export function normalizeBarangayVariants(
   for (const variant of splitSlashVariants(value)) {
     const n = normalizeBarangaySingle(variant);
     if (n) seen.add(n);
+    // Pull out parenthetical aliases as additional candidates.
+    const parenMatches = variant.match(/\(([^)]+)\)/g);
+    if (parenMatches) {
+      for (const m of parenMatches) {
+        const inner = m.slice(1, -1).trim();
+        if (!inner) continue;
+        const nn = normalizeBarangaySingle(inner);
+        if (nn) seen.add(nn);
+      }
+    }
   }
   return Array.from(seen);
 }

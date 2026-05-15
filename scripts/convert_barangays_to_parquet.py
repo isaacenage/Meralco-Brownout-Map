@@ -82,12 +82,19 @@ ROMAN_RE = re.compile(
 )
 PAREN_RE = re.compile(r"\([^)]*\)")
 PAREN_CAPTURE_RE = re.compile(r"\(([^)]+)\)")
+APOSTROPHE_RE = re.compile(r"['‘’]")
+ORDINAL_SUFFIX_RE = re.compile(r"^(\d+)(?:ST|ND|RD|TH)$", re.IGNORECASE)
 SPACE_RE = re.compile(r"\s+")
 INITIALS_RUN_RE = re.compile(r"\b([A-Z])\.\s*([A-Z])\.(?:\s*([A-Z])\.)?")
 PHRASE_REWRITES: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"\bPULANG\s+LUPA\b"), "PULANGLUPA"),
     (re.compile(r"\bDUYAN\s+DUYAN\b"), "DUYAN-DUYAN"),
     (re.compile(r"\bDAMAYAN\s+LAGI\b"), "DAMAYANG LAGI"),
+    (re.compile(r"\bDELA\s+PAZ\b"), "DE LA PAZ"),
+    (re.compile(r"\bCARUHATAN\b"), "KARUHATAN"),
+    (re.compile(r"\bGENERAL\s+M\s+ALVAREZ\b"), "GENERAL MARIANO ALVAREZ"),
+    (re.compile(r"\bTRECE\s+MARTIREZ\b"), "TRECE MARTIRES"),
+    (re.compile(r"\bMARIANO\s+ESPELETA\b"), "ESPELETA"),
 ]
 
 # PSGC ADM3_EN names for the City of Manila districts; Meralco scrapes them as
@@ -133,6 +140,13 @@ def _range_brgys(*ranges: range) -> set[str]:
         for n in r:
             out.add(f"BARANGAY {n}")
     return out
+
+
+def _bacoor_panapaan() -> dict[str, set[str]]:
+    """Bacoor's "Panapaan I–VIII" cluster maps to "P.F. Espiritu I–VIII"
+    (renamed in PSGC but kept as a Meralco label). Only Panapaan I has the
+    explicit PSGC paren-alias, so add 2–8 manually."""
+    return {f"PANAPAAN {i}": {f"PF ESPIRITU {i}"} for i in range(1, 9)}
 
 
 # CITY_GROUPS: city-internal name clusters. Meralco names a cluster
@@ -186,6 +200,56 @@ CITY_GROUPS: dict[str, dict[str, set[str]]] = {
     "PASAY": {
         "PASAY CITY PROPER": _range_brgys(range(1, 202)),
     },
+    "MALABON": {
+        # Geographically Dagat-Dagatan is the Catmon/reclamation strip.
+        "DAGAT-DAGATAN": {"CATMON"},
+    },
+    "NAVOTAS": {
+        # On the Navotas side it's the Daanghari + Bangculasi area.
+        "DAGAT-DAGATAN": {"DAANGHARI", "BANGCULASI"},
+    },
+    "MUNTINLUPA": {
+        # PSGC still files Ayala-Alabang as "New Alabang Village".
+        "AYALA-ALABANG": {"NEW ALABANG VILLAGE"},
+    },
+    "PARANAQUE": {
+        # PSGC has "Marcelo Green Village" (full name); Meralco shortens.
+        "MARCELO GREEN": {"MARCELO GREEN VILLAGE"},
+    },
+    "MANDALUYONG": {
+        # PSGC has "Wack-Wack Greenhills" only; Meralco appends "East".
+        "WACK-WACK GREENHILLS EAST": {"WACK-WACK GREENHILLS"},
+    },
+    "DASMARINAS": {
+        # PSGC has plain "Burol" plus numbered Burol 1/2/3.
+        "BUROL MAIN": {"BUROL"},
+    },
+    "SAN PEDRO": {
+        # PSGC suffixes with "Village".
+        "SAMPAGUITA": {"SAMPAGUITA VILLAGE"},
+    },
+    "MALOLOS": {
+        # Meralco compounds two adjacent area names.
+        "MAUNLAD-MOJON": {"MOJON"},
+    },
+    "CALAMBA": {
+        # Meralco uses the English "OUT" for PSGC's Tagalog "LABAS".
+        "MAJADA OUT": {"MAJADA LABAS"},
+    },
+    "TRECE MARTIRES": {
+        # PSGC truncates the historical "Hugo Perez" to just "Perez".
+        "HUGO PEREZ": {"PEREZ"},
+    },
+    "TAGUIG": {
+        # PSGC has Central/North/South Signal Village as three separate
+        # barangays; Meralco's "SIGNAL VILLAGE" line covers all three.
+        "SIGNAL VILLAGE": {
+            "CENTRAL SIGNAL VILLAGE",
+            "NORTH SIGNAL VILLAGE",
+            "SOUTH SIGNAL VILLAGE",
+        },
+    },
+    "BACOOR": _bacoor_panapaan(),
     # Las Piñas: Meralco lists "LAS PIÑAS CITY PROPER" as a catch-all for
     # barangays not split by name (rare). Map it to every Las Piñas brgy.
     "LAS PINAS": {
@@ -204,6 +268,18 @@ CITY_GROUPS: dict[str, dict[str, set[str]]] = {
             "ZAPOTE",
         },
     },
+}
+
+# City-wide aliases: Meralco labels that mean "the whole city". Every PSGC
+# barangay in the city gets these as extra keys, on top of the implicit
+# "<CITY> CITY PROPER" / "<CITY> TOWN PROPER" auto-aliases generated for
+# every barangay in build_match_keys (skipped if CITY_GROUPS already defines
+# them, so the Caloocan 1-85 scope stays correct).
+CITY_WIDE_ALIASES: dict[str, set[str]] = {
+    # Meralco's "GENERAL TRIAS" under "GENERAL TRIAS CITY" -> entire GT.
+    "GENERAL TRIAS": {"GENERAL TRIAS"},
+    # Meralco hyphenates the city name with "Poblacion" as a city-wide label.
+    "CARMONA": {"CARMONA-POBLACION"},
 }
 
 # Cross-city transfers: PSGC still files these barangays under Makati but the
@@ -226,13 +302,13 @@ CITY_TRANSFERS: dict[tuple[str, str], list[str]] = {
 def _to_ascii_upper(value: str) -> str:
     decomposed = unicodedata.normalize("NFD", value)
     ascii_only = "".join(c for c in decomposed if unicodedata.category(c) != "Mn")
-    return ascii_only.upper()
+    return APOSTROPHE_RE.sub("", ascii_only).upper()
 
 
 def _collapse_initials(value: str) -> str:
     def repl(m: re.Match[str]) -> str:
         a, b, c = m.group(1), m.group(2), m.group(3)
-        return a + b + (c or "")
+        return a + b + (c or "") + " "
     return INITIALS_RUN_RE.sub(repl, value)
 
 
@@ -254,6 +330,9 @@ def _tokens(value: str) -> list[str]:
         token = raw.strip(".,;:'\"")
         if not token:
             continue
+        ord_m = ORDINAL_SUFFIX_RE.match(token)
+        if ord_m:
+            token = ord_m.group(1)
         replacement = ABBREV.get(token)
         if replacement is None:
             out.append(token)
@@ -287,12 +366,12 @@ def _roman_to_int(token: str) -> int | None:
     return total
 
 
-def _convert_numeral_tail(token: str) -> str:
-    """Convert Roman/Spanish numerals appearing at the tail to Arabic.
+def _convert_numeral(token: str) -> str:
+    """Convert Roman/Spanish numerals to Arabic.
 
     Handles plain Roman ("III"), plain Spanish ("Uno"), and hyphenated
-    Roman tails ("II-A"). Standalone "I" stays untouched because it
-    collides with too many real names.
+    forms ("II-A"). Applied at every token position so embedded numerals
+    ("MAITIM II EAST") normalize the same as tail ones.
     """
     if token in SPANISH_NUMERALS:
         return SPANISH_NUMERALS[token]
@@ -338,10 +417,10 @@ def _normalize_brgy_single(value: str) -> str:
     tokens = _tokens(upper)
     if not tokens:
         return ""
-    if len(tokens) >= 2 and tokens[-2:] == ["TOWN", "PROPER"]:
-        return "POBLACION"
-    tokens[-1] = _convert_numeral_tail(tokens[-1])
-    return _apply_phrase_rewrites(SPACE_RE.sub(" ", " ".join(tokens)).strip())
+    # "<CITY> CITY PROPER" / "<CITY> TOWN PROPER" stay intact so they match the
+    # city-wide auto-aliases the parquet emits for every barangay.
+    converted = [_convert_numeral(t) for t in tokens]
+    return _apply_phrase_rewrites(SPACE_RE.sub(" ", " ".join(converted)).strip())
 
 
 def normalize_brgy(value: object) -> str:
@@ -355,7 +434,8 @@ def normalize_brgy(value: object) -> str:
 
 
 def normalize_brgy_variants(value: object) -> list[str]:
-    """All normalized variants for the value (handles "/"-joined Meralco)."""
+    """All normalized variants for the value (handles "/"-joined Meralco
+    forms and parenthetical alias hints like "PULO NI SARA (PANTIHAN 4)")."""
     if not isinstance(value, str):
         return []
     seen: list[str] = []
@@ -368,6 +448,14 @@ def normalize_brgy_variants(value: object) -> list[str]:
         if n and n not in used:
             used.add(n)
             seen.append(n)
+        for inner in PAREN_CAPTURE_RE.findall(s):
+            inner = inner.strip()
+            if not inner:
+                continue
+            nn = _normalize_brgy_single(inner)
+            if nn and nn not in used:
+                used.add(nn)
+                seen.append(nn)
     return seen
 
 
@@ -408,7 +496,17 @@ def build_match_keys(adm1_en: str, adm3_en: str, adm4_en: str) -> list[str]:
         # Paren-extracted aliases (Pob., Signal Village, Bagong Tanyag, ...).
         for alias in _paren_aliases(adm4_en) if isinstance(adm4_en, str) else []:
             add(city, alias)
-        # City-internal cluster groups (Caloocan/Pasay/Las Piñas).
+        # Auto city-wide aliases: "<CITY> CITY PROPER" / "TOWN PROPER" on
+        # every barangay, unless CITY_GROUPS explicitly defines the same name
+        # (so Caloocan's 1-85 scope stays correct).
+        explicit_group_names = set(CITY_GROUPS.get(city, {}).keys())
+        for auto_name in (f"{city} CITY PROPER", f"{city} TOWN PROPER"):
+            if auto_name not in explicit_group_names:
+                add(city, auto_name)
+        # Other city-wide aliases (e.g. plain "GENERAL TRIAS").
+        for alias in CITY_WIDE_ALIASES.get(city, ()):
+            add(city, alias)
+        # City-internal cluster groups (Caloocan/Pasay/Las Piñas/etc).
         for group_name, members in CITY_GROUPS.get(city, {}).items():
             if primary in members:
                 add(city, group_name)

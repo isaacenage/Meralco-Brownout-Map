@@ -173,3 +173,547 @@ mark.bo-mark {
   padding: 0 2px;
   border-radius: 3px;
 }
+
+/* ============ Intro Page ============ */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #ff6a00;
+  background: radial-gradient(
+      ellipse at 50% 35%,
+      #ff8a2a 0%,
+      #ff6a00 45%,
+      #e85a00 100%
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: intro-enter 0.5s ease-out;
+  height: 100vh;
+  height: -webkit-fill-available;
+  height: 100dvh;
+  width: 100vw;
+  width: 100dvw;
+}
+
+.intro-leaving {
+  animation: intro-exit 0.6s ease-in forwards;
+}
+
+@keyframes intro-enter {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes intro-exit {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(1.05); }
+}
+
+/* Brownout: black overlay that dips a few times then settles into full black */
+.intro-brownout {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+  animation: intro-brownout 5s ease-in-out forwards;
+}
+
+@keyframes intro-brownout {
+  0%    { opacity: 0; }
+
+  /* Three slow, gentle dips */
+  18%   { opacity: 0; }
+  22%   { opacity: 0.6; }
+  28%   { opacity: 0; }
+
+  42%   { opacity: 0; }
+  46%   { opacity: 0.78; }
+  52%   { opacity: 0; }
+
+  62%   { opacity: 0; }
+  66%   { opacity: 0.9; }
+
+  /* Wave into solid black, no harsh strobe */
+  72%   { opacity: 0.4; }
+  78%   { opacity: 0.92; }
+  84%   { opacity: 0.55; }
+  90%   { opacity: 1; }
+  100%  { opacity: 1; }
+}
+
+/* Content sits above the brownout overlay so the title stays visible */
+.intro-content {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+  user-select: none;
+  max-width: 100%;
+}
+
+.intro-spark-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  animation: intro-content-fade 5s ease-in-out forwards;
+}
+.intro-spark {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 0 18px 4px rgba(255, 255, 255, 0.9);
+  animation: spark-pulse 1.2s ease-in-out infinite;
+}
+.intro-spark-2 { animation-delay: 0.25s; }
+.intro-spark-3 { animation-delay: 0.5s; }
+
+@keyframes spark-pulse {
+  0%, 100% { transform: scale(0.7); opacity: 0.6; }
+  50%      { transform: scale(1.3); opacity: 1; }
+}
+
+/* Sparks and subtitle dim out as the brownout sets in,
+   leaving only the bright-orange title against the black. */
+@keyframes intro-content-fade {
+  0%, 50% { opacity: 1; }
+  100%    { opacity: 0; }
+}
+
+.intro-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  font-weight: 900;
+  color: #ff8a2a;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI Black", "Helvetica Neue", Arial, sans-serif;
+  text-shadow:
+    -2px 0 0 #ffffff,
+    2px 0 0 #ffffff,
+    0 -2px 0 #ffffff,
+    0 2px 0 #ffffff,
+    -2px -2px 0 #ffffff,
+    2px -2px 0 #ffffff,
+    -2px 2px 0 #ffffff,
+    2px 2px 0 #ffffff,
+    0 0 28px rgba(255, 170, 80, 0.85);
+}
+
+.intro-line {
+  font-size: clamp(36px, 12vw, 140px);
+  line-height: 0.95;
+  color: inherit;
+  word-break: break-word;
+}
+
+.intro-subtitle {
+  margin: 18px 0 0;
+  font-size: clamp(11px, 3vw, 20px);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.95;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.55);
+  animation: intro-content-fade 5s ease-in-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-brownout,
+  .intro-spark {
+    animation: none !important;
+  }
+  .intro-brownout { opacity: 1; }
+}
+
+/* ============ Location Prompt ============ */
+.loc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(24px, env(safe-area-inset-top))
+           max(24px, env(safe-area-inset-right))
+           max(24px, env(safe-area-inset-bottom))
+           max(24px, env(safe-area-inset-left));
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    rgba(154, 52, 0, 0.82) 0%,
+    rgba(120, 40, 0, 0.88) 60%,
+    rgba(82, 26, 0, 0.92) 100%
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: loc-fade-in 0.4s ease-out;
+  overflow-y: auto;
+}
+
+@keyframes loc-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.loc-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  max-width: 460px;
+  width: 100%;
+  text-align: center;
+  animation: loc-card-in 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes loc-card-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.loc-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.loc-headline {
+  margin: 10px 0 10px;
+  font-size: clamp(24px, 5.8vw, 34px);
+  line-height: 1.08;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 12px rgba(60, 18, 0, 0.45);
+}
+
+.loc-sub {
+  margin: 0 0 22px;
+  font-size: 13px;
+  color: rgba(255, 240, 224, 0.88);
+  line-height: 1.5;
+}
+
+.loc-geo-btn {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #7a2e00;
+  border: none;
+  border-radius: 14px;
+  padding: 13px 16px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(40, 12, 0, 0.32);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.loc-geo-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(40, 12, 0, 0.4);
+}
+.loc-geo-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+.loc-geo-btn:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+.loc-geo-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.loc-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0;
+  color: rgba(255, 240, 224, 0.7);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.loc-divider::before,
+.loc-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 240, 224, 0.28);
+}
+
+.loc-form {
+  display: flex;
+  gap: 8px;
+}
+.loc-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 240, 224, 0.35);
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-size: 14px;
+  color: #ffffff;
+  min-width: 0;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.loc-input::placeholder {
+  color: rgba(255, 240, 224, 0.55);
+}
+.loc-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
+}
+.loc-submit {
+  background: #1a0a02;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 0 18px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease;
+}
+.loc-submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #000000;
+}
+.loc-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.loc-error {
+  margin: 12px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffe4d6;
+  text-shadow: 0 1px 4px rgba(60, 18, 0, 0.5);
+}
+
+.loc-skip {
+  margin-top: 20px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 240, 224, 0.78);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.loc-skip:hover {
+  color: #ffffff;
+}
+
+/* ---- Floating result banner ---- */
+.loc-banner-wrap {
+  position: fixed;
+  top: calc(max(16px, env(safe-area-inset-top)) + 168px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 35;
+  width: min(92%, 520px);
+  pointer-events: none;
+  animation: loc-banner-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (min-width: 1024px) {
+  /* Center the banner over the map column (viewport minus 440px sidebar). */
+  .loc-banner-wrap {
+    top: 50%;
+    left: calc((100vw - 440px) / 2);
+    right: auto;
+    transform: translate(-50%, -50%);
+    width: min(480px, calc(100vw - 440px - 64px));
+    animation: loc-banner-center-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@keyframes loc-banner-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(-14px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes loc-banner-center-in {
+  from { opacity: 0; transform: translate(-50%, -46%); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.loc-banner {
+  position: relative;
+  pointer-events: auto;
+  border-radius: 18px;
+  padding: 18px 48px 18px 22px;
+  border: none;
+  box-shadow: 0 16px 40px rgba(40, 12, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  text-align: center;
+  color: #ffffff;
+}
+.loc-banner-bad {
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    rgba(154, 52, 0, 0.82) 0%,
+    rgba(120, 40, 0, 0.88) 60%,
+    rgba(82, 26, 0, 0.92) 100%
+  );
+}
+.loc-banner-good {
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    rgba(154, 52, 0, 0.82) 0%,
+    rgba(120, 40, 0, 0.88) 60%,
+    rgba(82, 26, 0, 0.92) 100%
+  );
+}
+
+.loc-banner-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+.loc-banner-close:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.loc-banner-eyebrow {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+.loc-banner-text {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(60, 18, 0, 0.45);
+}
+.loc-banner-time {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 2px 10px;
+  border-radius: 9999px;
+  margin-left: 2px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.loc-banner-sub {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 240, 224, 0.78);
+  text-transform: capitalize;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loc-overlay,
+  .loc-card,
+  .loc-banner-wrap {
+    animation: none !important;
+  }
+}
+
+/* ============ App shell / layout ============ */
+.app-body {
+  overscroll-behavior-y: none;
+}
+
+/* Full-viewport map shell. Uses dvh so mobile browser chrome
+   doesn't push the map below the visible area. */
+.app-shell {
+  position: relative;
+  width: 100vw;
+  width: 100dvw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* Prevent scroll chaining from drawers/sheets into the map */
+.bo-overscroll-contain {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Time-window header position.
+   Mobile: pinned to the top, full-width with safe-area offsets.
+   Desktop (lg+): docked to the top-left corner. */
+.live-header-pos {
+  top: calc(12px + env(safe-area-inset-top));
+  left: calc(12px + env(safe-area-inset-left));
+  right: calc(12px + env(safe-area-inset-right));
+}
+@media (min-width: 1024px) {
+  .live-header-pos {
+    top: calc(16px + env(safe-area-inset-top));
+    left: calc(16px + env(safe-area-inset-left));
+    right: auto;
+  }
+}
+
+/* Mobile schedule trigger pill — bottom-center above the home indicator. */
+.mobile-pill-pos {
+  left: 12px;
+  right: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+}
+
+/* Right-side drawer: respect notch/home indicator on iOS. */
+.mobile-drawer-pad {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Bottom sheet: keep above the home indicator. */
+.mobile-sheet-pad {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* No-data intro fallback: safe-area aware. */
+.intro-safe-pad {
+  padding-top: max(24px, env(safe-area-inset-top));
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  padding-left: max(24px, env(safe-area-inset-left));
+  padding-right: max(24px, env(safe-area-inset-right));
+}

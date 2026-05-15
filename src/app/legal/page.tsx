@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function LegalPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-white">
-      <div className="max-w-3xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
+    <main className="min-h-screen min-h-[100dvh] bg-gradient-to-br from-yellow-50 via-orange-50 to-white">
+      <div className="max-w-3xl mx-auto px-[max(1.25rem,env(safe-area-inset-left))] sm:px-8 py-10 sm:py-14" style={{ paddingRight: "max(1.25rem, env(safe-area-inset-right))" }}>
         <div className="mb-8">
           <Link
             href="/"
@@ -74,21 +74,16 @@ export default function LegalPage() {
         {/* About / origin story */}
         <Section title="About this app">
           <p>
-            This map exists for one painfully practical reason: checking which
-            barangay falls under Meralco&apos;s rotational brownout schedule on
-            any given day is a chore. Schedules are spread across press
-            releases, news articles, Facebook posts, and screenshots in group
-            chats — and the formatting is rarely friendly to anyone who just
-            wants to know{" "}
-            <em>&quot;is my street going to lose power today, and when?&quot;</em>
+            Honestly, the whole thing started because the developer&apos;s
+            girlfriend kept digging through Facebook posts and news feeds
+            every time there was a brownout advisory, trying to find their
+            barangay in those super long lists.
           </p>
           <p>
-            To be fully honest about the origin: the developer built this
-            specifically for his girlfriend, who kept hunting through news
-            feeds and Facebook posts every time a brownout advisory dropped,
-            and would relay every barangay she found — which, while sweet, was
-            also bugging the developer enough that automating the lookup
-            seemed like the kinder option for everyone involved.
+            It wasn&apos;t even really bothering him. He just felt bad
+            watching her struggle through every post just to check if they
+            were affected, so he figured why not just automate the lookup
+            and make it easier for her.
           </p>
           <p>
             The result turned out to be useful beyond a household of two, so

@@ -2,6 +2,8 @@ import Link from "next/link";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import BrownoutMap from "@/components/BrownoutMap";
+import IntroPage from "@/components/IntroPage";
+import LocationPrompt from "@/components/LocationPrompt";
 import type { Schedule } from "@/lib/schedule";
 
 async function loadSchedule(): Promise<Schedule | null> {
@@ -19,7 +21,8 @@ export default async function Page() {
 
   if (!schedule) {
     return (
-      <main className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-white flex items-center justify-center p-8">
+      <IntroPage>
+      <main className="min-h-screen min-h-[100dvh] bg-gradient-to-br from-yellow-50 via-orange-50 to-white flex items-center justify-center p-6 sm:p-8 intro-safe-pad">
         <div className="max-w-md text-center bg-white border border-amber-200 rounded-2xl shadow-[0_10px_30px_rgba(234,88,12,0.18)] p-8">
           <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-[11px] font-bold uppercase tracking-widest">
             <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
@@ -46,8 +49,15 @@ export default async function Page() {
           </div>
         </div>
       </main>
+      </IntroPage>
     );
   }
 
-  return <BrownoutMap schedule={schedule} />;
+  return (
+    <IntroPage>
+      <LocationPrompt schedule={schedule}>
+        <BrownoutMap schedule={schedule} />
+      </LocationPrompt>
+    </IntroPage>
+  );
 }

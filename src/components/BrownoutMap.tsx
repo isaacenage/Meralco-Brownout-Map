@@ -543,7 +543,20 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
       zoom: INITIAL_VIEW.zoom,
       attributionControl: false,
     });
-    map.addControl(new maplibregl.NavigationControl(), "top-right");
+    const isMobile =
+      typeof window !== "undefined" &&
+      window.matchMedia("(max-width: 1023px)").matches;
+    if (!isMobile) {
+      map.addControl(new maplibregl.NavigationControl(), "top-right");
+    }
+    map.addControl(
+      new maplibregl.GeolocateControl({
+        positionOptions: { enableHighAccuracy: true },
+        trackUserLocation: true,
+        showUserLocation: true,
+      }),
+      isMobile ? "bottom-right" : "top-right"
+    );
 
     const popup = new maplibregl.Popup({
       closeButton: false,
@@ -761,7 +774,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-[var(--bo-ink-soft)] hover:text-orange-700 rounded-full w-6 h-6 inline-flex items-center justify-center hover:bg-orange-100"
+                className="absolute right-1.5 top-1/2 -translate-y-1/2 text-[var(--bo-ink-soft)] hover:text-orange-700 rounded-full w-8 h-8 inline-flex items-center justify-center hover:bg-orange-100 text-base"
                 aria-label="Clear search"
               >
                 ×
@@ -905,6 +918,34 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
           {schedule.advisory}
         </div>
       )}
+      <div className="px-4 py-3 border-t border-amber-200 bg-white text-[11px] text-[var(--bo-ink-soft)] leading-relaxed flex-shrink-0 flex items-center gap-2">
+        <span className="flex-1">
+          Ayaw mo maniwala sa datos dito? Check mo 'to
+        </span>
+        <a
+          href="https://company.meralco.com.ph/news-and-advisories/rotational-brownout"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open official Meralco rotational brownout source"
+          title="Official Source"
+          className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-100 text-orange-700 hover:bg-orange-200 hover:text-orange-900 transition flex-shrink-0"
+        >
+          <svg
+            className="w-4 h-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+          >
+            <path d="M14 3h7v7" />
+            <path d="M10 14 21 3" />
+            <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+          </svg>
+        </a>
+      </div>
       <div className="px-4 py-2.5 border-t border-amber-200 bg-white text-[10px] text-[var(--bo-ink-soft)] flex items-center justify-between gap-2 flex-shrink-0">
         <span>
           Unofficial · Not affiliated with Meralco or NGCP
@@ -923,7 +964,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
     <div
       ref={windowDropdownRef}
       className={
-        "absolute top-3 left-3 right-3 lg:top-4 lg:left-4 lg:right-auto lg:max-w-[520px] " +
+        "absolute live-header-pos lg:max-w-[520px] " +
         (windowDropdownOpen ? "z-40" : "z-20")
       }
     >
@@ -1046,7 +1087,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
           aria-label="Select time window"
           className="mt-2 bg-white border border-amber-200 rounded-2xl shadow-[0_14px_36px_rgba(234,88,12,0.28)] overflow-hidden"
         >
-          <ul className="max-h-[60vh] overflow-y-auto bo-scroll divide-y divide-amber-100">
+          <ul className="max-h-[60dvh] overflow-y-auto bo-scroll bo-overscroll-contain divide-y divide-amber-100">
             {schedule.windows.map((w, i) => {
               const live = i === liveWindowIdx;
               const isSelected = i === selectedIdx;
@@ -1105,7 +1146,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
   );
 
   return (
-    <main className="relative h-screen w-screen overflow-hidden bg-[var(--bo-cream)] flex">
+    <main className="app-shell bg-[var(--bo-cream)] flex">
       {/* Map column */}
       <div className="relative flex-1 min-w-0">
         <div ref={mapContainerRef} className="absolute inset-0" />
@@ -1117,59 +1158,81 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
         {sidebarBody}
       </aside>
 
-      {/* Mobile bottom drawer */}
-      <div
-        className={
-          "lg:hidden fixed inset-x-0 bottom-0 z-30 transform transition-transform duration-300 ease-out " +
-          (drawerOpen ? "translate-y-0" : "translate-y-[calc(100%-92px)]")
-        }
-        style={{ height: "85vh" }}
-        role="dialog"
-        aria-label="Brownout schedule"
-        aria-expanded={drawerOpen}
-      >
-        <div className="h-full bg-white border-t-2 border-orange-300 rounded-t-3xl shadow-[0_-12px_40px_rgba(234,88,12,0.25)] flex flex-col overflow-hidden">
+      {/* Mobile trigger pill — opens the right drawer */}
+      {!drawerOpen && (
+        <button
+          type="button"
+          onClick={() => setDrawerOpen(true)}
+          className="lg:hidden fixed mobile-pill-pos z-30 bg-white border border-amber-200 rounded-2xl shadow-[0_8px_24px_rgba(234,88,12,0.22)] px-4 py-3 active:bg-orange-50 transition text-left flex items-center gap-3"
+          aria-label="Open schedule"
+        >
+          <div className="flex items-center gap-2 min-w-0 flex-1">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-orange-700 flex-shrink-0">
+              Schedule
+            </span>
+            {selected && (
+              <span className="text-[12px] font-bold text-[var(--bo-ink)] tabular-nums truncate">
+                {shortTime(selected.start)} → {shortTime(selected.end)}
+              </span>
+            )}
+            <span className="text-[10px] font-semibold text-orange-700 bg-orange-100 rounded-full px-2 py-0.5 flex-shrink-0">
+              {totalBarangaysFiltered}
+            </span>
+          </div>
+          <span className="text-[10px] font-bold uppercase tracking-wider text-orange-600 flex items-center gap-1 flex-shrink-0">
+            Open
+            <svg
+              className="w-3 h-3"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <path d="m9 6 6 6-6 6" />
+            </svg>
+          </span>
+        </button>
+      )}
+
+      {/* Mobile right drawer */}
+      <div className="lg:hidden">
+        {drawerOpen && (
           <button
             type="button"
-            onClick={() => setDrawerOpen((v) => !v)}
-            className="flex-shrink-0 px-4 pt-2 pb-3 active:bg-orange-50 transition text-left"
-          >
-            <div className="w-12 h-1.5 rounded-full bg-amber-300 mx-auto mb-2" />
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2 min-w-0 flex-1">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-orange-700 flex-shrink-0">
-                  Schedule
-                </span>
-                {selected && (
-                  <span className="text-[12px] font-bold text-[var(--bo-ink)] tabular-nums truncate">
-                    {shortTime(selected.start)} → {shortTime(selected.end)}
-                  </span>
-                )}
-                <span className="text-[10px] font-semibold text-orange-700 bg-orange-100 rounded-full px-2 py-0.5 flex-shrink-0">
-                  {totalBarangaysFiltered}
-                </span>
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-orange-600 flex items-center gap-1 flex-shrink-0">
-                {drawerOpen ? "Close" : "Open"}
-                <svg
-                  className={`w-3 h-3 transition-transform ${
-                    drawerOpen ? "rotate-180" : ""
-                  }`}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden
-                >
-                  <path d="m18 15-6-6-6 6" />
-                </svg>
+            aria-label="Close schedule"
+            onClick={() => setDrawerOpen(false)}
+            className="fixed inset-0 bg-black/40 z-30"
+          />
+        )}
+        <div
+          className={
+            "fixed top-0 bottom-0 right-0 z-40 w-[92%] max-w-sm sm:max-w-md mobile-drawer-pad transform transition-transform duration-300 ease-out " +
+            (drawerOpen ? "translate-x-0" : "translate-x-full pointer-events-none")
+          }
+          role="dialog"
+          aria-label="Brownout schedule"
+          aria-hidden={!drawerOpen}
+        >
+          <div className="h-full bg-white border-l-2 border-orange-300 shadow-[-12px_0_40px_rgba(234,88,12,0.25)] flex flex-col overflow-hidden bo-overscroll-contain">
+            <div className="flex-shrink-0 px-4 pt-3 pb-2 flex items-center justify-between gap-2 border-b border-amber-100 bg-gradient-to-r from-orange-50 to-yellow-50">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-orange-700">
+                Schedule
               </span>
+              <button
+                type="button"
+                onClick={() => setDrawerOpen(false)}
+                className="w-8 h-8 rounded-full bg-amber-100 text-orange-700 flex items-center justify-center text-lg font-bold hover:bg-amber-200 active:bg-amber-300 transition"
+                aria-label="Close schedule"
+              >
+                ×
+              </button>
             </div>
-          </button>
-          <div className="flex-1 overflow-hidden flex flex-col min-h-0">
-            {sidebarBody}
+            <div className="flex-1 overflow-hidden flex flex-col min-h-0">
+              {sidebarBody}
+            </div>
           </div>
         </div>
       </div>
@@ -1184,11 +1247,11 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
             className="fixed inset-0 bg-black/40 z-40"
           />
           <div
-            className="fixed inset-x-0 bottom-0 z-50"
+            className="fixed inset-x-0 bottom-0 z-50 mobile-sheet-pad"
             role="dialog"
             aria-label="Barangay details"
           >
-            <div className="bg-white rounded-t-3xl shadow-[0_-12px_40px_rgba(234,88,12,0.35)] border-t-2 border-orange-400 max-h-[70vh] overflow-y-auto bo-scroll">
+            <div className="bg-white rounded-t-3xl shadow-[0_-12px_40px_rgba(234,88,12,0.35)] border-t-2 border-orange-400 max-h-[70dvh] overflow-y-auto bo-scroll bo-overscroll-contain">
               <div className="sticky top-0 bg-white pt-2 pb-2 z-10">
                 <div className="w-12 h-1.5 rounded-full bg-amber-300 mx-auto" />
               </div>
