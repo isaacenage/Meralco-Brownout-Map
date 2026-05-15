@@ -12,6 +12,11 @@ on:
 permissions:
   contents: write
 
+env:
+  # Opt into Node 24 for JavaScript-based actions (checkout, setup-node).
+  # Node 20 is deprecated on GitHub runners; forced default 2026-06-02, removed 2026-09-16.
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
