@@ -173,7 +173,7 @@ export default function LocationPrompt({
     );
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const raw = input.trim();
     if (raw.length < 3) {
@@ -181,9 +181,17 @@ export default function LocationPrompt({
       return;
     }
     setError(null);
-    // checkByName already preserves the raw query in `result.query`, so a
-    // no-hit response carries enough context for the "walang brownout" banner.
-    finish(checkByName(raw, schedule));
+    setPhase("detecting");
+    try {
+      // checkByName preserves the raw query in `result.query`, so a no-hit
+      // response carries enough context for the "walang brownout" banner.
+      const result = await checkByName(raw, schedule);
+      finish(result);
+    } catch (err) {
+      console.error("checkByName failed", err);
+      setError("Hindi mahanap ang barangay mo. Subukan muli.");
+      setPhase("prompt");
+    }
   }
 
   function handleSkip() {

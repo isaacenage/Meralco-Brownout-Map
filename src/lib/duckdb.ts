@@ -104,3 +104,62 @@ export async function queryBarangaysByMatchKeys(
     await conn.close();
   }
 }
+
+export interface BarangayLookupRow {
+  city_norm: string;
+  barangay_norm: string;
+  match_keys: string[];
+}
+
+/** Find barangays whose "<city> <barangay>" haystack contains every supplied
+ * token AND whose pre-built match_keys overlap with the schedule's keys.
+ * Used by name lookups so a constituent barangay query (e.g. "Barangay 178
+ * Caloocan") can resolve to a Meralco cluster line ("Caloocan City Proper"). */
+export async function queryBarangaysByTokens(
+  tokens: string[],
+  scheduleKeys: string[]
+): Promise<BarangayLookupRow[]> {
+  if (tokens.length === 0 || scheduleKeys.length === 0) return [];
+  const db = await getDuckDB();
+  const conn = await db.connect();
+  try {
+    const keyLiteral = scheduleKeys
+      .map((k) => `'${k.replace(/'/g, "''")}'`)
+      .join(",");
+    // Haystack also includes the flattened match_keys so that tokens which
+    // only appear in the cluster alias (e.g. "CITY", "PROPER" for "Caloocan
+    // City Proper", or "BARANGAY" + the number for Manila/Caloocan numbered
+    // brgys) still resolve to the constituent row.
+    const tokenConds = tokens
+      .map(
+        (t) =>
+          `strpos(
+             city_norm || ' ' || barangay_norm || ' ' ||
+             array_to_string(match_keys, ' '),
+             '${t.replace(/'/g, "''")}'
+           ) > 0`
+      )
+      .join(" AND ");
+    const sql = `
+      SELECT city_norm, barangay_norm, match_keys
+      FROM '${REGISTERED_NAME}'
+      WHERE list_has_any(match_keys, [${keyLiteral}])
+        AND ${tokenConds}
+      LIMIT 50
+    `;
+    const result = await conn.query(sql);
+    const rows: BarangayLookupRow[] = [];
+    for (let i = 0; i < result.numRows; i++) {
+      const row = result.get(i);
+      if (!row) continue;
+      rows.push({
+        city_norm: String(row.city_norm ?? ""),
+        barangay_norm: String(row.barangay_norm ?? ""),
+        match_keys: readStringList(row.match_keys),
+      });
+    }
+    return rows;
+  } finally {
+    await conn.close();
+  }
+}
