@@ -143,14 +143,39 @@ function parseTimeStr(t: string | null): number | null {
   return parseInt(m[1], 10) * 60 + parseInt(m[2], 10);
 }
 
+function todayInManila(now: Date): string {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Manila",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(now);
+}
+
+function isStaleSchedule(scheduleDate: string | null, now: Date): boolean {
+  if (!scheduleDate) return false;
+  return scheduleDate < todayInManila(now);
+}
+
+function formatScheduleDate(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  if (!y || !m || !d) return iso;
+  return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString("en-US", {
+    timeZone: "UTC",
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
 function isLiveNow(
   w: ScheduleWindow,
   scheduleDate: string | null,
   now: Date
 ): boolean {
   if (!scheduleDate) return false;
-  const todayIso = now.toISOString().slice(0, 10);
-  if (todayIso !== scheduleDate) return false;
+  if (scheduleDate !== todayInManila(now)) return false;
   const start = parseTimeStr(w.start);
   const end = parseTimeStr(w.end);
   if (start == null || end == null) return false;
@@ -466,6 +491,10 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
         isLiveNow(w, schedule.schedule_date, now)
       ),
     [schedule, now]
+  );
+  const isStale = useMemo(
+    () => isStaleSchedule(schedule.schedule_date, now),
+    [schedule.schedule_date, now]
   );
 
   const totalBarangaysForWindow = useMemo(
@@ -969,15 +998,44 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
       }
     >
       <div className="bg-white/95 backdrop-blur-md border border-amber-200 rounded-2xl shadow-[0_10px_30px_rgba(234,88,12,0.18)] overflow-hidden">
-        <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400">
-          <span className="live-dot" aria-hidden />
-          <div className="text-white font-bold tracking-wide text-[12px] sm:text-sm leading-tight">
-            LIVE · Meralco Rotational Brownout
+        {isStale ? (
+          <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400">
+            <span
+              className="w-2.5 h-2.5 rounded-full bg-white animate-pulse"
+              aria-hidden
+            />
+            <div className="text-white font-bold tracking-wide text-[12px] sm:text-sm leading-tight">
+              AWAITING TODAY&apos;S UPDATE
+            </div>
+            <div className="ml-auto text-[10px] uppercase tracking-widest text-white/90 font-semibold hidden sm:block">
+              Latest Advisory
+            </div>
           </div>
-          <div className="ml-auto text-[10px] uppercase tracking-widest text-white/90 font-semibold hidden sm:block">
-            Realtime Monitor
+        ) : (
+          <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400">
+            <span className="live-dot" aria-hidden />
+            <div className="text-white font-bold tracking-wide text-[12px] sm:text-sm leading-tight">
+              LIVE · Meralco Rotational Brownout
+            </div>
+            <div className="ml-auto text-[10px] uppercase tracking-widest text-white/90 font-semibold hidden sm:block">
+              Realtime Monitor
+            </div>
           </div>
-        </div>
+        )}
+        {isStale && schedule.schedule_date && (
+          <div className="px-3 sm:px-4 py-2.5 bg-amber-50 border-b border-amber-200 text-[11px] sm:text-xs leading-relaxed text-[var(--bo-ink)]">
+            <span className="font-bold text-amber-800">
+              Today&apos;s rotational brownout advisory has not yet been
+              published by Meralco.
+            </span>{" "}
+            The schedule and map shown reflect the most recent advisory, dated{" "}
+            <span className="font-semibold">
+              {formatScheduleDate(schedule.schedule_date)}
+            </span>
+            . This view will refresh automatically once a new advisory is
+            posted.
+          </div>
+        )}
         {selected && (
           <div
             className={
