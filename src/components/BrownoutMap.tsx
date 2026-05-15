@@ -767,6 +767,28 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
     selectedIdRef.current = null;
   }, [selectedFeature]);
 
+  // Disable map gesture handlers while the mobile drawer is open so taps,
+  // pans, and pinches that land on the drawer never reach the map.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    const handlers = [
+      map.dragPan,
+      map.scrollZoom,
+      map.boxZoom,
+      map.dragRotate,
+      map.keyboard,
+      map.doubleClickZoom,
+      map.touchZoomRotate,
+      map.touchPitch,
+    ];
+    if (drawerOpen) {
+      handlers.forEach((h) => h?.disable());
+    } else {
+      handlers.forEach((h) => h?.enable());
+    }
+  }, [drawerOpen]);
+
   useEffect(() => {
     if (!selected) return;
     let cancelled = false;
@@ -1336,19 +1358,11 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
         </button>
       )}
 
-      {/* Mobile right drawer */}
+      {/* Mobile right drawer — fullscreen so the map underneath can't receive touches */}
       <div className="lg:hidden">
-        {drawerOpen && (
-          <button
-            type="button"
-            aria-label="Close schedule"
-            onClick={() => setDrawerOpen(false)}
-            className="fixed inset-0 bg-black/40 z-30"
-          />
-        )}
         <div
           className={
-            "fixed top-0 bottom-0 right-0 z-40 w-[92%] max-w-sm sm:max-w-md mobile-drawer-pad transform transition-transform duration-300 ease-out " +
+            "fixed inset-0 z-40 mobile-drawer-pad transform transition-transform duration-300 ease-out " +
             (drawerOpen ? "translate-x-0" : "translate-x-full pointer-events-none")
           }
           role="dialog"

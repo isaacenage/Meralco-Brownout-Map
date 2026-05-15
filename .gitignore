@@ -6,6 +6,7 @@ out/
 *.log
 .vercel/
 *.tsbuildinfo
+__pycache__/
 
 # Local-only HTML fixtures from initial exploration
 meralco_page.html
