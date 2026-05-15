@@ -18,11 +18,23 @@ export default async function Page() {
 
   if (!schedule) {
     return (
-      <main className="p-8">
-        <h1 className="text-xl font-semibold">No schedule data yet</h1>
-        <p className="mt-2 text-sm text-gray-400">
-          Run <code className="px-1 py-0.5 bg-gray-800 rounded">npm run scrape</code> to fetch the latest brownout schedule.
-        </p>
+      <main className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-white flex items-center justify-center p-8">
+        <div className="max-w-md text-center bg-white border border-amber-200 rounded-2xl shadow-[0_10px_30px_rgba(234,88,12,0.18)] p-8">
+          <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-[11px] font-bold uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+            No data yet
+          </div>
+          <h1 className="text-xl font-bold text-[var(--bo-ink)]">
+            Meralco Rotational Brownout Map
+          </h1>
+          <p className="mt-2 text-sm text-[var(--bo-ink-soft)]">
+            Run{" "}
+            <code className="px-1.5 py-0.5 bg-yellow-100 text-orange-700 rounded font-semibold">
+              npm run scrape
+            </code>{" "}
+            to fetch the latest brownout schedule.
+          </p>
+        </div>
       </main>
     );
   }

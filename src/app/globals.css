@@ -4,5 +4,163 @@
 
 @import "maplibre-gl/dist/maplibre-gl.css";
 
-html, body, #__next { height: 100%; }
-body { background: #0b1220; color: #e5e7eb; }
+:root {
+  --bo-orange: #f97316;
+  --bo-orange-deep: #ea580c;
+  --bo-orange-soft: #ffedd5;
+  --bo-yellow: #facc15;
+  --bo-yellow-soft: #fef3c7;
+  --bo-amber: #fbbf24;
+  --bo-ink: #1f1306;
+  --bo-ink-soft: #6b4a2b;
+  --bo-cream: #fffaf0;
+  --bo-border: #fde68a;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+body {
+  background: var(--bo-cream);
+  color: var(--bo-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Live pulse dot used in header */
+.live-dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: #ef4444;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  animation: live-pulse 1.6s cubic-bezier(0.66, 0, 0, 1) infinite;
+}
+@keyframes live-pulse {
+  to {
+    box-shadow: 0 0 0 14px rgba(239, 68, 68, 0);
+  }
+}
+
+/* Custom scrollbar for sidebar */
+.bo-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.bo-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.bo-scroll::-webkit-scrollbar-thumb {
+  background: #fed7aa;
+  border-radius: 9999px;
+  border: 2px solid var(--bo-cream);
+}
+.bo-scroll::-webkit-scrollbar-thumb:hover {
+  background: #fdba74;
+}
+
+/* MapLibre control restyle */
+.maplibregl-ctrl-group {
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.18) !important;
+  border: 1px solid #fed7aa !important;
+}
+.maplibregl-ctrl-group button {
+  background: #ffffff !important;
+}
+.maplibregl-ctrl-group button:hover {
+  background: var(--bo-yellow-soft) !important;
+}
+.maplibregl-ctrl-attrib {
+  background: rgba(255, 255, 255, 0.85) !important;
+  color: var(--bo-ink-soft) !important;
+}
+
+/* Popup styling */
+.brownout-popup .maplibregl-popup-content {
+  background: #ffffff;
+  color: var(--bo-ink);
+  border: 1px solid var(--bo-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 12px;
+  box-shadow: 0 10px 26px rgba(234, 88, 12, 0.25);
+  max-width: 260px;
+}
+.brownout-popup .maplibregl-popup-tip {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+.brownout-popup-title {
+  font-weight: 700;
+  color: var(--bo-ink);
+  margin-bottom: 6px;
+  text-transform: capitalize;
+  font-size: 13px;
+  line-height: 1.25;
+}
+.brownout-popup-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bo-orange-deep);
+  margin-bottom: 4px;
+}
+.brownout-popup-windows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.brownout-popup-windows li {
+  background: var(--bo-orange-soft);
+  color: var(--bo-orange-deep);
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  display: inline-block;
+  width: fit-content;
+}
+.brownout-popup-windows-empty {
+  color: #9a7449;
+}
+
+/* Accordion chevron rotation */
+.bo-chev {
+  transition: transform 0.18s ease;
+}
+.bo-chev.open {
+  transform: rotate(90deg);
+}
+
+/* Soft slide-in for accordion content */
+.bo-accordion-content {
+  animation: bo-slide-in 0.18s ease-out;
+}
+@keyframes bo-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Highlight match in search results */
+mark.bo-mark {
+  background: var(--bo-yellow);
+  color: var(--bo-ink);
+  padding: 0 2px;
+  border-radius: 3px;
+}

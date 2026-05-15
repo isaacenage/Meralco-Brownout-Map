@@ -11,6 +11,8 @@
     "scrape": "node scripts/scrape.mjs"
   },
   "dependencies": {
+    "@duckdb/duckdb-wasm": "^1.33.1-dev45.0",
+    "apache-arrow": "^21.1.0",
     "cheerio": "^1.0.0",
     "maplibre-gl": "^4.7.1",
     "next": "15.5.18",
