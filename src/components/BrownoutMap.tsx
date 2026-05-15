@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import maplibregl, {
+  type DataDrivenPropertyValueSpecification,
   type GeoJSONSource,
   type Map as MapLibreMap,
 } from "maplibre-gl";
@@ -96,6 +97,14 @@ const INITIAL_VIEW = { lng: 121.0, lat: 14.65, zoom: 8.5 };
 const SOURCE_ID = "affected-barangays";
 const FILL_LAYER_ID = "affected-barangays-fill";
 const OUTLINE_LAYER_ID = "affected-barangays-outline";
+
+const FILL_COLOR_DEFAULT = "#fc5c00";
+const FILL_COLOR_HOVER = "#000000";
+const FILL_OPACITY_DEFAULT = 0.6;
+const FILL_OPACITY_HOVER = 0.85;
+const OUTLINE_COLOR = "#1e3a8a";
+const OUTLINE_WIDTH_DEFAULT = 1.5;
+const OUTLINE_WIDTH_HOVER = 3;
 
 const EMPTY_FC: FeatureCollection<Polygon | MultiPolygon> = {
   type: "FeatureCollection",
@@ -225,7 +234,37 @@ async function buildFeatureCollection(
 }
 
 function ensureLayers(map: MapLibreMap) {
-  if (map.getSource(SOURCE_ID)) return;
+  const fillColor: DataDrivenPropertyValueSpecification<string> = [
+    "case",
+    ["boolean", ["feature-state", "hover"], false],
+    FILL_COLOR_HOVER,
+    FILL_COLOR_DEFAULT,
+  ];
+  const fillOpacity: DataDrivenPropertyValueSpecification<number> = [
+    "case",
+    ["boolean", ["feature-state", "hover"], false],
+    FILL_OPACITY_HOVER,
+    FILL_OPACITY_DEFAULT,
+  ];
+  const lineWidth: DataDrivenPropertyValueSpecification<number> = [
+    "case",
+    ["boolean", ["feature-state", "hover"], false],
+    OUTLINE_WIDTH_HOVER,
+    OUTLINE_WIDTH_DEFAULT,
+  ];
+
+  if (map.getSource(SOURCE_ID)) {
+    if (map.getLayer(FILL_LAYER_ID)) {
+      map.setPaintProperty(FILL_LAYER_ID, "fill-color", fillColor);
+      map.setPaintProperty(FILL_LAYER_ID, "fill-opacity", fillOpacity);
+    }
+    if (map.getLayer(OUTLINE_LAYER_ID)) {
+      map.setPaintProperty(OUTLINE_LAYER_ID, "line-color", OUTLINE_COLOR);
+      map.setPaintProperty(OUTLINE_LAYER_ID, "line-width", lineWidth);
+    }
+    return;
+  }
+
   map.addSource(SOURCE_ID, {
     type: "geojson",
     data: EMPTY_FC,
@@ -236,18 +275,8 @@ function ensureLayers(map: MapLibreMap) {
     type: "fill",
     source: SOURCE_ID,
     paint: {
-      "fill-color": [
-        "case",
-        ["boolean", ["feature-state", "hover"], false],
-        "#38bdf8",
-        "#2563eb",
-      ],
-      "fill-opacity": [
-        "case",
-        ["boolean", ["feature-state", "hover"], false],
-        0.85,
-        0.6,
-      ],
+      "fill-color": fillColor,
+      "fill-opacity": fillOpacity,
     },
   });
   map.addLayer({
@@ -255,13 +284,8 @@ function ensureLayers(map: MapLibreMap) {
     type: "line",
     source: SOURCE_ID,
     paint: {
-      "line-color": "#1e3a8a",
-      "line-width": [
-        "case",
-        ["boolean", ["feature-state", "hover"], false],
-        3,
-        1.5,
-      ],
+      "line-color": OUTLINE_COLOR,
+      "line-width": lineWidth,
     },
   });
 }
@@ -798,12 +822,12 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search barangay, city, or province…"
-              className="w-full bg-white border border-amber-200 rounded-xl pl-9 pr-9 py-2 text-sm text-[var(--bo-ink)] placeholder:text-[var(--bo-ink-soft)]/60 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400"
+              className="w-full bg-white border border-amber-200 rounded-none pl-9 pr-9 py-2 text-sm text-[var(--bo-ink)] placeholder:text-[var(--bo-ink-soft)]/60 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-1.5 top-1/2 -translate-y-1/2 text-[var(--bo-ink-soft)] hover:text-orange-700 rounded-full w-8 h-8 inline-flex items-center justify-center hover:bg-orange-100 text-base"
+                className="absolute right-1.5 top-1/2 -translate-y-1/2 text-[var(--bo-ink-soft)] hover:text-orange-700 rounded-none w-8 h-8 inline-flex items-center justify-center hover:bg-orange-100 text-base"
                 aria-label="Clear search"
               >
                 ×
@@ -827,7 +851,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
               return (
                 <div
                   key={fp.province.name}
-                  className="rounded-xl border border-amber-200 bg-white overflow-hidden"
+                  className="rounded-none border border-amber-200 bg-white overflow-hidden"
                 >
                   <button
                     onClick={() => toggleProvince(fp.province.name)}
@@ -848,7 +872,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
                     <span className="font-bold text-[var(--bo-ink)] text-sm">
                       {displayProvince(fp.province.name)}
                     </span>
-                    <span className="ml-auto text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-600 text-white">
+                    <span className="ml-auto text-[10px] font-bold px-2 py-0.5 rounded-none bg-orange-600 text-white">
                       {fp.totalBarangays}
                     </span>
                     <span className="text-[10px] text-[var(--bo-ink-soft)] font-medium">
@@ -884,7 +908,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
                               <span className="text-[13px] font-semibold text-[var(--bo-ink)]">
                                 {highlight(fc.city.name, searchQuery)}
                               </span>
-                              <span className="ml-auto text-[10px] font-semibold text-orange-700 bg-orange-100 px-1.5 py-0.5 rounded-full">
+                              <span className="ml-auto text-[10px] font-semibold text-orange-700 bg-orange-100 px-1.5 py-0.5 rounded-none">
                                 {fc.barangays.length}
                               </span>
                             </button>
@@ -893,9 +917,9 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
                                 {fc.barangays.map((b, idx) => (
                                   <li
                                     key={`${cityKey}-${b.name}-${idx}`}
-                                    className="text-[12px] text-[var(--bo-ink-soft)] py-0.5 px-2 rounded hover:bg-yellow-100 hover:text-[var(--bo-ink)] transition flex items-center gap-2"
+                                    className="text-[12px] text-[var(--bo-ink-soft)] py-0.5 px-2 rounded-none hover:bg-yellow-100 hover:text-[var(--bo-ink)] transition flex items-center gap-2"
                                   >
-                                    <span className="w-1 h-1 rounded-full bg-orange-400 flex-shrink-0" />
+                                    <span className="w-1 h-1 rounded-none bg-orange-400 flex-shrink-0" />
                                     <span className="truncate flex-1">
                                       {highlight(b.name, searchQuery)}
                                     </span>
@@ -911,7 +935,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
                                               type="button"
                                               onClick={() => setSelectedIdx(wIdx)}
                                               className={
-                                                "text-[9px] font-bold tabular-nums tracking-wide px-1.5 py-0.5 rounded-full whitespace-nowrap transition " +
+                                                "text-[9px] font-bold tabular-nums tracking-wide px-1.5 py-0.5 rounded-none whitespace-nowrap transition " +
                                                 (isSel
                                                   ? "bg-orange-500 text-white"
                                                   : "bg-orange-100 text-orange-700 hover:bg-orange-200")
@@ -957,7 +981,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
           rel="noopener noreferrer"
           aria-label="Open official Meralco rotational brownout source"
           title="Official Source"
-          className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-100 text-orange-700 hover:bg-orange-200 hover:text-orange-900 transition flex-shrink-0"
+          className="inline-flex items-center justify-center w-8 h-8 rounded-none bg-orange-100 text-orange-700 hover:bg-orange-200 hover:text-orange-900 transition flex-shrink-0"
         >
           <svg
             className="w-4 h-4"
@@ -997,11 +1021,11 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
         (windowDropdownOpen ? "z-40" : "z-20")
       }
     >
-      <div className="bg-white/95 backdrop-blur-md border border-amber-200 rounded-2xl shadow-[0_10px_30px_rgba(234,88,12,0.18)] overflow-hidden">
+      <div className="bg-white/95 backdrop-blur-md border border-amber-200 rounded-none shadow-[0_10px_30px_rgba(234,88,12,0.18)] overflow-hidden">
         {isStale ? (
           <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400">
             <span
-              className="w-2.5 h-2.5 rounded-full bg-white animate-pulse"
+              className="w-2.5 h-2.5 rounded-none bg-white animate-pulse"
               aria-hidden
             />
             <div className="text-white font-bold tracking-wide text-[12px] sm:text-sm leading-tight">
@@ -1049,7 +1073,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
               <div className="text-[9px] sm:text-[10px] uppercase tracking-widest font-bold text-orange-700">
                 {selectedIdx === liveWindowIdx ? (
                   <span className="inline-flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-none bg-red-500 animate-pulse" />
                     <span className="text-red-600">Live Now</span>
                   </span>
                 ) : (
@@ -1064,7 +1088,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
               <button
                 type="button"
                 onClick={() => setWindowDropdownOpen((v) => !v)}
-                className="group flex items-center gap-2 text-xl sm:text-2xl lg:text-3xl font-extrabold tabular-nums text-[var(--bo-ink)] leading-tight whitespace-nowrap rounded-lg px-2 -mx-2 py-0.5 hover:bg-orange-100/60 transition focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="group flex items-center gap-2 text-xl sm:text-2xl lg:text-3xl font-extrabold tabular-nums text-[var(--bo-ink)] leading-tight whitespace-nowrap rounded-none px-2 -mx-2 py-0.5 hover:bg-orange-100/60 transition focus:outline-none focus:ring-2 focus:ring-orange-400"
                 aria-haspopup="listbox"
                 aria-expanded={windowDropdownOpen}
               >
@@ -1096,10 +1120,10 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
                     setSelectedIdx(liveWindowIdx);
                     setWindowDropdownOpen(false);
                   }}
-                  className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-red-500 text-white inline-flex items-center gap-1.5 hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400 flex-shrink-0"
+                  className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-none bg-red-500 text-white inline-flex items-center gap-1.5 hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400 flex-shrink-0"
                   title="Jump to the currently live time window"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-none bg-white animate-pulse" />
                   Go Live
                 </button>
               )}
@@ -1129,7 +1153,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
           <div className="px-3 sm:px-4 pb-2 sm:pb-3 -mt-1 text-[10px] sm:text-[11px] font-medium">
             {status === "loading" && (
               <span className="inline-flex items-center gap-1.5 text-orange-700">
-                <span className="inline-block w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                <span className="inline-block w-2 h-2 rounded-none bg-orange-500 animate-pulse" />
                 Loading polygons…
               </span>
             )}
@@ -1143,7 +1167,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
         <div
           role="listbox"
           aria-label="Select time window"
-          className="mt-2 bg-white border border-amber-200 rounded-2xl shadow-[0_14px_36px_rgba(234,88,12,0.28)] overflow-hidden"
+          className="mt-2 bg-white border border-amber-200 rounded-none shadow-[0_14px_36px_rgba(234,88,12,0.28)] overflow-hidden"
         >
           <ul className="max-h-[60dvh] overflow-y-auto bo-scroll bo-overscroll-contain divide-y divide-amber-100">
             {schedule.windows.map((w, i) => {
@@ -1183,13 +1207,13 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
                       </div>
                     </div>
                     {live && (
-                      <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-red-500 text-white inline-flex items-center gap-1 flex-shrink-0">
-                        <span className="w-1 h-1 rounded-full bg-white animate-pulse" />
+                      <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-none bg-red-500 text-white inline-flex items-center gap-1 flex-shrink-0">
+                        <span className="w-1 h-1 rounded-none bg-white animate-pulse" />
                         Live
                       </span>
                     )}
                     {isSelected && !live && (
-                      <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-orange-100 text-orange-700 flex-shrink-0">
+                      <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-none bg-orange-100 text-orange-700 flex-shrink-0">
                         Active
                       </span>
                     )}
@@ -1221,7 +1245,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
         <button
           type="button"
           onClick={() => setDrawerOpen(true)}
-          className="lg:hidden fixed mobile-pill-pos z-30 bg-white border border-amber-200 rounded-2xl shadow-[0_8px_24px_rgba(234,88,12,0.22)] px-4 py-3 active:bg-orange-50 transition text-left flex items-center gap-3"
+          className="lg:hidden fixed mobile-pill-pos z-30 bg-white border border-amber-200 rounded-none shadow-[0_8px_24px_rgba(234,88,12,0.22)] px-4 py-3 active:bg-orange-50 transition text-left flex items-center gap-3"
           aria-label="Open schedule"
         >
           <div className="flex items-center gap-2 min-w-0 flex-1">
@@ -1233,7 +1257,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
                 {shortTime(selected.start)} → {shortTime(selected.end)}
               </span>
             )}
-            <span className="text-[10px] font-semibold text-orange-700 bg-orange-100 rounded-full px-2 py-0.5 flex-shrink-0">
+            <span className="text-[10px] font-semibold text-orange-700 bg-orange-100 rounded-none px-2 py-0.5 flex-shrink-0">
               {totalBarangaysFiltered}
             </span>
           </div>
@@ -1282,7 +1306,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
               <button
                 type="button"
                 onClick={() => setDrawerOpen(false)}
-                className="w-8 h-8 rounded-full bg-amber-100 text-orange-700 flex items-center justify-center text-lg font-bold hover:bg-amber-200 active:bg-amber-300 transition"
+                className="w-8 h-8 rounded-none bg-amber-100 text-orange-700 flex items-center justify-center text-lg font-bold hover:bg-amber-200 active:bg-amber-300 transition"
                 aria-label="Close schedule"
               >
                 ×
@@ -1309,9 +1333,9 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
             role="dialog"
             aria-label="Barangay details"
           >
-            <div className="bg-white rounded-t-3xl shadow-[0_-12px_40px_rgba(234,88,12,0.35)] border-t-2 border-orange-400 max-h-[70dvh] overflow-y-auto bo-scroll bo-overscroll-contain">
+            <div className="bg-white rounded-none shadow-[0_-12px_40px_rgba(234,88,12,0.35)] border-t-2 border-orange-400 max-h-[70dvh] overflow-y-auto bo-scroll bo-overscroll-contain">
               <div className="sticky top-0 bg-white pt-2 pb-2 z-10">
-                <div className="w-12 h-1.5 rounded-full bg-amber-300 mx-auto" />
+                <div className="w-12 h-1.5 rounded-none bg-amber-300 mx-auto" />
               </div>
               <div className="px-5 pb-5">
                 <div className="flex items-start justify-between gap-3 mb-4">
@@ -1329,7 +1353,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
                   <button
                     type="button"
                     onClick={() => setSelectedFeature(null)}
-                    className="w-9 h-9 rounded-full bg-amber-100 text-orange-700 flex items-center justify-center text-lg font-bold flex-shrink-0 hover:bg-amber-200 active:bg-amber-300 transition"
+                    className="w-9 h-9 rounded-none bg-amber-100 text-orange-700 flex items-center justify-center text-lg font-bold flex-shrink-0 hover:bg-amber-200 active:bg-amber-300 transition"
                     aria-label="Close"
                   >
                     ×
@@ -1344,7 +1368,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
                     {selectedFeature.windows.map((w, i) => (
                       <li
                         key={i}
-                        className="bg-orange-100 text-orange-800 font-semibold px-3 py-1.5 rounded-full text-sm"
+                        className="bg-orange-100 text-orange-800 font-semibold px-3 py-1.5 rounded-none text-sm"
                       >
                         {w}
                       </li>
@@ -1374,7 +1398,7 @@ function SummaryCard({
   accent: string;
 }) {
   return (
-    <div className={`rounded-xl px-2.5 py-2 ${accent}`}>
+    <div className={`rounded-none px-2.5 py-2 ${accent}`}>
       <div className="text-[9px] font-bold uppercase tracking-widest opacity-80">
         {label}
       </div>

@@ -33,8 +33,8 @@ export default function LegalPage() {
         </div>
 
         <header className="mb-10">
-          <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-widest">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+          <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-none bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 rounded-none bg-orange-500" />
             Legal & About
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--bo-ink)] leading-tight">
@@ -46,7 +46,7 @@ export default function LegalPage() {
         </header>
 
         {/* Affiliation disclaimer — prominent */}
-        <section className="mb-10 rounded-2xl border-2 border-orange-300 bg-white p-5 sm:p-6 shadow-[0_10px_30px_rgba(234,88,12,0.12)]">
+        <section className="mb-10 rounded-none border-2 border-orange-300 bg-white p-5 sm:p-6 shadow-[0_10px_30px_rgba(234,88,12,0.12)]">
           <div className="text-[10px] font-bold uppercase tracking-widest text-orange-700 mb-2">
             Important Disclaimer
           </div>

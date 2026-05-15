@@ -23,9 +23,9 @@ export default async function Page() {
     return (
       <IntroPage>
       <main className="min-h-screen min-h-[100dvh] bg-gradient-to-br from-yellow-50 via-orange-50 to-white flex items-center justify-center p-6 sm:p-8 intro-safe-pad">
-        <div className="max-w-md text-center bg-white border border-amber-200 rounded-2xl shadow-[0_10px_30px_rgba(234,88,12,0.18)] p-8">
-          <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-[11px] font-bold uppercase tracking-widest">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+        <div className="max-w-md text-center bg-white border border-amber-200 rounded-none shadow-[0_10px_30px_rgba(234,88,12,0.18)] p-8">
+          <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-none bg-orange-100 text-orange-700 text-[11px] font-bold uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 rounded-none bg-orange-500" />
             No data yet
           </div>
           <h1 className="text-xl font-bold text-[var(--bo-ink)]">
@@ -33,7 +33,7 @@ export default async function Page() {
           </h1>
           <p className="mt-2 text-sm text-[var(--bo-ink-soft)]">
             Run{" "}
-            <code className="px-1.5 py-0.5 bg-yellow-100 text-orange-700 rounded font-semibold">
+            <code className="px-1.5 py-0.5 bg-yellow-100 text-orange-700 rounded-none font-semibold">
               npm run scrape
             </code>{" "}
             to fetch the latest brownout schedule.

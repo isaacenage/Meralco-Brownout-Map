@@ -297,21 +297,18 @@ export default function LocationPrompt({
           buckets.current.length === 0 &&
           buckets.future.length === 0;
         return (
-          <div className="loc-banner-wrap" role="status" aria-live="polite">
+          <div
+            className="loc-banner-wrap"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Brownout result"
+          >
             <div
               className={
                 "loc-banner " +
                 (match.isAffected ? "loc-banner-bad" : "loc-banner-good")
               }
             >
-              <button
-                type="button"
-                className="loc-banner-close"
-                onClick={handleCloseBanner}
-                aria-label="Close"
-              >
-                ×
-              </button>
               {match.isAffected ? (
                 <>
                   <div className="loc-banner-eyebrow">
@@ -360,6 +357,13 @@ export default function LocationPrompt({
                   )}
                 </>
               )}
+              <button
+                type="button"
+                className="loc-banner-close"
+                onClick={handleCloseBanner}
+              >
+                Close
+              </button>
             </div>
           </div>
         );
