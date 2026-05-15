@@ -1,0 +1,40 @@
+name: Scrape Meralco rotational brownout schedule
+
+on:
+  # 00:00 UTC = 08:00 PHT — runs once daily, well after Meralco posts.
+  schedule:
+    - cron: "0 0 * * *"
+  # Allow manual runs from the Actions tab too.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Run scraper
+        run: npm run scrape
+
+      - name: Commit updated schedule (if changed)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -z "$(git status --porcelain public/data)" ]]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git add public/data
+          git commit -m "chore(scrape): update schedule $(date -u +%Y-%m-%d)"
+          git push

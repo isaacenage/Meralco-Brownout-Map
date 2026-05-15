@@ -1,0 +1,2540 @@
+{
+  "source_url": "https://company.meralco.com.ph/news-and-advisories/rotational-brownout",
+  "scraped_at": "2026-05-15T11:29:12.578Z",
+  "schedule_date": "2026-05-15",
+  "advisory": "In line with NGCP’s declaration of Luzon Grid’s placement on Red Alert status due to generation deficiency, seven (7) tentative Manual Load Dropping (MLD) events may be implemented today, May 15, 2026. There will be 7 groups of Meralco circuits, below are the tentative schedules for each.",
+  "windows": [
+    {
+      "start": "14:01",
+      "end": "17:00",
+      "label": "Between 2:01PM and 5:00PM",
+      "provinces": [
+        {
+          "name": "BULACAN",
+          "cities": [
+            {
+              "name": "ANGAT",
+              "barangays": [
+                "ENCANTO"
+              ]
+            },
+            {
+              "name": "BOCAUE",
+              "barangays": [
+                "TAMBOBONG",
+                "TURO"
+              ]
+            },
+            {
+              "name": "BUSTOS",
+              "barangays": [
+                "MALAWAK"
+              ]
+            },
+            {
+              "name": "CALUMPIT",
+              "barangays": [
+                "BALUNGAO",
+                "BULUSAN",
+                "CALIZON",
+                "CANIOGAN",
+                "CORAZON",
+                "FRANCES",
+                "GATBUCA",
+                "GUGO",
+                "MEYSULAO",
+                "PALIMBANG",
+                "POBLACION",
+                "SAN MIGUEL",
+                "SAPANG BAYAN",
+                "STA. LUCIA",
+                "SUCOL"
+              ]
+            },
+            {
+              "name": "PANDI",
+              "barangays": [
+                "BAGONG BARRIO",
+                "BAKA-BAKAHAN",
+                "BUNSURAN 1",
+                "BUNSURAN 2",
+                "BUNSURAN 3",
+                "CACARONG BATA",
+                "CUPANG",
+                "MALIBONG BATA",
+                "MALIBONG MATANDA",
+                "MAPULANG LUPA",
+                "MASUSO",
+                "PINAGKUARTELAN",
+                "POBLACION",
+                "SAN ROQUE",
+                "SILING BATA",
+                "SILING MATANDA"
+              ]
+            },
+            {
+              "name": "PULILAN",
+              "barangays": [
+                "CUTCOT",
+                "LONGOS",
+                "LUMBAC",
+                "PALTAO",
+                "PEÑABATAN",
+                "POBLACION",
+                "PULILAN TOWN PROPER",
+                "STO. CRISTO",
+                "TAAL",
+                "TINEJERO"
+              ]
+            },
+            {
+              "name": "SANTA MARIA",
+              "barangays": [
+                "LALAKHAN",
+                "MANGGAHAN",
+                "SANTA CLARA",
+                "SANTA CRUZ"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "METRO MANILA",
+          "cities": [
+            {
+              "name": "CALOOCAN CITY",
+              "barangays": [
+                "BAGUMBONG",
+                "CALOOCAN CITY PROPER",
+                "CAMARIN"
+              ]
+            },
+            {
+              "name": "MANILA",
+              "barangays": [
+                "BINONDO",
+                "SAN NICOLAS",
+                "TONDO"
+              ]
+            },
+            {
+              "name": "MARIKINA CITY",
+              "barangays": [
+                "PARANG"
+              ]
+            },
+            {
+              "name": "PASIG CITY",
+              "barangays": [
+                "BUTING",
+                "KALAWAAN",
+                "SAN JOAQUIN"
+              ]
+            },
+            {
+              "name": "PATEROS",
+              "barangays": [
+                "STO ROSARIO-KANLURAN"
+              ]
+            },
+            {
+              "name": "QUEZON CITY",
+              "barangays": [
+                "FAIRVIEW",
+                "GULOD/NOVALICHES",
+                "PASONG PUTIK",
+                "PASONG TAMO",
+                "SAUYO",
+                "STA. LUCIA/NOVALICHES"
+              ]
+            },
+            {
+              "name": "TAGUIG CITY",
+              "barangays": [
+                "BAGONG TANYAG",
+                "EAST REMBO",
+                "FORT BONIFACIO",
+                "LIGID-TIPAS",
+                "LOWER BICUTAN",
+                "MAHARLIKA VILL",
+                "PEMBO",
+                "SIGNAL VILLAGE",
+                "WEST REMBO",
+                "WESTERN BICUTAN"
+              ]
+            },
+            {
+              "name": "VALENZUELA CITY",
+              "barangays": [
+                "BIGNAY",
+                "MAPULANG LUPA"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RIZAL PROVINCE",
+          "cities": [
+            {
+              "name": "ANGONO",
+              "barangays": [
+                "ANGONO TOWN PROPER",
+                "KALAYAAN",
+                "SAN ISIDRO",
+                "SAN ROQUE"
+              ]
+            },
+            {
+              "name": "BINANGONAN",
+              "barangays": [
+                "PAG-ASA",
+                "TAGPOS",
+                "TAYUMAN"
+              ]
+            },
+            {
+              "name": "CAINTA",
+              "barangays": [
+                "SAN ANDRES",
+                "SAN JUAN",
+                "SAN ROQUE",
+                "STO DOMINGO"
+              ]
+            },
+            {
+              "name": "SAN MATEO",
+              "barangays": [
+                "GULOD MALAYA",
+                "SILANGAN",
+                "STO. NIÑO"
+              ]
+            },
+            {
+              "name": "TAYTAY",
+              "barangays": [
+                "DOLORES",
+                "MUZON",
+                "SAN ISIDRO",
+                "SAN JUAN",
+                "STA. ANA"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start": "15:01",
+      "end": "18:00",
+      "label": "Between 3:01PM and 6:00PM",
+      "provinces": [
+        {
+          "name": "BULACAN",
+          "cities": [
+            {
+              "name": "BALAGTAS",
+              "barangays": [
+                "SAN JUAN"
+              ]
+            },
+            {
+              "name": "BALIUAG CITY",
+              "barangays": [
+                "BAGONG NAYON",
+                "BALIUAG CITY PROPER",
+                "CONCEPCION",
+                "MAKINABANG",
+                "MATANGTUBIG",
+                "PAGALA",
+                "PINAGBARILAN",
+                "SAN JOSE",
+                "STA. BARBARA",
+                "TANGOS",
+                "TARCAN",
+                "VIRGEN DELAS FLORES"
+              ]
+            },
+            {
+              "name": "BOCAUE",
+              "barangays": [
+                "BINANG 1ST",
+                "BINANG 2ND",
+                "BOLACAN",
+                "CAINGIN",
+                "IGULOT",
+                "TURO",
+                "WAKAS"
+              ]
+            },
+            {
+              "name": "PULILAN",
+              "barangays": [
+                "BALATONG B"
+              ]
+            },
+            {
+              "name": "SAN JOSE DEL MONTE CITY",
+              "barangays": [
+                "DULONG BAYAN",
+                "FRANCISCO HOMES-NARRA",
+                "GAYA-GAYA",
+                "GRACEVILLE",
+                "MAHARLIKA",
+                "MUZON",
+                "POBLACION",
+                "POBLACION I",
+                "TUNGKONG MANGGA"
+              ]
+            },
+            {
+              "name": "SANTA MARIA",
+              "barangays": [
+                "BAGBAGUIN",
+                "BULAC",
+                "CATMON",
+                "LALAKHAN",
+                "MAHABANG PARANG",
+                "PARADA",
+                "POBLACION",
+                "SAN GABRIEL",
+                "SAN JOSE PATAG",
+                "SANTA CRUZ",
+                "TABING BAKOD"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CAVITE",
+          "cities": [
+            {
+              "name": "AMADEO",
+              "barangays": [
+                "BUHO",
+                "MAITIM I",
+                "SALABAN",
+                "TALON"
+              ]
+            },
+            {
+              "name": "DASMARIÑAS CITY",
+              "barangays": [
+                "PALIPARAN I"
+              ]
+            },
+            {
+              "name": "GENERAL TRIAS CITY",
+              "barangays": [
+                "BACAO 1",
+                "BACAO 2",
+                "GENERAL TRIAS",
+                "NAVARRO",
+                "PASONG CAMACHILE 1",
+                "PASONG CAMACHILE 2",
+                "SANTIAGO"
+              ]
+            },
+            {
+              "name": "IMUS CITY",
+              "barangays": [
+                "ALAPAN I-B",
+                "ALAPAN I-C",
+                "ALAPAN II-A",
+                "ALAPAN II-B",
+                "ANABU II-A"
+              ]
+            },
+            {
+              "name": "KAWIT",
+              "barangays": [
+                "SAN SEBASTIAN",
+                "TOCLONG"
+              ]
+            },
+            {
+              "name": "NOVELETA",
+              "barangays": [
+                "SAN ANTONIO II",
+                "SAN JOSE I"
+              ]
+            },
+            {
+              "name": "SILANG",
+              "barangays": [
+                "BUCAL",
+                "BUHO",
+                "MALABAG"
+              ]
+            },
+            {
+              "name": "TAGAYTAY CITY",
+              "barangays": [
+                "FRANCISCO",
+                "IRUHIN WEST",
+                "KAYBAGAL EAST",
+                "KAYBAGAL NORTH",
+                "KAYBAGAL SOUTH",
+                "MAHARLIKA EAST",
+                "MAHARLIKA WEST",
+                "MAITIM 2ND CENTRAL",
+                "MAITIM 2ND WEST",
+                "MAITIM II EAST",
+                "MENDEZ CROSSING EAST",
+                "PATUTONG MALAKI SOUTH",
+                "SAN JOSE",
+                "SILANG JUNCTION NORTH",
+                "SILANG JUNCTION SOUTH",
+                "SUNGAY NORTH",
+                "SUNGAY SOUTH",
+                "TOLENTINO EAST",
+                "TOLENTINO WEST"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "LAGUNA",
+          "cities": [
+            {
+              "name": "CABUYAO CITY",
+              "barangays": [
+                "PITTLAND"
+              ]
+            },
+            {
+              "name": "CALAMBA CITY",
+              "barangays": [
+                "BAGONG KALSADA",
+                "BUCAL",
+                "CALAMBA CITY PROPER",
+                "LA MESA",
+                "MASILI",
+                "PANSOL",
+                "SUCOL"
+              ]
+            },
+            {
+              "name": "CALAUAN",
+              "barangays": [
+                "BALAYHANGIN",
+                "CALAUAN TOWN PROPER",
+                "IMOK",
+                "MABACAN",
+                "MASIIT",
+                "PALIPARAN",
+                "PEREZ"
+              ]
+            },
+            {
+              "name": "LOS BAÑOS",
+              "barangays": [
+                "ANOS",
+                "BAMBANG",
+                "BAYBAYIN",
+                "BAYOG",
+                "DEPT. OF PUBLIC WORKS & HWAY (",
+                "LALAKAY",
+                "MALINTA",
+                "MAYONDON",
+                "TADLAK",
+                "TIMUGAN"
+              ]
+            },
+            {
+              "name": "LUISIANA",
+              "barangays": [
+                "DELA PAZ",
+                "LUISIANA TOWN PROPER",
+                "SAN ANTONIO",
+                "SAN BUENAVENTURA",
+                "SAN DIEGO",
+                "SAN ISIDRO",
+                "SAN JOSE",
+                "SAN JUAN",
+                "SAN LUIS",
+                "SAN PABLO",
+                "SAN PEDRO",
+                "SAN RAFAEL",
+                "SAN ROQUE",
+                "SAN SALVADOR",
+                "STO. DOMINGO",
+                "STO. TOMAS"
+              ]
+            },
+            {
+              "name": "MAJAYJAY",
+              "barangays": [
+                "BAKIA",
+                "BITAOY",
+                "BOTOCAN",
+                "BURGOS",
+                "GAGALOT",
+                "PIIT",
+                "RIZAL",
+                "TAYTAY"
+              ]
+            },
+            {
+              "name": "STA. CRUZ",
+              "barangays": [
+                "BAGONG BAYAN (BAGUMBAYAN)",
+                "CALIOS",
+                "PATIMBAO",
+                "STA. CRUZ TOWN PROPER",
+                "STO. ANGEL CENTRAL",
+                "STO. ANGEL SUR"
+              ]
+            },
+            {
+              "name": "STA. ROSA CITY",
+              "barangays": [
+                "DON JOSE"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "METRO MANILA",
+          "cities": [
+            {
+              "name": "CALOOCAN CITY",
+              "barangays": [
+                "BAGONG BARRIO",
+                "BAGONG SILANG",
+                "BAGONG SILANG - KALIWA",
+                "BAGONG SILANG - KANAN",
+                "BAGUMBONG",
+                "CALOOCAN CITY PROPER",
+                "CAMARIN",
+                "DAGAT-DAGATAN",
+                "GRACE PARK",
+                "MAYPAJO",
+                "SAMPALUKAN",
+                "TALA",
+                "TALIPAPA"
+              ]
+            },
+            {
+              "name": "MAKATI CITY",
+              "barangays": [
+                "BANGKAL",
+                "BEL-AIR",
+                "GUADALUPE VIEJO",
+                "KAYAMANAN C",
+                "LA PAZ",
+                "OLYMPIA",
+                "PIO DEL PILAR",
+                "POBLACION",
+                "SAN ANTONIO",
+                "SAN ISIDRO",
+                "SAN LORENZO",
+                "SINGKAMAS",
+                "STA. CRUZ",
+                "TEJEROS"
+              ]
+            },
+            {
+              "name": "MALABON CITY",
+              "barangays": [
+                "CATMON",
+                "LONGOS",
+                "NIUGAN",
+                "SAN AGUSTIN",
+                "TANONG (POB.)",
+                "TINAJEROS",
+                "TONSUYA"
+              ]
+            },
+            {
+              "name": "MANDALUYONG CITY",
+              "barangays": [
+                "HIGHWAY HILLS",
+                "MALAMIG",
+                "MAUWAY",
+                "WACK-WACK GREENHILLS EAST"
+              ]
+            },
+            {
+              "name": "MANILA",
+              "barangays": [
+                "SAMPALOC",
+                "STA. ANA",
+                "STA. MESA"
+              ]
+            },
+            {
+              "name": "MARIKINA CITY",
+              "barangays": [
+                "BARANGKA",
+                "CONCEPCION I",
+                "CONCEPCION II",
+                "MALANDAY",
+                "MARIKINA HTS",
+                "NANGKA",
+                "PARANG",
+                "STO. NIÑO",
+                "TAÑONG"
+              ]
+            },
+            {
+              "name": "MUNTINLUPA CITY",
+              "barangays": [
+                "ALABANG",
+                "BAYANAN",
+                "BULI",
+                "CUPANG",
+                "POBLACION",
+                "PUTATAN",
+                "SUCAT"
+              ]
+            },
+            {
+              "name": "NAVOTAS CITY",
+              "barangays": [
+                "DAGAT-DAGATAN",
+                "NORTH BAY BLVD., NORTH",
+                "NORTH BAY BLVD., SOUTH"
+              ]
+            },
+            {
+              "name": "PARAÑAQUE CITY",
+              "barangays": [
+                "BF HOMES",
+                "SN ANTONIO",
+                "SN ISIDRO",
+                "SN MARTIN DE PORRES"
+              ]
+            },
+            {
+              "name": "PASIG CITY",
+              "barangays": [
+                "BAMBANG",
+                "CANIOGAN",
+                "DELA PAZ",
+                "KAPASIGAN",
+                "KAPITOLYO",
+                "MANGGAHAN",
+                "ORANBO",
+                "PALATIW",
+                "PINEDA",
+                "ROSARIO",
+                "SAGAD",
+                "SAN ANTONIO",
+                "SAN MIGUEL",
+                "SAN NICOLAS",
+                "STA. CRUZ",
+                "STO. TOMAS",
+                "SUMILANG",
+                "UGONG"
+              ]
+            },
+            {
+              "name": "QUEZON CITY",
+              "barangays": [
+                "ALICIA",
+                "APOLONIO SAMSON",
+                "BAESA",
+                "BAGONG SILANGAN",
+                "BAHAY TORO",
+                "BATASAN HILLS",
+                "COMMONWEALTH",
+                "CULIAT",
+                "HOLY SPIRIT",
+                "KATIPUNAN",
+                "LIBIS",
+                "MATANDANG BALARA",
+                "NEW ERA",
+                "PASONG TAMO",
+                "PAYATAS",
+                "RAMON MAGSAYSAY",
+                "SANGANDAAN",
+                "SOCORRO",
+                "ST. IGNATIUS",
+                "TANDANG SORA",
+                "UGONG NORTE"
+              ]
+            },
+            {
+              "name": "TAGUIG CITY",
+              "barangays": [
+                "COMEMBO"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "QUEZON PROVINCE",
+          "cities": [
+            {
+              "name": "LUCBAN",
+              "barangays": [
+                "ABANG",
+                "ALILIW",
+                "ATULINAO",
+                "AYUTI",
+                "IGANG",
+                "KABATETE",
+                "KAKAWIT",
+                "KALANGAY",
+                "KALYAAT",
+                "KILIB",
+                "KULAPI",
+                "LUCBAN TOWN PROPER",
+                "MAHABANG PARANG",
+                "MALUPAK",
+                "MANASA",
+                "MAY-IT",
+                "NAGSINAMO",
+                "NALUNAO",
+                "PALOLA",
+                "PIIS",
+                "SAMIL",
+                "TIAWE",
+                "TINAMNAN"
+              ]
+            },
+            {
+              "name": "SAMPALOC",
+              "barangays": [
+                "BATAAN",
+                "ILAYANG OWAIN"
+              ]
+            },
+            {
+              "name": "TAYABAS CITY",
+              "barangays": [
+                "CAMAYSA",
+                "DAPDAP",
+                "IBAS",
+                "LALO",
+                "MATEUNA",
+                "OPIAS",
+                "WAKAS"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RIZAL PROVINCE",
+          "cities": [
+            {
+              "name": "ANGONO",
+              "barangays": [
+                "ANGONO TOWN PROPER",
+                "BAGUMBAYAN",
+                "KALAYAAN",
+                "POBLACION IBABA",
+                "POBLACION ITAAS",
+                "SAN ISIDRO",
+                "SAN PEDRO",
+                "SAN ROQUE",
+                "SAN VICENTE",
+                "STO. NIÑO"
+              ]
+            },
+            {
+              "name": "ANTIPOLO CITY",
+              "barangays": [
+                "BAGONG NAYON",
+                "CALAWIS",
+                "CUPANG",
+                "DALIG",
+                "DELA PAZ",
+                "INARAWAN",
+                "MAMBUGAN",
+                "MAYAMOT",
+                "MUNTINDILAW",
+                "SAN ISIDRO",
+                "SAN JOSE",
+                "SAN JUAN",
+                "SAN LUIS",
+                "SAN ROQUE",
+                "STA. CRUZ"
+              ]
+            },
+            {
+              "name": "BARAS",
+              "barangays": [
+                "PINUGAY",
+                "RIZAL",
+                "SAN JOSE",
+                "SAN SALVADOR"
+              ]
+            },
+            {
+              "name": "BINANGONAN",
+              "barangays": [
+                "BILIBIRAN",
+                "PAG-ASA",
+                "PALANGOY",
+                "PANTOK",
+                "TAGPOS",
+                "TAYUMAN"
+              ]
+            },
+            {
+              "name": "CAINTA",
+              "barangays": [
+                "SAN ANDRES",
+                "SAN ISIDRO",
+                "SAN JUAN",
+                "SAN ROQUE",
+                "STA. ROSA",
+                "STO DOMINGO",
+                "STO. NIÑO"
+              ]
+            },
+            {
+              "name": "MORONG",
+              "barangays": [
+                "BOMBONGAN",
+                "LAGUNDI",
+                "MAYBANCAL",
+                "SAN GUILLERMO",
+                "SAN PEDRO"
+              ]
+            },
+            {
+              "name": "TAYTAY",
+              "barangays": [
+                "DOLORES",
+                "SAN ISIDRO"
+              ]
+            },
+            {
+              "name": "TERESA",
+              "barangays": [
+                "BAGUMBAYAN",
+                "CALUMPANG STO CRISTO",
+                "DALIG",
+                "DULUMBAYAN",
+                "MAY-IBA",
+                "POBLACION",
+                "PRINZA",
+                "SAN GABRIEL",
+                "SAN ROQUE"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start": "16:01",
+      "end": "19:00",
+      "label": "Between 4:01PM and 7:00PM",
+      "provinces": [
+        {
+          "name": "BULACAN",
+          "cities": [
+            {
+              "name": "SAN ILDEFONSO",
+              "barangays": [
+                "ANYATAM",
+                "BUBULONG MALAKI",
+                "BUBULONG MUNTI",
+                "BULUSUKAN",
+                "LAPNIT",
+                "MAKAPILAPIL",
+                "PALAPALA",
+                "PINAOD",
+                "SAN ILDEFONSO TOWN PROPER",
+                "SAN JUAN",
+                "SAPANG PUTIK",
+                "SAPANG PUTOL",
+                "STA. CATALINA BATA",
+                "STA. CATALINA MATANDA",
+                "SUMANDIG",
+                "UMPUCAN"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CAVITE",
+          "cities": [
+            {
+              "name": "BACOOR CITY",
+              "barangays": [
+                "MOLINO IV"
+              ]
+            },
+            {
+              "name": "DASMARIÑAS CITY",
+              "barangays": [
+                "SALITRAN I",
+                "SALITRAN IV"
+              ]
+            },
+            {
+              "name": "IMUS CITY",
+              "barangays": [
+                "ANABU I-A",
+                "ANABU I-D",
+                "ANABU II-A",
+                "ANABU II-B",
+                "ANABU II-C",
+                "ANABU II-D",
+                "ANABU II-E",
+                "ANABU II-F",
+                "PASONG BUAYA I",
+                "PASONG BUAYA II"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "LAGUNA",
+          "cities": [
+            {
+              "name": "CABUYAO CITY",
+              "barangays": [
+                "DIEZMO",
+                "PULO",
+                "SAN ISIDRO"
+              ]
+            },
+            {
+              "name": "STA. ROSA CITY",
+              "barangays": [
+                "MALITLIT"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "METRO MANILA",
+          "cities": [
+            {
+              "name": "MAKATI CITY",
+              "barangays": [
+                "BEL-AIR",
+                "CARMONA",
+                "KASILAWAN",
+                "OLYMPIA",
+                "TEJEROS"
+              ]
+            },
+            {
+              "name": "MANDALUYONG CITY",
+              "barangays": [
+                "MABINI-J. RIZAL",
+                "NAMAYAN",
+                "OLD ZANIGA",
+                "POBLACION",
+                "VERGARA",
+                "WACK-WACK GREENHILLS EAST"
+              ]
+            },
+            {
+              "name": "MANILA",
+              "barangays": [
+                "STA. ANA"
+              ]
+            },
+            {
+              "name": "QUEZON CITY",
+              "barangays": [
+                "BAGONG LIPUNAN NG CRAME/CUBAO",
+                "HORSESHOE",
+                "KAUNLARAN/CUBAO"
+              ]
+            },
+            {
+              "name": "SAN JUAN CITY",
+              "barangays": [
+                "GREENHILLS",
+                "WEST CRAME"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start": "17:01",
+      "end": "20:00",
+      "label": "Between 5:01PM and 8:00PM",
+      "provinces": [
+        {
+          "name": "CAVITE",
+          "cities": [
+            {
+              "name": "BACOOR CITY",
+              "barangays": [
+                "ANIBAN I",
+                "ANIBAN II",
+                "ANIBAN IV",
+                "BACOOR CITY PROPER",
+                "HABAY I",
+                "HABAY II",
+                "LIGAS I",
+                "LIGAS II",
+                "LIGAS III",
+                "MALUMOT",
+                "MOLINO II",
+                "MOLINO IV",
+                "NIOG I",
+                "NIOG II",
+                "NIOG III",
+                "PANAPAAN III",
+                "PANAPAAN IV",
+                "PANAPAAN VI",
+                "REAL I",
+                "REAL II",
+                "SALINAS I",
+                "SALINAS II",
+                "SALINAS III",
+                "SALINAS IV",
+                "TALABA I",
+                "TALABA IV",
+                "TALABA VII",
+                "ZAPOTE I",
+                "ZAPOTE II",
+                "ZAPOTE IV"
+              ]
+            },
+            {
+              "name": "IMUS CITY",
+              "barangays": [
+                "BAYAN LUMA 1",
+                "BAYAN LUMA 2",
+                "BAYAN LUMA 3",
+                "BAYAN LUMA 4",
+                "BAYAN LUMA 5",
+                "BAYAN LUMA 6",
+                "PALICO I",
+                "PALICO II",
+                "PALICO III",
+                "PALICO IV",
+                "POBLACION I-A",
+                "POBLACION I-B",
+                "POBLACION I-C",
+                "POBLACION II-A",
+                "POBLACION II-B",
+                "POBLACION IV-C",
+                "POBLACION IV-D",
+                "TANZANG LUMA I",
+                "TANZANG LUMA II",
+                "TANZANG LUMA III",
+                "TANZANG LUMA IV",
+                "TANZANG LUMA V"
+              ]
+            },
+            {
+              "name": "TERNATE",
+              "barangays": [
+                "PUERTO AZUL"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "METRO MANILA",
+          "cities": [
+            {
+              "name": "CALOOCAN CITY",
+              "barangays": [
+                "DAGAT-DAGATAN",
+                "GRACE PARK",
+                "MAYPAJO"
+              ]
+            },
+            {
+              "name": "MAKATI CITY",
+              "barangays": [
+                "BEL-AIR",
+                "POBLACION",
+                "SAN LORENZO",
+                "STA. CRUZ",
+                "URDANETA"
+              ]
+            },
+            {
+              "name": "MANDALUYONG CITY",
+              "barangays": [
+                "WACK-WACK GREENHILLS EAST"
+              ]
+            },
+            {
+              "name": "MANILA",
+              "barangays": [
+                "ERMITA",
+                "PACO"
+              ]
+            },
+            {
+              "name": "PASIG CITY",
+              "barangays": [
+                "MANGGAHAN",
+                "MAYBUNGA",
+                "PINAGBUHATAN",
+                "ROSARIO",
+                "SAN MIGUEL"
+              ]
+            },
+            {
+              "name": "QUEZON CITY",
+              "barangays": [
+                "E. RODRIGUEZ",
+                "SOCORRO"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RIZAL PROVINCE",
+          "cities": [
+            {
+              "name": "CAINTA",
+              "barangays": [
+                "SAN ANDRES",
+                "SAN ISIDRO",
+                "SAN JUAN"
+              ]
+            },
+            {
+              "name": "TAYTAY",
+              "barangays": [
+                "DOLORES",
+                "SAN ISIDRO",
+                "SAN JUAN",
+                "STA. ANA"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start": "18:01",
+      "end": "21:00",
+      "label": "Between 6:01PM and 9:00PM",
+      "provinces": [
+        {
+          "name": "BULACAN",
+          "cities": [
+            {
+              "name": "CALUMPIT",
+              "barangays": [
+                "CANIOGAN",
+                "CORAZON",
+                "IBA ESTE",
+                "IBA OESTE",
+                "PALIMBANG"
+              ]
+            },
+            {
+              "name": "HAGONOY",
+              "barangays": [
+                "CARILLO",
+                "IBA",
+                "IBA-IBAYO",
+                "PALAPAT",
+                "SAGRADA FAMILIA",
+                "SAN AGUSTIN",
+                "SAN ISIDRO",
+                "SAN JUAN",
+                "SAN MIGUEL",
+                "SAN NICOLAS",
+                "SAN PASCUAL",
+                "SAN ROQUE",
+                "SAN SEBASTIAN",
+                "STA. CRUZ",
+                "STA. ELENA",
+                "STA. MONICA",
+                "STO. NIÑO",
+                "STO. ROSARIO"
+              ]
+            },
+            {
+              "name": "MALOLOS CITY",
+              "barangays": [
+                "ATLAG",
+                "BABATNIN",
+                "BAGNA",
+                "BALAYONG",
+                "BALITE",
+                "BULIHAN",
+                "CALERO",
+                "CALILIGAWAN",
+                "CANIOGAN",
+                "LONGOS",
+                "LUGAM",
+                "MABOLO",
+                "MASILE",
+                "MATIMBO",
+                "MOJON",
+                "NAMAYAN",
+                "PAMARAWAN",
+                "PANASAHAN",
+                "PINAGBAKAHAN",
+                "SAN JUAN",
+                "SAN PABLO",
+                "STA. ISABEL",
+                "STO. CRISTO",
+                "TIKAY"
+              ]
+            },
+            {
+              "name": "MARILAO",
+              "barangays": [
+                "LAMBAKIN",
+                "LIAS",
+                "STA. ROSA 1"
+              ]
+            },
+            {
+              "name": "MEYCAUAYAN CITY",
+              "barangays": [
+                "LIBTONG",
+                "PANDAYAN",
+                "PANTOC"
+              ]
+            },
+            {
+              "name": "PULILAN",
+              "barangays": [
+                "DAMPOL II-A",
+                "DAMPOL II-B"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CAVITE",
+          "cities": [
+            {
+              "name": "DASMARIÑAS CITY",
+              "barangays": [
+                "BUROL MAIN",
+                "DASMARIÑAS CITY PROPER",
+                "PALIPARAN I",
+                "PALIPARAN II"
+              ]
+            },
+            {
+              "name": "GEN. M. ALVAREZ",
+              "barangays": [
+                "ALDIANO OLAES",
+                "BENJAMIN TIRONA (AREA D)",
+                "BERNARDO PULIDO (AREA H)",
+                "EPIFANIO MALIA",
+                "FIORELLO CALIMAG (AREA C)",
+                "FRANCISCO DE CASTRO",
+                "FRANCISCO REYES",
+                "GAVINO MADERAN",
+                "GEN. ALVAREZ",
+                "GREGORIA DE JESUS",
+                "INOCENCIO SALUD",
+                "JACINTO LUMBRERAS",
+                "KAPITAN KUA (AREA F)",
+                "KORONEL J. P. ELISES (AREA E)",
+                "MACARIO DACON",
+                "MARCELINO MEMIJE",
+                "NICOLASA VIRATA (SAN JOSE)",
+                "PANTALEON GRANADOS (AREA G)",
+                "RAMON CRUZ (AREA J)",
+                "SAN GABRIEL (AREA K)",
+                "SAN JOSE",
+                "SEVERINO DE LAS ALAS",
+                "TINIENTE TIAGO"
+              ]
+            },
+            {
+              "name": "SILANG",
+              "barangays": [
+                "ACACIA",
+                "ANAHAW I",
+                "BANABA",
+                "BULIHAN",
+                "NARRA I",
+                "NARRA II",
+                "NARRA III"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "LAGUNA",
+          "cities": [
+            {
+              "name": "BIÑAN CITY",
+              "barangays": [
+                "BIÑAN",
+                "CANLALAY",
+                "DELA PAZ",
+                "GANADO",
+                "LOMA",
+                "MAMPLASAN",
+                "PLATERO",
+                "SAN ANTONIO",
+                "SAN FRANCISCO",
+                "SAN VICENTE",
+                "STO. NIÑO",
+                "ZAPOTE"
+              ]
+            },
+            {
+              "name": "CALAMBA CITY",
+              "barangays": [
+                "BARANDAL",
+                "BATINO",
+                "BUROL",
+                "CANLUBANG",
+                "HORNALAN",
+                "LAGUERTA",
+                "MAJADA LOOB",
+                "MAJADA OUT",
+                "MAYAPA",
+                "PACIANO RIZAL",
+                "PALO-ALTO",
+                "UWISAN"
+              ]
+            },
+            {
+              "name": "SAN PEDRO CITY",
+              "barangays": [
+                "CUYAB",
+                "ESTRELLA",
+                "LANDAYAN",
+                "LANGGAM",
+                "LARAM",
+                "NARRA",
+                "NUEVA",
+                "RIVERSIDE",
+                "SAN ANTONIO",
+                "SAN PEDRO CITY PROPER",
+                "SAN VICENTE",
+                "STO. NIÑO",
+                "UNITED BETTER LIVING"
+              ]
+            },
+            {
+              "name": "STA. ROSA CITY",
+              "barangays": [
+                "DON JOSE",
+                "POOK",
+                "PULONG STA CRUZ"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "METRO MANILA",
+          "cities": [
+            {
+              "name": "CALOOCAN CITY",
+              "barangays": [
+                "BAGONG BARRIO",
+                "BAGUMBONG",
+                "CALOOCAN CITY PROPER",
+                "DAGAT-DAGATAN",
+                "DEPARO",
+                "GRACE PARK",
+                "KABATUHAN",
+                "KAYBIGA",
+                "LLANO",
+                "MAYPAJO",
+                "POBLACION",
+                "SANGANDAAN",
+                "STA. QUITERIA"
+              ]
+            },
+            {
+              "name": "LAS PIÑAS CITY",
+              "barangays": [
+                "ALMANZA I",
+                "DANIEL FAJARDO",
+                "ELIAS ALDANA",
+                "LAS PIÑAS CITY PROPER",
+                "MANUYO I",
+                "MANUYO II",
+                "PAMPLONA I",
+                "PAMPLONA II",
+                "PAMPLONA III",
+                "PULANGLUPA I",
+                "PULANGLUPA II",
+                "TALON I",
+                "TALON II",
+                "TALON IV",
+                "ZAPOTE"
+              ]
+            },
+            {
+              "name": "MALABON CITY",
+              "barangays": [
+                "DAGAT-DAGATAN",
+                "LONGOS",
+                "POTRERO",
+                "TONSUYA",
+                "TUGATOG"
+              ]
+            },
+            {
+              "name": "MANDALUYONG CITY",
+              "barangays": [
+                "BAGONG SILANG",
+                "BUROL",
+                "DAANG BAKAL",
+                "HAGDANG BATO ITAAS",
+                "HAGDANG BATO LIBIS",
+                "HARAPIN ANG BUKAS",
+                "NEW ZANIGA",
+                "PAG-ASA",
+                "POBLACION"
+              ]
+            },
+            {
+              "name": "MANILA",
+              "barangays": [
+                "MALATE",
+                "QUIAPO",
+                "SAMPALOC",
+                "STA. CRUZ",
+                "STA. MESA",
+                "TONDO"
+              ]
+            },
+            {
+              "name": "MARIKINA CITY",
+              "barangays": [
+                "CALUMPANG",
+                "CONCEPCION I",
+                "MARIKINA HTS",
+                "NANGKA",
+                "PARANG",
+                "SAN ROQUE",
+                "TAÑONG"
+              ]
+            },
+            {
+              "name": "MUNTINLUPA CITY",
+              "barangays": [
+                "ALABANG",
+                "BGY AYALA-ALABANG",
+                "POBLACION",
+                "PUTATAN",
+                "SUCAT",
+                "TUNASAN"
+              ]
+            },
+            {
+              "name": "NAVOTAS CITY",
+              "barangays": [
+                "DAGAT-DAGATAN"
+              ]
+            },
+            {
+              "name": "PARAÑAQUE CITY",
+              "barangays": [
+                "BF HOMES",
+                "DON BOSCO",
+                "LA HUERTA",
+                "MARCELO GREEN",
+                "MERVILLE",
+                "MOONWALK",
+                "SAN DIONISIO",
+                "SN ANTONIO",
+                "SN ISIDRO",
+                "STO. NIÑO",
+                "SUN VALLEY"
+              ]
+            },
+            {
+              "name": "PASAY CITY",
+              "barangays": [
+                "PASAY CITY PROPER"
+              ]
+            },
+            {
+              "name": "PASIG CITY",
+              "barangays": [
+                "DELA PAZ",
+                "MANGGAHAN",
+                "SANTOLAN",
+                "STO. TOMAS"
+              ]
+            },
+            {
+              "name": "QUEZON CITY",
+              "barangays": [
+                "AMIHAN-PROJ 3",
+                "APOLONIO SAMSON",
+                "BAESA",
+                "BAGUMBUHAY",
+                "BALONG BATO",
+                "BATASAN HILLS",
+                "BLUE RIDGE A",
+                "BLUE RIDGE B",
+                "BUNGAD",
+                "CENTRAL",
+                "DAMAYAN",
+                "DEL MONTE",
+                "DOÑA IMELDA",
+                "DUYAN DUYAN/PROJ 3",
+                "KATIPUNAN",
+                "LAGING HANDA",
+                "LOYOLA HEIGHTS",
+                "MANRESA",
+                "MARIBLO",
+                "MARILAG",
+                "MASAMBONG",
+                "NAGKAISANG NAYON",
+                "NAYONG KANLURAN",
+                "PALIGSAHAN",
+                "PALTOK",
+                "PARAISO",
+                "PHIL-AM",
+                "QUIRINO 3-A/PROJ 3",
+                "QUIRINO 3-B/CLARO/PROJ 3",
+                "ROXAS",
+                "SAN ANTONIO",
+                "SAN ISIDRO (GALAS)",
+                "SANTOL",
+                "SOUTH TRIANGLE",
+                "ST. IGNATIUS",
+                "STA. CRUZ",
+                "STO. CRISTO",
+                "STO. DOMINGO (MATALAHIB)",
+                "STO. NIÑO",
+                "TALAYAN",
+                "TATALON",
+                "TEACHERS VILL. WEST",
+                "VETERANS VILL",
+                "WEST TRIANGLE"
+              ]
+            },
+            {
+              "name": "SAN JUAN CITY",
+              "barangays": [
+                "BATIS",
+                "KABAYANAN",
+                "PROGRESO",
+                "SAN PERFECTO"
+              ]
+            },
+            {
+              "name": "TAGUIG CITY",
+              "barangays": [
+                "FORT BONIFACIO"
+              ]
+            },
+            {
+              "name": "VALENZUELA CITY",
+              "barangays": [
+                "BAGBAGUIN",
+                "BIGNAY",
+                "CANUMAY",
+                "CARUHATAN",
+                "HEN T DE LEON",
+                "MAPULANG LUPA",
+                "PASO DE BLAS",
+                "PUNTURIN",
+                "UGONG"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RIZAL PROVINCE",
+          "cities": [
+            {
+              "name": "ANGONO",
+              "barangays": [
+                "ANGONO TOWN PROPER",
+                "SAN ISIDRO",
+                "SAN ROQUE"
+              ]
+            },
+            {
+              "name": "ANTIPOLO CITY",
+              "barangays": [
+                "MAYAMOT",
+                "MUNTINDILAW"
+              ]
+            },
+            {
+              "name": "BINANGONAN",
+              "barangays": [
+                "BATINGAN",
+                "BILIBIRAN",
+                "CALUMPANG",
+                "DARANGAN",
+                "KALAWAAN",
+                "MACAMOT",
+                "MAHABANG PARANG",
+                "MAMBOG",
+                "PAG-ASA",
+                "TATALA"
+              ]
+            },
+            {
+              "name": "CAINTA",
+              "barangays": [
+                "SAN ISIDRO",
+                "STO DOMINGO"
+              ]
+            },
+            {
+              "name": "CARDONA",
+              "barangays": [
+                "CALAHAN",
+                "DALIG",
+                "DEL REMEDIO",
+                "IGLESIA",
+                "LOOC",
+                "PATUNHAY",
+                "REAL",
+                "SAN ROQUE"
+              ]
+            },
+            {
+              "name": "MORONG",
+              "barangays": [
+                "BOMBONGAN",
+                "LAGUNDI",
+                "MAYBANCAL",
+                "SAN JOSE",
+                "SAN JUAN",
+                "SAN PEDRO"
+              ]
+            },
+            {
+              "name": "RODRIGUEZ (MONTALBAN)",
+              "barangays": [
+                "BALITE",
+                "BURGOS",
+                "GERONIMO",
+                "MANGGAHAN",
+                "ROSARIO",
+                "SAN ISIDRO",
+                "SAN JOSE",
+                "SAN RAFAEL"
+              ]
+            },
+            {
+              "name": "SAN MATEO",
+              "barangays": [
+                "AMPID I",
+                "AMPID II",
+                "BANABA",
+                "DULONG BAYAN I",
+                "DULONG BAYAN II",
+                "GUINAYANG",
+                "GUITNANG BAYAN I",
+                "GUITNANG BAYAN II",
+                "GULOD MALAYA",
+                "MALANDAY",
+                "MALY",
+                "STA. ANA"
+              ]
+            },
+            {
+              "name": "TAYTAY",
+              "barangays": [
+                "DOLORES",
+                "MUZON",
+                "SAN JUAN",
+                "STA. ANA"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start": "19:01",
+      "end": "22:00",
+      "label": "Between 7:01PM and 10:00PM",
+      "provinces": [
+        {
+          "name": "BULACAN",
+          "cities": [
+            {
+              "name": "BOCAUE",
+              "barangays": [
+                "ANTIPONA",
+                "BAGUMBAYAN",
+                "BAMBANG",
+                "BATIA",
+                "BINANG 1ST",
+                "BINANG 2ND",
+                "BUNDUKAN",
+                "BUNLO",
+                "CAINGIN",
+                "LOLOMBOY",
+                "POBLACION",
+                "SULUCAN",
+                "TAAL",
+                "TAMBOBONG",
+                "WAKAS"
+              ]
+            },
+            {
+              "name": "MARILAO",
+              "barangays": [
+                "ABANGAN NORTE",
+                "ABANGAN SUR",
+                "LOMA DE GATO",
+                "NAGBALON",
+                "POBLACION 1",
+                "POBLACION 2",
+                "SAOG"
+              ]
+            },
+            {
+              "name": "PANDI",
+              "barangays": [
+                "BAKA-BAKAHAN"
+              ]
+            },
+            {
+              "name": "SANTA MARIA",
+              "barangays": [
+                "LALAKHAN"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CAVITE",
+          "cities": [
+            {
+              "name": "BACOOR CITY",
+              "barangays": [
+                "MAMBOG IV",
+                "MOLINO II",
+                "MOLINO III",
+                "MOLINO IV",
+                "MOLINO V"
+              ]
+            },
+            {
+              "name": "IMUS CITY",
+              "barangays": [
+                "BAGONG SILANG",
+                "BAHAYANG PAG-ASA",
+                "BUCANDALA IV",
+                "BUHAY NA TUBIG",
+                "ESPELETA I",
+                "ESPELETA II",
+                "ESPELETA III",
+                "MAGDALO",
+                "MAHARLIKA",
+                "PASONG BUAYA I",
+                "PASONG BUAYA II",
+                "PINAGBUKLOD",
+                "POBLACION I-A"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "METRO MANILA",
+          "cities": [
+            {
+              "name": "PASAY CITY",
+              "barangays": [
+                "PASAY CITY PROPER"
+              ]
+            },
+            {
+              "name": "QUEZON CITY",
+              "barangays": [
+                "KALUSUGAN",
+                "MARIANA/DAMAYAN LAGI"
+              ]
+            },
+            {
+              "name": "TAGUIG CITY",
+              "barangays": [
+                "FORT BONIFACIO"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RIZAL PROVINCE",
+          "cities": [
+            {
+              "name": "ANGONO",
+              "barangays": [
+                "MAHABANG PARANG"
+              ]
+            },
+            {
+              "name": "BINANGONAN",
+              "barangays": [
+                "BILIBIRAN",
+                "CALUMPANG",
+                "DARANGAN",
+                "KALAWAAN",
+                "MAHABANG PARANG",
+                "PAG-ASA",
+                "PALANGOY",
+                "PANTOK",
+                "TAGPOS",
+                "TAYUMAN"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start": "20:01",
+      "end": "23:00",
+      "label": "Between 8:01PM and 11:00PM",
+      "provinces": [
+        {
+          "name": "BULACAN",
+          "cities": [
+            {
+              "name": "CALUMPIT",
+              "barangays": [
+                "BALITE",
+                "BUGUION",
+                "CALUMPANG",
+                "IBA OESTE",
+                "PIO CRUZCOSA",
+                "SAN MARCOS"
+              ]
+            },
+            {
+              "name": "MALOLOS CITY",
+              "barangays": [
+                "GUINHAWA",
+                "LONGOS",
+                "LOOK 1ST",
+                "LUGAM"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CAVITE",
+          "cities": [
+            {
+              "name": "ALFONSO",
+              "barangays": [
+                "ALFONSO TOWN PROPER",
+                "AMUYONG",
+                "LUKSUHIN IBABA",
+                "LUKSUHIN ILAYA",
+                "MANGAS I",
+                "MANGAS II",
+                "MARAHAN I",
+                "MARAHAN II",
+                "MATAGBAK I",
+                "MATAGBAK II",
+                "PALUMLUM",
+                "SANTA TERESA",
+                "SIKAT",
+                "SINALIW MALAKI",
+                "SULSUGIN",
+                "TAYWANAK IBABA",
+                "TAYWANAK ILAYA"
+              ]
+            },
+            {
+              "name": "BACOOR CITY",
+              "barangays": [
+                "MOLINO I",
+                "MOLINO VI",
+                "SAN NICOLAS III"
+              ]
+            },
+            {
+              "name": "DASMARIÑAS CITY",
+              "barangays": [
+                "DASMARIÑAS CITY PROPER",
+                "LANGKAAN I"
+              ]
+            },
+            {
+              "name": "GENERAL EMILIO AGUINALDO",
+              "barangays": [
+                "A. DALUSAG",
+                "KAYMISAS",
+                "NARVAEZ"
+              ]
+            },
+            {
+              "name": "GENERAL TRIAS CITY",
+              "barangays": [
+                "BICLATAN",
+                "BUENAVISTA I",
+                "GENERAL TRIAS",
+                "JAVALERA",
+                "MANGGAHAN",
+                "SAN FRANCISCO",
+                "SANTIAGO"
+              ]
+            },
+            {
+              "name": "MARAGONDON",
+              "barangays": [
+                "PANTIHAN 1",
+                "PANTIHAN 2",
+                "PANTIHAN 3",
+                "PULO NI SARA (PANTIHAN 4)"
+              ]
+            },
+            {
+              "name": "TAGAYTAY CITY",
+              "barangays": [
+                "KAYBAGAL SOUTH",
+                "MAHARLIKA EAST",
+                "MAHARLIKA WEST",
+                "MENDEZ CROSSING EAST",
+                "MENDEZ CROSSING WEST",
+                "NEOGAN"
+              ]
+            },
+            {
+              "name": "TRECE MARTIREZ CITY",
+              "barangays": [
+                "CABEZAS",
+                "CONCHU",
+                "GREGORIO",
+                "HUGO PEREZ",
+                "INOCENCIO",
+                "LALLANA",
+                "OSORIO",
+                "SAN AGUSTIN"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "METRO MANILA",
+          "cities": [
+            {
+              "name": "LAS PIÑAS CITY",
+              "barangays": [
+                "ALMANZA I",
+                "BF HOMES",
+                "LAS PIÑAS CITY PROPER",
+                "PAMPLONA I",
+                "PAMPLONA II",
+                "PAMPLONA III",
+                "PILAR",
+                "TALON I",
+                "TALON II",
+                "TALON V"
+              ]
+            },
+            {
+              "name": "MAKATI CITY",
+              "barangays": [
+                "BANGKAL",
+                "BEL-AIR",
+                "DASMARINAS",
+                "GUADALUPE NUEVO",
+                "KAYAMANAN C",
+                "MAGALLANES",
+                "OLYMPIA",
+                "PALANAN",
+                "PIO DEL PILAR",
+                "SAN ISIDRO",
+                "SAN LORENZO"
+              ]
+            },
+            {
+              "name": "MARIKINA CITY",
+              "barangays": [
+                "BARANGKA",
+                "INDUSTRIAL VALLEY",
+                "JESUS DE LA PENA",
+                "MALANDAY",
+                "MARIKINA HTS",
+                "SAN ROQUE",
+                "STA. ELENA",
+                "STO. NIÑO",
+                "TAÑONG"
+              ]
+            },
+            {
+              "name": "MUNTINLUPA CITY",
+              "barangays": [
+                "ALABANG",
+                "BGY AYALA-ALABANG",
+                "CUPANG",
+                "SUCAT"
+              ]
+            },
+            {
+              "name": "PARAÑAQUE CITY",
+              "barangays": [
+                "BACLARAN",
+                "BF HOMES"
+              ]
+            },
+            {
+              "name": "PASAY CITY",
+              "barangays": [
+                "PASAY CITY PROPER"
+              ]
+            },
+            {
+              "name": "PASIG CITY",
+              "barangays": [
+                "MAYBUNGA",
+                "PINAGBUHATAN",
+                "ROSARIO",
+                "SANTOLAN",
+                "UGONG"
+              ]
+            },
+            {
+              "name": "QUEZON CITY",
+              "barangays": [
+                "BAGONG PAG-ASA",
+                "BAHAY TORO",
+                "BALINGASA",
+                "DAMAR",
+                "DAMAYAN",
+                "DEL MONTE",
+                "E. RODRIGUEZ",
+                "KAMUNING",
+                "KATIPUNAN",
+                "KAUNLARAN/CUBAO",
+                "KRISTONG HARI",
+                "LOURDES",
+                "LOYOLA HEIGHTS",
+                "MAHARLIKA",
+                "MANRESA",
+                "MASAMBONG",
+                "N.S.AMORANTO",
+                "NEW ERA",
+                "OBRERO",
+                "PAG-IBIG SA NAYON",
+                "PARAISO",
+                "PINAGKAISAHAN/CUBAO",
+                "PROJECT 6",
+                "SACRED HEART",
+                "SAN JOSE",
+                "SAN ROQUE",
+                "SIENNA",
+                "SILANGAN",
+                "SOCORRO",
+                "ST. PETER",
+                "STO. CRISTO",
+                "STO. DOMINGO (MATALAHIB)",
+                "TALAYAN",
+                "TANDANG SORA",
+                "TATALON",
+                "VASRA",
+                "WEST KAMIAS"
+              ]
+            },
+            {
+              "name": "TAGUIG CITY",
+              "barangays": [
+                "FORT BONIFACIO"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RIZAL PROVINCE",
+          "cities": [
+            {
+              "name": "ANTIPOLO CITY",
+              "barangays": [
+                "CUPANG",
+                "MAMBUGAN",
+                "MAYAMOT",
+                "STA. CRUZ"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start": "21:01",
+      "end": "00:00",
+      "label": "Between 9:01PM and 12:00AM",
+      "provinces": [
+        {
+          "name": "BULACAN",
+          "cities": [
+            {
+              "name": "CALUMPIT",
+              "barangays": [
+                "BAGBAG",
+                "BALUNGAO",
+                "CORAZON",
+                "IBA ESTE",
+                "IBA OESTE",
+                "MEYTO",
+                "PALIMBANG",
+                "PANDUCOT",
+                "SAN JOSE",
+                "STA. LUCIA"
+              ]
+            },
+            {
+              "name": "DOÑA REMEDIOS TRINIDAD",
+              "barangays": [
+                "BAYABAS",
+                "CAMACHIN",
+                "KALAWAKAN",
+                "SAPANG BULAK",
+                "TALBAK"
+              ]
+            },
+            {
+              "name": "GUIGUINTO",
+              "barangays": [
+                "CUTCUT",
+                "PRITIL",
+                "STA. CRUZ",
+                "STA. RITA",
+                "TABANG"
+              ]
+            },
+            {
+              "name": "HAGONOY",
+              "barangays": [
+                "IBA-IBAYO",
+                "MERCADO",
+                "SAN AGUSTIN",
+                "SAN ISIDRO",
+                "SAN JOSE",
+                "SAN JUAN",
+                "STA. MONICA",
+                "STO. NIÑO",
+                "STO. ROSARIO",
+                "TAMPOK"
+              ]
+            },
+            {
+              "name": "MALOLOS CITY",
+              "barangays": [
+                "BULIHAN",
+                "CAINGIN",
+                "CANALATE",
+                "CANIOGAN",
+                "CATMON",
+                "COFRADIA",
+                "DAKILA",
+                "GUINHAWA",
+                "LIYANG",
+                "MAUNLAD-MOJON",
+                "MOJON",
+                "PINAGBAKAHAN",
+                "SAN AGUSTIN",
+                "SAN GABRIEL",
+                "SAN PABLO",
+                "SAN VICENTE",
+                "SANTOR",
+                "STA. ISABEL",
+                "SUMAPANG BATA",
+                "SUMAPANG MATANDA",
+                "TIKAY"
+              ]
+            },
+            {
+              "name": "PLARIDEL",
+              "barangays": [
+                "BAGONG SILANG",
+                "BANGA 2",
+                "BINTOG",
+                "BULIHAN",
+                "PARULAN"
+              ]
+            },
+            {
+              "name": "SAN ILDEFONSO",
+              "barangays": [
+                "AKLE",
+                "ALAGAO",
+                "ANYATAM",
+                "BAGONG BARRIO",
+                "BASUIT",
+                "CASALAT",
+                "GABIHAN",
+                "LAPNIT",
+                "MAKAPILAPIL",
+                "MATAAS NA PARANG",
+                "NABAONG GARLANG",
+                "PALAPALA",
+                "PASONG BANGKAL",
+                "PINAOD",
+                "SAN ILDEFONSO TOWN PROPER",
+                "SAN JUAN",
+                "SAPANG DAYAP",
+                "SAPANG PUTIK",
+                "SAPANG PUTOL",
+                "STA. CATALINA BATA",
+                "STA. CATALINA MATANDA",
+                "UPIG"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CAVITE",
+          "cities": [
+            {
+              "name": "AMADEO",
+              "barangays": [
+                "HALANG"
+              ]
+            },
+            {
+              "name": "BACOOR CITY",
+              "barangays": [
+                "BACOOR CITY PROPER",
+                "MOLINO II",
+                "MOLINO III",
+                "MOLINO IV",
+                "MOLINO VI",
+                "REAL II"
+              ]
+            },
+            {
+              "name": "CARMONA CITY",
+              "barangays": [
+                "CABILANG BAYBAY",
+                "CARMONA-POBLACION",
+                "LANTIC",
+                "MABUHAY",
+                "MADUYA",
+                "MILAGROSA"
+              ]
+            },
+            {
+              "name": "DASMARIÑAS CITY",
+              "barangays": [
+                "DASMARIÑAS CITY PROPER",
+                "LANGKAAN I",
+                "LANGKAAN II",
+                "SALAWAG",
+                "SAMPALOC I",
+                "SAN AGUSTIN I"
+              ]
+            },
+            {
+              "name": "GENERAL TRIAS CITY",
+              "barangays": [
+                "ALINGARO",
+                "BUENAVISTA I",
+                "BUENAVISTA II",
+                "BUENAVISTA III",
+                "JAVALERA",
+                "MANGGAHAN",
+                "PANUNGYANAN",
+                "PASONG KAWAYAN 1",
+                "PASONG KAWAYAN 2",
+                "TAPIA"
+              ]
+            },
+            {
+              "name": "IMUS CITY",
+              "barangays": [
+                "ALAPAN I-A",
+                "ALAPAN I-B",
+                "ALAPAN I-C",
+                "ANABU I-A",
+                "ANABU I-C",
+                "ANABU I-D",
+                "ANABU II-A",
+                "ANABU II-C",
+                "ANABU II-D",
+                "ANABU II-E",
+                "ANABU II-F",
+                "BAYAN LUMA 1",
+                "BAYAN LUMA 2",
+                "BAYAN LUMA 3",
+                "BAYAN LUMA 4",
+                "BAYAN LUMA 5",
+                "BAYAN LUMA 6",
+                "BAYAN LUMA 7",
+                "BAYAN LUMA 9",
+                "BUCANDALA I",
+                "BUCANDALA II",
+                "BUCANDALA III",
+                "BUHAY NA TUBIG",
+                "CARSADANG BAGO I",
+                "CARSADANG BAGO II",
+                "MALAGASANG I-G",
+                "PASONG BUAYA I",
+                "PASONG BUAYA II",
+                "TANZANG LUMA I",
+                "TANZANG LUMA II",
+                "TANZANG LUMA III",
+                "TANZANG LUMA IV",
+                "TANZANG LUMA V"
+              ]
+            },
+            {
+              "name": "KAWIT",
+              "barangays": [
+                "TABON II"
+              ]
+            },
+            {
+              "name": "TANZA",
+              "barangays": [
+                "BAGTAS",
+                "BIGA",
+                "BUNGA",
+                "DAANG AMAYA 1",
+                "JULUGAN 6",
+                "MULAWIN",
+                "PARADAHAN 1",
+                "PARADAHAN 2",
+                "PUNTA 1",
+                "PUNTA 2",
+                "SANJA MAYOR",
+                "SANTOL",
+                "TANAUAN",
+                "TRES CRUSES"
+              ]
+            },
+            {
+              "name": "TRECE MARTIREZ CITY",
+              "barangays": [
+                "CABUCO",
+                "DE OCAMPO",
+                "HUGO PEREZ",
+                "SAN AGUSTIN"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "LAGUNA",
+          "cities": [
+            {
+              "name": "BAY",
+              "barangays": [
+                "CALO",
+                "DILA",
+                "MAITIM",
+                "MASAYA",
+                "PACIANO RIZAL",
+                "PUYPUY",
+                "SAN AGUSTIN",
+                "STA. CRUZ",
+                "STO. DOMINGO",
+                "TRANCA"
+              ]
+            },
+            {
+              "name": "BIÑAN CITY",
+              "barangays": [
+                "GANADO",
+                "MAMPLASAN",
+                "SAN FRANCISCO",
+                "TIMBAO"
+              ]
+            },
+            {
+              "name": "CALAUAN",
+              "barangays": [
+                "MABACAN"
+              ]
+            },
+            {
+              "name": "LOS BAÑOS",
+              "barangays": [
+                "ANOS",
+                "BATONG MALAKE",
+                "MAAHAS",
+                "MALINTA",
+                "SAN ANTONIO"
+              ]
+            },
+            {
+              "name": "SAN PABLO CITY",
+              "barangays": [
+                "SAN CRISTOBAL",
+                "SAN FRANCISCO",
+                "SAN IGNACIO",
+                "SAN PABLO CITY PROPER",
+                "STA. ELENA",
+                "STO. NIÑO"
+              ]
+            },
+            {
+              "name": "SAN PEDRO CITY",
+              "barangays": [
+                "BAGONG SILANG",
+                "CALENDOLA",
+                "CUYAB",
+                "ESTRELLA",
+                "G.S.I.S.",
+                "LANDAYAN",
+                "LANGGAM",
+                "MAGSAYSAY",
+                "NARRA",
+                "NUEVA",
+                "RIVERSIDE",
+                "SAMPAGUITA",
+                "SAN ANTONIO",
+                "SAN PEDRO CITY PROPER",
+                "SAN ROQUE",
+                "SAN VICENTE",
+                "UNITED BAYANIHAN",
+                "UNITED BETTER LIVING"
+              ]
+            },
+            {
+              "name": "STA. ROSA CITY",
+              "barangays": [
+                "APLAYA",
+                "BALIBAGO",
+                "CAINGIN",
+                "DITA",
+                "IBABA",
+                "LABAS",
+                "MACABLING",
+                "MALITLIT",
+                "POOK",
+                "PULONG STA CRUZ",
+                "SINALHAN",
+                "STA. ROSA CITY PROPER",
+                "TAGAPO"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "METRO MANILA",
+          "cities": [
+            {
+              "name": "CALOOCAN CITY",
+              "barangays": [
+                "BAGUMBONG",
+                "CAMARIN",
+                "POBLACION",
+                "SANGANDAAN",
+                "STA. QUITERIA"
+              ]
+            },
+            {
+              "name": "MAKATI CITY",
+              "barangays": [
+                "BEL-AIR",
+                "OLYMPIA",
+                "SAN LORENZO",
+                "STA. CRUZ",
+                "TEJEROS",
+                "VALENZUELA"
+              ]
+            },
+            {
+              "name": "MALABON CITY",
+              "barangays": [
+                "ACACIA",
+                "BARITAN",
+                "BAYAN-BAYANAN",
+                "CATMON",
+                "CONCEPCION",
+                "FLORES",
+                "HULONG DUHAT",
+                "IBABA",
+                "MUZON",
+                "NIUGAN",
+                "POTRERO",
+                "SAN AGUSTIN",
+                "TUGATOG"
+              ]
+            },
+            {
+              "name": "MANILA",
+              "barangays": [
+                "ERMITA",
+                "MALATE",
+                "PACO",
+                "STA. ANA"
+              ]
+            },
+            {
+              "name": "MARIKINA CITY",
+              "barangays": [
+                "CALUMPANG",
+                "SAN ROQUE",
+                "STA. ELENA",
+                "STO. NIÑO"
+              ]
+            },
+            {
+              "name": "NAVOTAS CITY",
+              "barangays": [
+                "DAANGHARI",
+                "SAN JOSE (POB.)",
+                "SAN ROQUE",
+                "SIPAC-ALMACEN",
+                "TANGOS",
+                "TANZA"
+              ]
+            },
+            {
+              "name": "PARAÑAQUE CITY",
+              "barangays": [
+                "BF HOMES",
+                "SN ANTONIO",
+                "SN ISIDRO"
+              ]
+            },
+            {
+              "name": "PASIG CITY",
+              "barangays": [
+                "DELA PAZ",
+                "SANTOLAN"
+              ]
+            },
+            {
+              "name": "QUEZON CITY",
+              "barangays": [
+                "BAGBAG",
+                "GULOD/NOVALICHES",
+                "KALIGAYAHAN/NOVALICHES",
+                "MATANDANG BALARA",
+                "NOVALICHES PROPER",
+                "PASONG PUTIK",
+                "SAN BARTOLOME",
+                "STA. MONICA"
+              ]
+            },
+            {
+              "name": "VALENZUELA CITY",
+              "barangays": [
+                "HEN T DE LEON",
+                "MARULAS",
+                "PARADA"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "QUEZON PROVINCE",
+          "cities": [
+            {
+              "name": "DOLORES",
+              "barangays": [
+                "ANTONINO",
+                "BULAKIN I",
+                "BULAKIN II",
+                "CABATANG",
+                "DAGATAN",
+                "DOLORES TOWN PROPER",
+                "KINABUHAYAN",
+                "MANGGAHAN",
+                "PINAGDANGLAYAN",
+                "SAN MATEO",
+                "STA. LUCIA"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
