@@ -49,8 +49,8 @@ function displayProvince(name: string): string {
 function toTitle(s: string): string {
   return s
     .toLowerCase()
-    .replace(/\b([a-z])/g, (m) => m.toUpperCase())
-    .replace(/\b(De|Del|Of|And|The|Las|Los)\b/gi, (m) => m.toLowerCase());
+    .replace(/(^|[^\p{L}])(\p{L})/gu, (_, sep, ch) => sep + ch.toUpperCase())
+    .replace(/(\s)(De|Del|Of|And|The)(?=\s|$)/gi, (_, sp, m) => sp + m.toLowerCase());
 }
 
 function buildKeyToWindows(schedule: Schedule): KeyToWindows {
@@ -90,7 +90,7 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;");
 }
 
-const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
+const MAP_STYLE = "/map-style.json";
 const INITIAL_VIEW = { lng: 121.0, lat: 14.65, zoom: 8.5 };
 
 const SOURCE_ID = "affected-barangays";
@@ -118,6 +118,22 @@ function shortTime(t: string | null): string {
   if (h === 0) h = 12;
   else if (h > 12) h -= 12;
   return `${h}:${min} ${period}`;
+}
+
+function compactClock(t: string | null): string {
+  if (!t) return "";
+  const m = /^(\d{1,2}):(\d{2})/.exec(t);
+  if (!m) return t;
+  let h = parseInt(m[1], 10);
+  const min = m[2];
+  const period = h >= 12 ? "PM" : "AM";
+  if (h === 0) h = 12;
+  else if (h > 12) h -= 12;
+  return min === "00" ? `${h}${period}` : `${h}:${min}${period}`;
+}
+
+function compactRange(w: ScheduleWindow): string {
+  return `${compactClock(w.start)}–${compactClock(w.end)}`;
 }
 
 function parseTimeStr(t: string | null): number | null {
@@ -198,14 +214,14 @@ function ensureLayers(map: MapLibreMap) {
       "fill-color": [
         "case",
         ["boolean", ["feature-state", "hover"], false],
-        "#facc15",
-        "#f97316",
+        "#38bdf8",
+        "#2563eb",
       ],
       "fill-opacity": [
         "case",
         ["boolean", ["feature-state", "hover"], false],
-        0.75,
-        0.45,
+        0.85,
+        0.6,
       ],
     },
   });
@@ -214,12 +230,12 @@ function ensureLayers(map: MapLibreMap) {
     type: "line",
     source: SOURCE_ID,
     paint: {
-      "line-color": "#ea580c",
+      "line-color": "#1e3a8a",
       "line-width": [
         "case",
         ["boolean", ["feature-state", "hover"], false],
-        2.5,
-        1.1,
+        3,
+        1.5,
       ],
     },
   });
@@ -257,12 +273,70 @@ interface FilteredProvince {
 
 interface FilteredCity {
   city: City;
-  barangays: string[];
+  barangays: FilteredBarangay[];
+}
+
+interface FilteredBarangay {
+  name: string;
+  windows: number[]; // indices into schedule.windows; only populated during search
+}
+
+interface AggregatedWindows {
+  provinces: Province[];
+  barangayWindows: Map<string, number[]>; // key = `${province}|${city}|${barangay}`
+}
+
+function aggregateWindows(windows: ScheduleWindow[]): AggregatedWindows {
+  const barangayWindows = new Map<string, number[]>();
+  const cityByProv = new Map<string, Map<string, string[]>>();
+  const provOrder: string[] = [];
+  const cityOrder = new Map<string, string[]>();
+
+  windows.forEach((w, wIdx) => {
+    for (const prov of w.provinces) {
+      let cities = cityByProv.get(prov.name);
+      if (!cities) {
+        cities = new Map();
+        cityByProv.set(prov.name, cities);
+        provOrder.push(prov.name);
+        cityOrder.set(prov.name, []);
+      }
+      for (const city of prov.cities) {
+        let barangays = cities.get(city.name);
+        if (!barangays) {
+          barangays = [];
+          cities.set(city.name, barangays);
+          cityOrder.get(prov.name)!.push(city.name);
+        }
+        for (const brgy of city.barangays) {
+          const key = `${prov.name}|${city.name}|${brgy}`;
+          const idxs = barangayWindows.get(key);
+          if (idxs) {
+            if (!idxs.includes(wIdx)) idxs.push(wIdx);
+          } else {
+            barangayWindows.set(key, [wIdx]);
+            barangays.push(brgy);
+          }
+        }
+      }
+    }
+  });
+
+  const provinces: Province[] = provOrder.map((pn) => ({
+    name: pn,
+    cities: (cityOrder.get(pn) ?? []).map((cn) => ({
+      name: cn,
+      barangays: cityByProv.get(pn)!.get(cn)!,
+    })),
+  }));
+
+  return { provinces, barangayWindows };
 }
 
 function sortAndFilterProvinces(
   provinces: Province[],
-  query: string
+  query: string,
+  barangayWindows: Map<string, number[]> | null
 ): FilteredProvince[] {
   const q = query.trim().toLowerCase();
   const sorted = [...provinces].sort(
@@ -281,15 +355,16 @@ function sortAndFilterProvinces(
     for (const city of province.cities) {
       const cityMatches =
         !q || city.name.toLowerCase().includes(q) || provMatches;
-      const barangays = !q
-        ? city.barangays
-        : cityMatches
+      const names = !q || cityMatches
         ? city.barangays
         : city.barangays.filter((b) => b.toLowerCase().includes(q));
-      if (barangays.length > 0) {
-        filteredCities.push({ city, barangays });
-        total += barangays.length;
-      }
+      if (names.length === 0) continue;
+      const barangays: FilteredBarangay[] = names.map((b) => ({
+        name: b,
+        windows: barangayWindows?.get(`${province.name}|${city.name}|${b}`) ?? [],
+      }));
+      filteredCities.push({ city, barangays });
+      total += barangays.length;
     }
     if (filteredCities.length > 0) {
       out.push({ province, cities: filteredCities, totalBarangays: total });
@@ -326,11 +401,25 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
   );
   const [openCities, setOpenCities] = useState<Set<string>>(new Set());
   const [now, setNow] = useState(() => new Date());
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selectedFeature, setSelectedFeature] = useState<{
+    barangay: string;
+    city: string;
+    windows: string[];
+  } | null>(null);
+  const isTouchRef = useRef(false);
 
   // Refresh "now" every 30 seconds so the LIVE badge updates as time passes.
   useEffect(() => {
     const id = window.setInterval(() => setNow(new Date()), 30_000);
     return () => window.clearInterval(id);
+  }, []);
+
+  // Detect coarse pointer / no-hover devices so we can swap hover popup for
+  // a tap-driven bottom sheet on mobile.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    isTouchRef.current = window.matchMedia("(hover: none)").matches;
   }, []);
 
   // Compute the initially selected window: the one currently live if any,
@@ -359,10 +448,24 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
   );
   const keyToWindows = useMemo(() => buildKeyToWindows(schedule), [schedule]);
 
-  const filteredProvinces = useMemo(
-    () => sortAndFilterProvinces(selected?.provinces ?? [], searchQuery),
-    [selected, searchQuery]
+  const aggregated = useMemo(
+    () => aggregateWindows(schedule.windows),
+    [schedule]
   );
+
+  const filteredProvinces = useMemo(() => {
+    if (searchQuery.trim()) {
+      // Search spans the whole day so a barangay shows up regardless of
+      // which time window is currently selected. Each match carries the
+      // window indices it belongs to so we can surface them as badges.
+      return sortAndFilterProvinces(
+        aggregated.provinces,
+        searchQuery,
+        aggregated.barangayWindows
+      );
+    }
+    return sortAndFilterProvinces(selected?.provinces ?? [], "", null);
+  }, [selected, searchQuery, aggregated]);
 
   // When a search is active, auto-expand provinces/cities that have matches.
   useEffect(() => {
@@ -377,11 +480,14 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
     setOpenCities(cs);
   }, [searchQuery, filteredProvinces]);
 
-  // Reset open state when the user switches time windows.
+  // Reset open state when the user switches time windows, but leave the
+  // search-time expansion untouched so badge-driven window switches don't
+  // collapse the matches the user is looking at.
   useEffect(() => {
+    if (searchQuery.trim()) return;
     setOpenProvinces(new Set(["METRO MANILA"]));
     setOpenCities(new Set());
-  }, [selectedIdx]);
+  }, [selectedIdx, searchQuery]);
 
   const toggleProvince = (name: string) => {
     setOpenProvinces((prev) => {
@@ -409,7 +515,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
       style: MAP_STYLE,
       center: [INITIAL_VIEW.lng, INITIAL_VIEW.lat],
       zoom: INITIAL_VIEW.zoom,
-      attributionControl: { compact: true },
+      attributionControl: false,
     });
     map.addControl(new maplibregl.NavigationControl(), "top-right");
 
@@ -436,6 +542,7 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
     });
 
     map.on("mousemove", FILL_LAYER_ID, (e) => {
+      if (isTouchRef.current) return;
       const feature = e.features?.[0];
       if (!feature) return;
       map.getCanvas().style.cursor = "pointer";
@@ -489,6 +596,29 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
       map.getCanvas().style.cursor = "";
       clearHover();
       popup.remove();
+    });
+
+    // Tap-to-open bottom sheet on mobile; harmless on desktop because the
+    // sheet wrapper is hidden via `lg:hidden`.
+    map.on("click", FILL_LAYER_ID, (e) => {
+      const feature = e.features?.[0];
+      if (!feature) return;
+      const props = feature.properties ?? {};
+      const barangay = String(props.barangay ?? "");
+      const city = String(props.city ?? "");
+      const rawWindows = (props as { windows?: unknown }).windows;
+      let windows: string[] = [];
+      if (Array.isArray(rawWindows)) {
+        windows = rawWindows.map((v) => String(v));
+      } else if (typeof rawWindows === "string") {
+        try {
+          const parsed = JSON.parse(rawWindows);
+          if (Array.isArray(parsed)) windows = parsed.map((v) => String(v));
+        } catch {
+          windows = [rawWindows];
+        }
+      }
+      setSelectedFeature({ barangay, city, windows });
     });
 
     mapRef.current = map;
@@ -560,72 +690,10 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
     [filteredProvinces]
   );
 
-  return (
-    <main className="h-screen w-screen grid grid-cols-1 lg:grid-cols-[1fr_440px] grid-rows-[auto_1fr] lg:grid-rows-1 bg-[var(--bo-cream)]">
-      <div className="relative">
-        <div ref={mapContainerRef} className="absolute inset-0" />
-
-        {/* Top-left status / live banner */}
-        <div className="absolute top-4 left-4 right-4 lg:right-auto lg:max-w-[520px] z-10">
-          <div className="bg-white/95 backdrop-blur-md border border-amber-200 rounded-2xl shadow-[0_10px_30px_rgba(234,88,12,0.18)] overflow-hidden">
-            <div className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400">
-              <span className="live-dot" aria-hidden />
-              <div className="text-white font-bold tracking-wide text-sm">
-                LIVE · Meralco Rotational Brownout
-              </div>
-              <div className="ml-auto text-[10px] uppercase tracking-widest text-white/90 font-semibold">
-                Realtime Monitor
-              </div>
-            </div>
-            <div className="px-4 py-3 flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-[var(--bo-ink-soft)]">
-              <div>
-                <span className="font-semibold text-[var(--bo-ink)]">
-                  {schedule.schedule_date ?? "Date unknown"}
-                </span>
-              </div>
-              <div>
-                <span className="font-semibold text-[var(--bo-ink)]">
-                  {schedule.windows.length}
-                </span>{" "}
-                time windows
-              </div>
-              <div className="ml-auto text-[11px]">
-                Updated{" "}
-                <span className="font-semibold text-[var(--bo-ink)]">
-                  {new Date(schedule.scraped_at).toLocaleString()}
-                </span>
-              </div>
-            </div>
-            <div className="px-4 pb-3 -mt-1 text-[11px] font-medium">
-              {status === "loading" && (
-                <span className="inline-flex items-center gap-1.5 text-orange-700">
-                  <span className="inline-block w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                  Loading polygons…
-                </span>
-              )}
-              {status === "error" && (
-                <span className="text-red-600">Failed to load polygons</span>
-              )}
-              {status === "idle" && selected && (
-                <span className="text-[var(--bo-ink-soft)]">
-                  <span className="font-bold text-orange-600">
-                    {matchedCount}
-                  </span>{" "}
-                  of{" "}
-                  <span className="font-bold text-[var(--bo-ink)]">
-                    {totalBarangaysForWindow}
-                  </span>{" "}
-                  barangays mapped
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <aside className="overflow-hidden bg-white border-l border-amber-200 flex flex-col">
-        {/* Time window picker */}
-        <div className="p-4 border-b border-amber-200 bg-gradient-to-b from-yellow-50 to-white">
+  const sidebarBody = (
+    <>
+      {/* Time window picker */}
+      <div className="p-4 border-b border-amber-200 bg-gradient-to-b from-yellow-50 to-white flex-shrink-0">
           <div className="flex items-baseline justify-between mb-2">
             <h2 className="text-[11px] font-bold uppercase tracking-widest text-orange-700">
               Time Window
@@ -826,13 +894,38 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
                               <ul className="bo-accordion-content pl-8 pr-3 pb-2 grid grid-cols-1 gap-0.5">
                                 {fc.barangays.map((b, idx) => (
                                   <li
-                                    key={`${cityKey}-${b}-${idx}`}
-                                    className="text-[12px] text-[var(--bo-ink-soft)] py-0.5 px-2 rounded hover:bg-yellow-100 hover:text-[var(--bo-ink)] transition cursor-default flex items-center gap-2"
+                                    key={`${cityKey}-${b.name}-${idx}`}
+                                    className="text-[12px] text-[var(--bo-ink-soft)] py-0.5 px-2 rounded hover:bg-yellow-100 hover:text-[var(--bo-ink)] transition flex items-center gap-2"
                                   >
                                     <span className="w-1 h-1 rounded-full bg-orange-400 flex-shrink-0" />
-                                    <span className="truncate">
-                                      {highlight(b, searchQuery)}
+                                    <span className="truncate flex-1">
+                                      {highlight(b.name, searchQuery)}
                                     </span>
+                                    {b.windows.length > 0 && (
+                                      <span className="flex flex-wrap gap-1 justify-end">
+                                        {b.windows.map((wIdx) => {
+                                          const w = schedule.windows[wIdx];
+                                          if (!w) return null;
+                                          const isSel = wIdx === selectedIdx;
+                                          return (
+                                            <button
+                                              key={wIdx}
+                                              type="button"
+                                              onClick={() => setSelectedIdx(wIdx)}
+                                              className={
+                                                "text-[9px] font-bold tabular-nums tracking-wide px-1.5 py-0.5 rounded-full whitespace-nowrap transition " +
+                                                (isSel
+                                                  ? "bg-orange-500 text-white"
+                                                  : "bg-orange-100 text-orange-700 hover:bg-orange-200")
+                                              }
+                                              title="Show this time window on the map"
+                                            >
+                                              {compactRange(w)}
+                                            </button>
+                                          );
+                                        })}
+                                      </span>
+                                    )}
                                   </li>
                                 ))}
                               </ul>
@@ -848,15 +941,231 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
           </div>
         </div>
 
-        {schedule.advisory && (
-          <div className="px-4 py-3 border-t border-amber-200 bg-yellow-50 text-[11px] text-[var(--bo-ink-soft)] leading-relaxed">
-            <span className="font-bold text-orange-700 uppercase tracking-wider text-[10px] block mb-1">
-              Advisory
-            </span>
-            {schedule.advisory}
+      {schedule.advisory && (
+        <div className="px-4 py-3 border-t border-amber-200 bg-yellow-50 text-[11px] text-[var(--bo-ink-soft)] leading-relaxed flex-shrink-0">
+          <span className="font-bold text-orange-700 uppercase tracking-wider text-[10px] block mb-1">
+            Advisory
+          </span>
+          {schedule.advisory}
+        </div>
+      )}
+    </>
+  );
+
+  const liveHeader = (
+    <div className="absolute top-3 left-3 right-3 lg:top-4 lg:left-4 lg:right-auto lg:max-w-[520px] z-20">
+      <div className="bg-white/95 backdrop-blur-md border border-amber-200 rounded-2xl shadow-[0_10px_30px_rgba(234,88,12,0.18)] overflow-hidden">
+        <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400">
+          <span className="live-dot" aria-hidden />
+          <div className="text-white font-bold tracking-wide text-[12px] sm:text-sm leading-tight">
+            LIVE · Meralco Rotational Brownout
+          </div>
+          <div className="ml-auto text-[10px] uppercase tracking-widest text-white/90 font-semibold hidden sm:block">
+            Realtime Monitor
+          </div>
+        </div>
+        {selected && (
+          <div
+            className={
+              "px-3 sm:px-4 py-2.5 sm:py-3 border-b border-amber-100 " +
+              (selectedIdx === liveWindowIdx
+                ? "bg-gradient-to-r from-red-50 via-orange-50 to-yellow-50"
+                : "bg-gradient-to-r from-orange-50 to-yellow-50")
+            }
+          >
+            <div className="flex items-baseline justify-between gap-2">
+              <div className="text-[9px] sm:text-[10px] uppercase tracking-widest font-bold text-orange-700">
+                {selectedIdx === liveWindowIdx ? (
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                    <span className="text-red-600">Live Now</span>
+                  </span>
+                ) : (
+                  "Showing Time Window"
+                )}
+              </div>
+              <div className="text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold text-[var(--bo-ink-soft)]">
+                Window {selectedIdx + 1} of {schedule.windows.length}
+              </div>
+            </div>
+            <div className="mt-1 text-xl sm:text-2xl lg:text-3xl font-extrabold tabular-nums text-[var(--bo-ink)] leading-tight whitespace-nowrap">
+              {shortTime(selected.start)}{" "}
+              <span className="text-orange-500">→</span>{" "}
+              {shortTime(selected.end)}
+            </div>
           </div>
         )}
+        <div className="px-3 sm:px-4 py-2 sm:py-3 flex flex-wrap items-center gap-x-3 sm:gap-x-5 gap-y-0.5 text-[10px] sm:text-xs text-[var(--bo-ink-soft)]">
+          <div>
+            <span className="font-semibold text-[var(--bo-ink)]">
+              {schedule.schedule_date ?? "Date unknown"}
+            </span>
+          </div>
+          <div>
+            <span className="font-semibold text-[var(--bo-ink)]">
+              {schedule.windows.length}
+            </span>{" "}
+            time windows
+          </div>
+          <div className="ml-auto text-[11px] hidden sm:block">
+            Updated{" "}
+            <span className="font-semibold text-[var(--bo-ink)]">
+              {new Date(schedule.scraped_at).toLocaleString()}
+            </span>
+          </div>
+        </div>
+        {(status === "loading" || status === "error") && (
+          <div className="px-3 sm:px-4 pb-2 sm:pb-3 -mt-1 text-[10px] sm:text-[11px] font-medium">
+            {status === "loading" && (
+              <span className="inline-flex items-center gap-1.5 text-orange-700">
+                <span className="inline-block w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                Loading polygons…
+              </span>
+            )}
+            {status === "error" && (
+              <span className="text-red-600">Failed to load polygons</span>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  return (
+    <main className="relative h-screen w-screen overflow-hidden bg-[var(--bo-cream)] flex">
+      {/* Map column */}
+      <div className="relative flex-1 min-w-0">
+        <div ref={mapContainerRef} className="absolute inset-0" />
+        {liveHeader}
+      </div>
+
+      {/* Desktop sidebar (lg+) */}
+      <aside className="hidden lg:flex w-[440px] flex-shrink-0 overflow-hidden bg-white border-l border-amber-200 flex-col">
+        {sidebarBody}
       </aside>
+
+      {/* Mobile bottom drawer */}
+      <div
+        className={
+          "lg:hidden fixed inset-x-0 bottom-0 z-30 transform transition-transform duration-300 ease-out " +
+          (drawerOpen ? "translate-y-0" : "translate-y-[calc(100%-92px)]")
+        }
+        style={{ height: "85vh" }}
+        role="dialog"
+        aria-label="Brownout schedule"
+        aria-expanded={drawerOpen}
+      >
+        <div className="h-full bg-white border-t-2 border-orange-300 rounded-t-3xl shadow-[0_-12px_40px_rgba(234,88,12,0.25)] flex flex-col overflow-hidden">
+          <button
+            type="button"
+            onClick={() => setDrawerOpen((v) => !v)}
+            className="flex-shrink-0 px-4 pt-2 pb-3 active:bg-orange-50 transition text-left"
+          >
+            <div className="w-12 h-1.5 rounded-full bg-amber-300 mx-auto mb-2" />
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2 min-w-0 flex-1">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-orange-700 flex-shrink-0">
+                  Schedule
+                </span>
+                {selected && (
+                  <span className="text-[12px] font-bold text-[var(--bo-ink)] tabular-nums truncate">
+                    {shortTime(selected.start)} → {shortTime(selected.end)}
+                  </span>
+                )}
+                <span className="text-[10px] font-semibold text-orange-700 bg-orange-100 rounded-full px-2 py-0.5 flex-shrink-0">
+                  {totalBarangaysFiltered}
+                </span>
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-orange-600 flex items-center gap-1 flex-shrink-0">
+                {drawerOpen ? "Close" : "Open"}
+                <svg
+                  className={`w-3 h-3 transition-transform ${
+                    drawerOpen ? "rotate-180" : ""
+                  }`}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  <path d="m18 15-6-6-6 6" />
+                </svg>
+              </span>
+            </div>
+          </button>
+          <div className="flex-1 overflow-hidden flex flex-col min-h-0">
+            {sidebarBody}
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile barangay detail sheet */}
+      {selectedFeature && (
+        <div className="lg:hidden">
+          <button
+            type="button"
+            aria-label="Close barangay details"
+            onClick={() => setSelectedFeature(null)}
+            className="fixed inset-0 bg-black/40 z-40"
+          />
+          <div
+            className="fixed inset-x-0 bottom-0 z-50"
+            role="dialog"
+            aria-label="Barangay details"
+          >
+            <div className="bg-white rounded-t-3xl shadow-[0_-12px_40px_rgba(234,88,12,0.35)] border-t-2 border-orange-400 max-h-[70vh] overflow-y-auto bo-scroll">
+              <div className="sticky top-0 bg-white pt-2 pb-2 z-10">
+                <div className="w-12 h-1.5 rounded-full bg-amber-300 mx-auto" />
+              </div>
+              <div className="px-5 pb-5">
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <div className="min-w-0">
+                    <div className="text-[10px] uppercase tracking-widest text-orange-700 font-bold mb-1">
+                      Barangay
+                    </div>
+                    <div className="font-extrabold text-lg leading-tight text-[var(--bo-ink)] break-words">
+                      {toTitle(selectedFeature.barangay)}
+                    </div>
+                    <div className="text-xs text-[var(--bo-ink-soft)] mt-0.5">
+                      {toTitle(selectedFeature.city)}
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedFeature(null)}
+                    className="w-9 h-9 rounded-full bg-amber-100 text-orange-700 flex items-center justify-center text-lg font-bold flex-shrink-0 hover:bg-amber-200 active:bg-amber-300 transition"
+                    aria-label="Close"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div className="text-[10px] uppercase tracking-widest text-orange-700 font-bold mb-2">
+                  Brownout window
+                  {selectedFeature.windows.length === 1 ? "" : "s"}
+                </div>
+                {selectedFeature.windows.length > 0 ? (
+                  <ul className="flex flex-col gap-1.5 items-start">
+                    {selectedFeature.windows.map((w, i) => (
+                      <li
+                        key={i}
+                        className="bg-orange-100 text-orange-800 font-semibold px-3 py-1.5 rounded-full text-sm"
+                      >
+                        {w}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="text-sm text-[var(--bo-ink-soft)] italic">
+                    No scheduled brownout
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

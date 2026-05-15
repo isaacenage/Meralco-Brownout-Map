@@ -1,0 +1,318 @@
+{
+  "version": 8,
+  "name": "Brownout Citrus",
+  "metadata": {
+    "attribution": "<a href=\"https://openfreemap.org\" target=\"_blank\">OpenFreeMap</a> © <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">OpenStreetMap</a>"
+  },
+  "light": {
+    "anchor": "viewport",
+    "color": "#ffffff",
+    "intensity": 0.35,
+    "position": [1, 0, 0]
+  },
+  "sky": {
+    "sky-color": "#ffffff",
+    "horizon-color": "#fff7ed",
+    "fog-color": "#ffffff",
+    "sky-horizon-blend": 0.2,
+    "horizon-fog-blend": 0.2,
+    "fog-ground-blend": 0,
+    "atmosphere-blend": 0
+  },
+  "sources": {
+    "openmaptiles": {
+      "type": "vector",
+      "url": "https://tiles.openfreemap.org/planet"
+    }
+  },
+  "sprite": "https://tiles.openfreemap.org/sprites/liberty",
+  "glyphs": "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#CDE7BE"
+      }
+    },
+    {
+      "id": "landcover_grass",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "filter": ["==", "class", "grass"],
+      "paint": {
+        "fill-color": "#fef9c3",
+        "fill-opacity": {
+          "stops": [[5, 0.85], [10, 0.55]]
+        }
+      }
+    },
+    {
+      "id": "landcover_wood",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "filter": ["==", "class", "wood"],
+      "paint": {
+        "fill-color": "#fef08a",
+        "fill-opacity": {
+          "stops": [[5, 0.7], [10, 0.45]]
+        }
+      }
+    },
+    {
+      "id": "landcover_scrub",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "filter": ["==", "class", "scrub"],
+      "paint": {
+        "fill-color": "#fef9c3",
+        "fill-opacity": {
+          "stops": [[5, 0.7], [10, 0.4]]
+        }
+      }
+    },
+    {
+      "id": "landuse_park",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "filter": ["in", "class", "park", "cemetery", "protected_area", "nature_reserve"],
+      "paint": {
+        "fill-color": "#fefce8",
+        "fill-opacity": 0.9
+      }
+    },
+    {
+      "id": "landuse_residential",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "filter": ["==", "class", "residential"],
+      "paint": {
+        "fill-color": "#fff7ed",
+        "fill-opacity": 0.85
+      }
+    },
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "filter": ["all", ["==", "$type", "Polygon"]],
+      "paint": {
+        "fill-color": "#CE8147",
+        "fill-antialias": true
+      }
+    },
+    {
+      "id": "water_outline",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "filter": ["all", ["==", "$type", "Polygon"]],
+      "minzoom": 9,
+      "paint": {
+        "line-color": "#f97316",
+        "line-width": {
+          "stops": [[9, 0.4], [14, 1], [18, 1.8]]
+        },
+        "line-opacity": {
+          "stops": [[9, 0], [10, 0.7], [14, 1]]
+        }
+      }
+    },
+    {
+      "id": "waterway",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "waterway",
+      "paint": {
+        "line-color": "#fb923c",
+        "line-width": {
+          "stops": [[8, 0.5], [20, 3]]
+        }
+      }
+    },
+    {
+      "id": "building",
+      "type": "fill-extrusion",
+      "source": "openmaptiles",
+      "source-layer": "building",
+      "minzoom": 13,
+      "paint": {
+        "fill-extrusion-color": "#fff7ed",
+        "fill-extrusion-opacity": 0.8,
+        "fill-extrusion-height": {
+          "type": "identity",
+          "property": "render_height"
+        },
+        "fill-extrusion-base": {
+          "type": "identity",
+          "property": "render_min_height"
+        }
+      }
+    },
+    {
+      "id": "road_minor_casing",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["in", "class", "minor", "service", "track"],
+      "minzoom": 13,
+      "paint": {
+        "line-color": "#a7c692",
+        "line-width": {
+          "stops": [[13, 1], [20, 2.6]]
+        },
+        "line-opacity": 0.7
+      }
+    },
+    {
+      "id": "road_minor",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["in", "class", "minor", "service", "track"],
+      "paint": {
+        "line-color": "#ffffff",
+        "line-width": {
+          "stops": [[8, 0.4], [20, 1.6]]
+        }
+      }
+    },
+    {
+      "id": "road_major_casing",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["in", "class", "primary", "secondary", "tertiary"],
+      "paint": {
+        "line-color": "#9bbf86",
+        "line-width": {
+          "stops": [[8, 0.8], [20, 5.5]]
+        },
+        "line-opacity": 0.9
+      }
+    },
+    {
+      "id": "road_major",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["in", "class", "primary", "secondary", "tertiary"],
+      "paint": {
+        "line-color": "#ffffff",
+        "line-width": {
+          "stops": [[8, 0.5], [20, 3.6]]
+        }
+      }
+    },
+    {
+      "id": "road_trunk_casing",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["in", "class", "trunk", "motorway"],
+      "paint": {
+        "line-color": "#7fae6c",
+        "line-width": {
+          "stops": [[5, 1], [20, 14]]
+        },
+        "line-opacity": 0.95
+      }
+    },
+    {
+      "id": "road_trunk",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["in", "class", "trunk", "motorway"],
+      "paint": {
+        "line-color": "#ffffff",
+        "line-width": {
+          "stops": [[5, 0.5], [20, 10]]
+        }
+      }
+    },
+    {
+      "id": "road_label",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "transportation_name",
+      "minzoom": 13,
+      "layout": {
+        "text-field": "{name}",
+        "text-font": ["Noto Sans Regular"],
+        "text-size": {
+          "stops": [[13, 10], [20, 14]]
+        },
+        "symbol-placement": "line",
+        "text-rotation-alignment": "map"
+      },
+      "paint": {
+        "text-color": "#7c2d12",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.6
+      }
+    },
+    {
+      "id": "place_label_city",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "filter": ["==", "class", "city"],
+      "layout": {
+        "text-field": "{name}",
+        "text-font": ["Noto Sans Bold"],
+        "text-transform": "uppercase",
+        "text-size": {
+          "stops": [[4, 10], [10, 18]]
+        },
+        "text-letter-spacing": 0.06
+      },
+      "paint": {
+        "text-color": "#7c2d12",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2.2
+      }
+    },
+    {
+      "id": "place_label_town",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "filter": ["in", "class", "town", "village"],
+      "layout": {
+        "text-field": "{name}",
+        "text-font": ["Noto Sans Regular"],
+        "text-size": {
+          "stops": [[8, 10], [14, 14]]
+        }
+      },
+      "paint": {
+        "text-color": "#9a3412",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.6
+      }
+    },
+    {
+      "id": "water_label",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "water_name",
+      "layout": {
+        "text-field": "{name}",
+        "text-font": ["Noto Sans Italic"],
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "#7c2d12",
+        "text-halo-color": "#ffedd5",
+        "text-halo-width": 1.2
+      }
+    }
+  ]
+}
