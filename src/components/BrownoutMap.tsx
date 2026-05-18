@@ -1100,9 +1100,12 @@ export default function BrownoutMap({ schedule }: { schedule: Schedule }) {
         </a>
       </div>
       <div className="px-4 py-2.5 border-t border-amber-200 bg-white text-[10px] text-[var(--bo-ink-soft)] flex items-center justify-between gap-2 flex-shrink-0">
-        <span>
-          Unofficial · Not affiliated with Meralco or NGCP
-        </span>
+        <a
+          href="/maintenance"
+          className="font-bold uppercase tracking-widest text-orange-700 hover:text-orange-900"
+        >
+          Maintenance →
+        </a>
         <a
           href="/legal"
           className="font-bold uppercase tracking-widest text-orange-700 hover:text-orange-900"

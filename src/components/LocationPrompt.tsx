@@ -14,6 +14,24 @@ type Phase = "waiting" | "prompt" | "detecting" | "result" | "dismissed";
 const STORAGE_KEY = "bo-location-detected-v2";
 const INTRO_FLAG = "bo-intro-seen";
 
+// In-app browsers (Facebook, Instagram, Google App, etc.) embed pages in a
+// WebView that doesn't forward navigator.geolocation to the OS, so the button
+// either fails silently or returns PERMISSION_DENIED. We detect them up-front
+// and route the user straight to manual input.
+function detectInAppBrowser(ua: string): string | null {
+  if (/FBAN|FBAV|FB_IAB/i.test(ua)) return "Facebook";
+  if (/Instagram/i.test(ua)) return "Instagram";
+  if (/\bGSA\//.test(ua)) return "Google";
+  if (/Twitter/i.test(ua)) return "X";
+  if (/TikTok|musical_ly|Bytedance(Webview)?/i.test(ua)) return "TikTok";
+  if (/\bLine\//i.test(ua)) return "LINE";
+  if (/MicroMessenger/i.test(ua)) return "WeChat";
+  if (/LinkedInApp/i.test(ua)) return "LinkedIn";
+  if (/Pinterest/i.test(ua)) return "Pinterest";
+  if (/Snapchat/i.test(ua)) return "Snapchat";
+  return null;
+}
+
 function toTitle(value: string): string {
   return value
     .toLowerCase()
@@ -91,6 +109,7 @@ export default function LocationPrompt({
   const [match, setMatch] = useState<LocationMatch | null>(null);
   const [input, setInput] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [inAppBrowser, setInAppBrowser] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   // Hold off rendering the prompt until IntroPage has dismissed itself.
@@ -98,6 +117,9 @@ export default function LocationPrompt({
   // for that signal so any future timing change in IntroPage stays in sync.
   useEffect(() => {
     if (typeof window === "undefined") return;
+    if (typeof navigator !== "undefined") {
+      setInAppBrowser(detectInAppBrowser(navigator.userAgent));
+    }
     try {
       const stored = sessionStorage.getItem(STORAGE_KEY);
       if (stored) {
@@ -232,31 +254,40 @@ export default function LocationPrompt({
               munisipalidad, o probinsya.
             </p>
 
-            <button
-              type="button"
-              className="loc-geo-btn"
-              onClick={handleGeolocate}
-              disabled={phase === "detecting"}
-            >
-              <svg
-                className="loc-geo-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden
-              >
-                <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z" />
-                <circle cx="12" cy="9" r="2.5" />
-              </svg>
-              {phase === "detecting" ? "Hinahanap…" : "Use my location"}
-            </button>
+            {inAppBrowser ? (
+              <p className="loc-inapp-hint">
+                Hindi gumagana ang location access sa {inAppBrowser} app.
+                I-type na lang ang barangay mo sa baba.
+              </p>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  className="loc-geo-btn"
+                  onClick={handleGeolocate}
+                  disabled={phase === "detecting"}
+                >
+                  <svg
+                    className="loc-geo-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z" />
+                    <circle cx="12" cy="9" r="2.5" />
+                  </svg>
+                  {phase === "detecting" ? "Hinahanap…" : "Use my location"}
+                </button>
 
-            <div className="loc-divider">
-              <span>or</span>
-            </div>
+                <div className="loc-divider">
+                  <span>or</span>
+                </div>
+              </>
+            )}
 
             <form onSubmit={handleSubmit} className="loc-form">
               <input

@@ -1,0 +1,296 @@
+{
+  "city|CALOOCAN CITY|BAGBAGUIN": {
+    "barangay": "Bagbaguin",
+    "city": "Caloocan City",
+    "lat": 14.665320858876838,
+    "lng": 120.99328464013017,
+    "source": "parquet"
+  },
+  "city|CALOOCAN CITY|BAGONG BARRIO": {
+    "barangay": "Bagong Barrio",
+    "city": "Caloocan City",
+    "lat": 14.668322227814937,
+    "lng": 120.9999041208907,
+    "source": "parquet"
+  },
+  "city|CALOOCAN CITY|GRACE PARK": {
+    "barangay": "Grace Park",
+    "city": "Caloocan City",
+    "lat": 14.64864011861578,
+    "lng": 120.9844631220933,
+    "source": "parquet"
+  },
+  "city|CALOOCAN CITY|SANGANDAAN": {
+    "barangay": "Sangandaan",
+    "city": "Caloocan City",
+    "lat": 14.658193552959432,
+    "lng": 120.97154792997627,
+    "source": "parquet"
+  },
+  "city|MAKATI CITY|SAN LORENZO": {
+    "barangay": "San Lorenzo",
+    "city": "Makati City",
+    "lat": 14.551444540319395,
+    "lng": 121.02048991423942,
+    "source": "parquet"
+  },
+  "city|MALABON CITY|POTRERO": {
+    "barangay": "Potrero",
+    "city": "Malabon City",
+    "lat": 14.668044120779804,
+    "lng": 120.98363152124877,
+    "source": "parquet"
+  },
+  "city|MANILA|ERMITA": {
+    "barangay": "Ermita",
+    "city": "Manila",
+    "lat": 14.58463583842929,
+    "lng": 120.98407174055994,
+    "source": "parquet"
+  },
+  "city|MANILA|PACO": {
+    "barangay": "Paco",
+    "city": "Manila",
+    "lat": 14.581657869985042,
+    "lng": 120.99720346189865,
+    "source": "parquet"
+  },
+  "city|MANILA|SAMPALOC": {
+    "barangay": "Sampaloc",
+    "city": "Manila",
+    "lat": 14.607246648925548,
+    "lng": 121.00164091924093,
+    "source": "parquet"
+  },
+  "city|MANILA|STA. ANA": {
+    "barangay": "Sta. Ana",
+    "city": "Manila",
+    "lat": 14.576256408358592,
+    "lng": 121.00694257435289,
+    "source": "parquet"
+  },
+  "city|MUNTINLUPA CITY|BULI": {
+    "barangay": "Buli",
+    "city": "Muntinlupa City",
+    "lat": 14.443267211424699,
+    "lng": 121.04958002832231,
+    "source": "parquet"
+  },
+  "city|MUNTINLUPA CITY|SUCAT": {
+    "barangay": "Sucat",
+    "city": "Muntinlupa City",
+    "lat": 14.455962071020933,
+    "lng": 121.04926104361316,
+    "source": "parquet"
+  },
+  "city|PASIG CITY|KAPITOLYO": {
+    "barangay": "Kapitolyo",
+    "city": "Pasig City",
+    "lat": 14.571167480956353,
+    "lng": 121.05976635953492,
+    "source": "parquet"
+  },
+  "city|QUEZON CITY|CUBAO": {
+    "barangay": "Cubao",
+    "city": "Quezon City",
+    "lat": 14.645803988082427,
+    "lng": 121.04142423854921,
+    "source": "parquet"
+  },
+  "city|QUEZON CITY|KRUS NA LIGAS": {
+    "barangay": "Krus Na Ligas",
+    "city": "Quezon City",
+    "lat": 14.644322367060527,
+    "lng": 121.06278656062491,
+    "source": "parquet"
+  },
+  "city|QUEZON CITY|MARIANA": {
+    "barangay": "Mariana",
+    "city": "Quezon City",
+    "lat": 14.618991882060232,
+    "lng": 121.03331609421423,
+    "source": "parquet"
+  },
+  "city|TAGUIG CITY|KATUPARAN": {
+    "barangay": "Katuparan",
+    "city": "Taguig City",
+    "lat": 14.518999938153039,
+    "lng": 121.0604232597344,
+    "source": "parquet"
+  },
+  "city|TAGUIG CITY|NORTH SIGNAL VILLAGE": {
+    "barangay": "North Signal Village",
+    "city": "Taguig City",
+    "lat": 14.516722688363254,
+    "lng": 121.05768487794155,
+    "source": "parquet"
+  },
+  "city|TAGUIG CITY|PINAGSAMA": {
+    "barangay": "Pinagsama",
+    "city": "Taguig City",
+    "lat": 14.527006848386183,
+    "lng": 121.05204536391004,
+    "source": "parquet"
+  },
+  "city|TAGUIG CITY|USUSAN": {
+    "barangay": "Ususan",
+    "city": "Taguig City",
+    "lat": 14.531232793956427,
+    "lng": 121.06472722292183,
+    "source": "parquet"
+  },
+  "city|VALENZUELA CITY|BAGBAGUIN": {
+    "barangay": "Bagbaguin",
+    "city": "Valenzuela City",
+    "lat": 14.716104761728563,
+    "lng": 121.00249833090655,
+    "source": "parquet"
+  },
+  "city|VALENZUELA CITY|UGONG": {
+    "barangay": "Ugong",
+    "city": "Valenzuela City",
+    "lat": 14.69611829362311,
+    "lng": 121.01305149804466,
+    "source": "parquet"
+  },
+  "province|BATANGAS PROVINCE|SANTO TOMAS CITY": {
+    "barangay": "Santo Tomas City",
+    "city": "Santo Tomas City",
+    "lat": 14.1429203,
+    "lng": 121.1469297,
+    "source": "nominatim"
+  },
+  "province|BULACAN|BALIUAG CITY": {
+    "barangay": "Baliuag City",
+    "city": "Baliuag City",
+    "lat": 14.964821926050831,
+    "lng": 120.88894969784359,
+    "source": "parquet"
+  },
+  "province|BULACAN|BOCAUE": {
+    "barangay": "Bocaue",
+    "city": "Bocaue",
+    "lat": 14.797688822787672,
+    "lng": 120.93190393427959,
+    "source": "parquet"
+  },
+  "province|BULACAN|MALOLOS CITY": {
+    "barangay": "Malolos City",
+    "city": "Malolos City",
+    "lat": 14.837363402469705,
+    "lng": 120.82396853386949,
+    "source": "parquet"
+  },
+  "province|BULACAN|MEYCAUAYAN CITY": {
+    "barangay": "Meycauayan City",
+    "city": "Meycauayan City",
+    "lat": 14.74456017419543,
+    "lng": 120.96905308967357,
+    "source": "parquet"
+  },
+  "province|BULACAN|SAN JOSE DEL MONTE CITY": {
+    "barangay": "San Jose Del Monte City",
+    "city": "San Jose Del Monte City",
+    "lat": 14.835021635589356,
+    "lng": 121.06301617814866,
+    "source": "parquet"
+  },
+  "province|CAVITE|ALFONSO": {
+    "barangay": "Alfonso",
+    "city": "Alfonso",
+    "lat": 14.119350937117206,
+    "lng": 120.84861552573211,
+    "source": "parquet"
+  },
+  "province|CAVITE|IMUS CITY": {
+    "barangay": "Imus City",
+    "city": "Imus City",
+    "lat": 14.409142011451035,
+    "lng": 120.9347319527915,
+    "source": "parquet"
+  },
+  "province|CAVITE|KAWIT": {
+    "barangay": "Kawit",
+    "city": "Kawit",
+    "lat": 14.44274860129935,
+    "lng": 120.9086754233469,
+    "source": "parquet"
+  },
+  "province|CAVITE|MENDEZ - NUNEZ": {
+    "barangay": "Mendez - Nunez",
+    "city": "Tagaytay City",
+    "lat": 14.130474528637537,
+    "lng": 120.90056472725614,
+    "source": "parquet"
+  },
+  "province|CAVITE|TAGAYTAY CITY": {
+    "barangay": "Tagaytay City",
+    "city": "Tagaytay City",
+    "lat": 14.117441691354834,
+    "lng": 120.95356948976878,
+    "source": "parquet"
+  },
+  "province|CAVITE|TRECE MARTIREZ CITY": {
+    "barangay": "Trece Martirez City",
+    "city": "Trece Martirez City",
+    "lat": 14.274859236533274,
+    "lng": 120.87209636717375,
+    "source": "parquet"
+  },
+  "province|LAGUNA|CALAMBA CITY": {
+    "barangay": "Calamba City",
+    "city": "Calamba City",
+    "lat": 14.193624255979769,
+    "lng": 121.14431819590394,
+    "source": "parquet"
+  },
+  "province|LAGUNA|LOS BAÑOS": {
+    "barangay": "Los Baños",
+    "city": "Los Baños",
+    "lat": 14.165986067926246,
+    "lng": 121.22932408926768,
+    "source": "parquet"
+  },
+  "province|LAGUNA|LUISIANA": {
+    "barangay": "Luisiana",
+    "city": "Majayjay",
+    "lat": 14.186147510337328,
+    "lng": 121.51577541333816,
+    "source": "parquet"
+  },
+  "province|LAGUNA|MAJAYJAY": {
+    "barangay": "Majayjay",
+    "city": "Majayjay",
+    "lat": 14.14564539362867,
+    "lng": 121.47620260035478,
+    "source": "parquet"
+  },
+  "province|LAGUNA|STA. ROSA CITY": {
+    "barangay": "Sta. Rosa City",
+    "city": "Sta. Rosa City",
+    "lat": 14.294804915655735,
+    "lng": 121.10491071312377,
+    "source": "parquet"
+  },
+  "province|RIZAL PROVINCE|ANTIPOLO CITY": {
+    "barangay": "Antipolo City",
+    "city": "Antipolo City",
+    "lat": 14.617578175111717,
+    "lng": 121.17925456901216,
+    "source": "parquet"
+  },
+  "province|RIZAL PROVINCE|RODRIGUEZ": {
+    "barangay": "Rodriguez",
+    "city": "Rodriguez",
+    "lat": 14.746364291251819,
+    "lng": 121.16646458793961,
+    "source": "parquet"
+  },
+  "province|RIZAL PROVINCE|TERESA": {
+    "barangay": "Teresa",
+    "city": "Teresa",
+    "lat": 14.556106994878279,
+    "lng": 121.2133097732387,
+    "source": "parquet"
+  }
+}

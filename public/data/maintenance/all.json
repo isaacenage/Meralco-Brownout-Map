@@ -1,0 +1,1954 @@
+{
+  "source_url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule",
+  "scraped_at": "2026-05-17T02:18:08.968836+00:00",
+  "entries": [
+    {
+      "slug": "may-2-3-2026-caloocan-city-bagbaguin",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-2-3-2026-caloocan-city-bagbaguin",
+      "title": "May 2 - 3, 2026 - Caloocan City (Bagbaguin)",
+      "dates": [
+        "2026-05-02",
+        "2026-05-03"
+      ],
+      "area": "Caloocan City",
+      "is_province": false,
+      "locations": [
+        "Bagbaguin"
+      ],
+      "city": "Caloocan City",
+      "barangays": [
+        "Bagbaguin"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 10:00PM (SAT., 05/02/26) AND 3:00AM (SUN., 05/03/26) – PORTION OF CIRCUIT BAGBAGUIN 413YZ",
+          "ranges": [
+            {
+              "start": "22:00",
+              "end": "03:00"
+            }
+          ],
+          "circuit": "BAGBAGUIN 413YZ",
+          "description": "Portion of Gen. Luis St. from Bagbaguin Road in Bagbaguin, Caloocan City to and including Geomax Ventures in Bgy. Bagbaguin, Valenzuela City."
+        }
+      ],
+      "reason": "Upgrading of facilities along Gen. Luis St. in Bgy. Bagbaguin, Valenzuela City.",
+      "points": [
+        {
+          "barangay": "Bagbaguin",
+          "city": "Caloocan City",
+          "lat": 14.665320858876838,
+          "lng": 120.99328464013017,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-2-3-2026-valenzuela-city-bagbaguin",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-2-3-2026-valenzuela-city-bagbaguin",
+      "title": "May 2 - 3, 2026 - Valenzuela City (Bagbaguin)",
+      "dates": [
+        "2026-05-02",
+        "2026-05-03"
+      ],
+      "area": "Valenzuela City",
+      "is_province": false,
+      "locations": [
+        "Bagbaguin"
+      ],
+      "city": "Valenzuela City",
+      "barangays": [
+        "Bagbaguin"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 10:00PM (SAT., 05/02/26) AND 3:00AM (SUN., 05/03/26) – PORTION OF CIRCUIT BAGBAGUIN 413YZ",
+          "ranges": [
+            {
+              "start": "22:00",
+              "end": "03:00"
+            }
+          ],
+          "circuit": "BAGBAGUIN 413YZ",
+          "description": "Portion of Gen. Luis St. from Bagbaguin Road in Bagbaguin, Caloocan City to and including Geomax Ventures in Bgy. Bagbaguin, Valenzuela City."
+        }
+      ],
+      "reason": "Upgrading of facilities along Gen. Luis St. in Bgy. Bagbaguin, Valenzuela City.",
+      "points": [
+        {
+          "barangay": "Bagbaguin",
+          "city": "Valenzuela City",
+          "lat": 14.716104761728563,
+          "lng": 121.00249833090655,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-3-2026-batangas-province-santo-tomas-city",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-3-2026-batangas-province-santo-tomas-city",
+      "title": "May 3, 2026 - Batangas Province (Santo Tomas City)",
+      "dates": [
+        "2026-05-03"
+      ],
+      "area": "Batangas Province",
+      "is_province": true,
+      "locations": [
+        "Santo Tomas City"
+      ],
+      "city": "Santo Tomas City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 9:00AM AND 4:00PM – PORTION OF CIRCUIT FPIP 416WW",
+          "ranges": [
+            {
+              "start": "09:00",
+              "end": "16:00"
+            }
+          ],
+          "circuit": "FPIP 416WW",
+          "description": "Tsukasa Electric Philippines Inc. along Enterprise Drive in First Philippine Industrial Park (FPIP), Bgy. Santa Anastacia."
+        }
+      ],
+      "reason": "Maintenance works inside First Philippine Industrial Park (FPIP), Bgy. Santa Anastacia Santo Tomas City, Batangas Province.",
+      "points": [
+        {
+          "barangay": "Santo Tomas City",
+          "city": "Santo Tomas City",
+          "lat": 14.1429203,
+          "lng": 121.1469297,
+          "source": "nominatim"
+        }
+      ]
+    },
+    {
+      "slug": "may-3-2026-batangas-province-santo-tomas-city-0",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-3-2026-batangas-province-santo-tomas-city-0",
+      "title": "May 3, 2026 - Batangas Province (Santo Tomas City)",
+      "dates": [
+        "2026-05-03"
+      ],
+      "area": "Batangas Province",
+      "is_province": true,
+      "locations": [
+        "Santo Tomas City"
+      ],
+      "city": "Santo Tomas City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 9:00AM AND 4:00PM – PORTION OF CIRCUIT FPIP 416WW",
+          "ranges": [
+            {
+              "start": "09:00",
+              "end": "16:00"
+            }
+          ],
+          "circuit": "FPIP 416WW",
+          "description": "Tsukasa Electric Philippines Inc. along Enterprise Drive in First Philippine Industrial Park (FPIP), Bgy. Santa Anastacia."
+        }
+      ],
+      "reason": "Maintenance works inside First Philippine Industrial Park (FPIP), Bgy. Santa Anastacia Santo Tomas City, Batangas Province.",
+      "points": [
+        {
+          "barangay": "Santo Tomas City",
+          "city": "Santo Tomas City",
+          "lat": 14.1429203,
+          "lng": 121.1469297,
+          "source": "nominatim"
+        }
+      ]
+    },
+    {
+      "slug": "may-3-2026-manila-sampaloc",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-3-2026-manila-sampaloc",
+      "title": "May 3, 2026 - Manila (Sampaloc)",
+      "dates": [
+        "2026-05-03"
+      ],
+      "area": "Manila",
+      "is_province": false,
+      "locations": [
+        "Sampaloc"
+      ],
+      "city": "Manila",
+      "barangays": [
+        "Sampaloc"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 8:30AM AND 1:30PM – PORTION OF CIRCUITS STA. MESA 403F; AND PANDACAN 18M",
+          "ranges": [
+            {
+              "start": "08:30",
+              "end": "13:30"
+            }
+          ],
+          "circuit": null,
+          "description": "Portion of Piña Ave. from Santol St. to Mindanao Ave. including Wilcon Home Depot and Grace Gospel Church; Benito St.; and NHA Compound.\nAlong Benito St. from Piña Ave. to L. Roces St. including B. Tuazon St."
+        }
+      ],
+      "reason": "Line conversion works along Piña Ave. in Sampaloc, Manila.",
+      "points": [
+        {
+          "barangay": "Sampaloc",
+          "city": "Manila",
+          "lat": 14.607246648925548,
+          "lng": 121.00164091924093,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-4-2026-valenzuela-city-ugong",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-4-2026-valenzuela-city-ugong",
+      "title": "May 4, 2026 - Valenzuela City (Ugong)",
+      "dates": [
+        "2026-05-04"
+      ],
+      "area": "Valenzuela City",
+      "is_province": false,
+      "locations": [
+        "Ugong"
+      ],
+      "city": "Valenzuela City",
+      "barangays": [
+        "Ugong"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 10:00AM AND 3:00PM – PORTION OF CIRCUIT BAGBAGUIN 423YZ",
+          "ranges": [
+            {
+              "start": "10:00",
+              "end": "15:00"
+            }
+          ],
+          "circuit": "BAGBAGUIN 423YZ",
+          "description": "Portion of Mindanao Ave. from PRI Project Site to and including Metro Manila Subway Project, Dee Concrete Inc. and Top Star Mix Ready Concrete; and Darlucio St.\nPortion of Que Grande St. from Sulok St. to and including Barrios Compound; and Advance Computer Forms, Inc.\nPortion of Sulok St. from Tatalon Road to Que Grande St. Ext. including B. Juan and Lazaro Sts.; North Luzon Expressway Mindanao Tollway Exit and Bloombooks Inc."
+        }
+      ],
+      "reason": "Line reconstruction works along Mindanao Ave. in Bgy. Ugong, Valenzuela City.",
+      "points": [
+        {
+          "barangay": "Ugong",
+          "city": "Valenzuela City",
+          "lat": 14.69611829362311,
+          "lng": 121.01305149804466,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-6-2026-makati-city-san-lorenzo",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-6-2026-makati-city-san-lorenzo",
+      "title": "May 6, 2026 - Makati City (San Lorenzo)",
+      "dates": [
+        "2026-05-06"
+      ],
+      "area": "Makati City",
+      "is_province": false,
+      "locations": [
+        "San Lorenzo"
+      ],
+      "city": "Makati City",
+      "barangays": [
+        "San Lorenzo"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 12:01AM AND 5:00AM – PORTION OF CIRCUIT LEGASPI 413RA",
+          "ranges": [
+            {
+              "start": "00:01",
+              "end": "05:00"
+            }
+          ],
+          "circuit": "LEGASPI 413RA",
+          "description": "Portion of Antonio Arnaiz Ave. from near Amorsolo St. to East St. including Aguirre, Benavidez, Esperanza, Jimenez, Paseo De Roxas, Salcedo and Trasierras Sts.; Garden Towers, McDonalds, BPI San Lorenzo Branch, China Bank, Western Appliance Building, The E-Hotel Makati, El Cielito Hotel Makati, United Life Building, AO2 Building, Concorde Condominium, Cacho Gonzalez Building (CGB), Aguirre Building, Pilgrim Building, BSA Mansion Condotel, One Corporate Plaza, Calistoga Building, Rajah Sulayman Building, BDO – Joni’s Bldg., CWC Interiors, The Copa Businessman's Hotel, Corporate Business Centre Bldg., A & G Building, Gift Gate, Keyland Arnaiz Building, Citadines Benavidez Makati, Liberty Building, Paseo Tesoro Building, Asia Tower, Herco Center, Kentek Bldg., Eurovilla 4 Bldg., Tsukiji Restaurant, Hai Shin Lou Restaurant and New Sachi Karaoke Club in Legaspi Village."
+        }
+      ],
+      "reason": "Line maintenance works in Legaspi Village, Bgy. San Lorenzo, Makati City.",
+      "points": [
+        {
+          "barangay": "San Lorenzo",
+          "city": "Makati City",
+          "lat": 14.551444540319395,
+          "lng": 121.02048991423942,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-6-2026-manila-sampaloc",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-6-2026-manila-sampaloc",
+      "title": "May 6, 2026 - Manila (Sampaloc)",
+      "dates": [
+        "2026-05-06"
+      ],
+      "area": "Manila",
+      "is_province": false,
+      "locations": [
+        "Sampaloc"
+      ],
+      "city": "Manila",
+      "barangays": [
+        "Sampaloc"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 8:30AM AND 1:30PM – PORTION OF CIRCUITS STA. MESA 403F; AND PANDACAN 18M",
+          "ranges": [
+            {
+              "start": "08:30",
+              "end": "13:30"
+            }
+          ],
+          "circuit": null,
+          "description": "Portion of Piña Ave. from Santol St. to Mindanao Ave. including Wilcon Home Depot and Grace Gospel Church; Benito St.; and NHA Compound.\nAlong Benito St. from Piña Ave. to L. Roces St. including B. Tuazon St."
+        }
+      ],
+      "reason": "Line conversion works along Piña Ave. in Sampaloc, Manila.",
+      "points": [
+        {
+          "barangay": "Sampaloc",
+          "city": "Manila",
+          "lat": 14.607246648925548,
+          "lng": 121.00164091924093,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-6-2026-rizal-province-rodriguez",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-6-2026-rizal-province-rodriguez",
+      "title": "May 6, 2026 - Rizal Province (Rodriguez)",
+      "dates": [
+        "2026-05-06"
+      ],
+      "area": "Rizal Province",
+      "is_province": true,
+      "locations": [
+        "Rodriguez"
+      ],
+      "city": "Rodriguez",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 12:01AM AND 4:00AM – PORTION OF CIRCUIT SAN MATEO 415SMA",
+          "ranges": [
+            {
+              "start": "00:01",
+              "end": "04:00"
+            }
+          ],
+          "circuit": "SAN MATEO 415SMA",
+          "description": "Portion of Eastwind Homes Village and Eastwood Greenview Subd. Phase 3 in Bgy. San Rafael."
+        }
+      ],
+      "reason": "Installation of facilities along Centella St. in Eastwind Homes Village, Bgy. San Rafael, Rodriguez, Rizal Province.",
+      "points": [
+        {
+          "barangay": "Rodriguez",
+          "city": "Rodriguez",
+          "lat": 14.746364291251819,
+          "lng": 121.16646458793961,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-6-2026-taguig-city-north-signal-village-and-pinagsama",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-6-2026-taguig-city-north-signal-village-and-pinagsama",
+      "title": "May 6, 2026 - Taguig City (North Signal Village; And Pinagsama)",
+      "dates": [
+        "2026-05-06"
+      ],
+      "area": "Taguig City",
+      "is_province": false,
+      "locations": [
+        "North Signal Village",
+        "Pinagsama"
+      ],
+      "city": "Taguig City",
+      "barangays": [
+        "North Signal Village",
+        "Pinagsama"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 11:30PM AND 11:59PM – PORTION OF CIRCUIT SUN VALLEY 422WG",
+          "ranges": [
+            {
+              "start": "23:30",
+              "end": "23:59"
+            }
+          ],
+          "circuit": "SUN VALLEY 422WG",
+          "description": "Portion of 11th Ave. Ext. from 8th St. to and including portion of Pinagsama Phase 2 Village in Bgy. Pinagsama; Hen Headquarter Support Group Compound and GHQ Village in Bgy. North Signal Village."
+        }
+      ],
+      "reason": "Line reconstruction works along 8th St. in Bgy. Katuparan, Taguig City.",
+      "points": [
+        {
+          "barangay": "North Signal Village",
+          "city": "Taguig City",
+          "lat": 14.516722688363254,
+          "lng": 121.05768487794155,
+          "source": "parquet"
+        },
+        {
+          "barangay": "Pinagsama",
+          "city": "Taguig City",
+          "lat": 14.527006848386183,
+          "lng": 121.05204536391004,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-6-7-2026-caloocan-city-grace-park",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-6-7-2026-caloocan-city-grace-park",
+      "title": "May 6 - 7, 2026 - Caloocan City (Grace Park)",
+      "dates": [
+        "2026-05-06",
+        "2026-05-07"
+      ],
+      "area": "Caloocan City",
+      "is_province": false,
+      "locations": [
+        "Grace Park"
+      ],
+      "city": "Caloocan City",
+      "barangays": [
+        "Grace Park"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 11:00PM (WED., 05/06/26) AND 4:00AM (THU., 05/07/26) - PORTION OF CIRCUIT GRACE PARK 432RD",
+          "ranges": [
+            {
+              "start": "23:00",
+              "end": "04:00"
+            }
+          ],
+          "circuit": "GRACE PARK 432RD",
+          "description": "Portion of 11th Ave. from 5th St. to 11th St. including 6th – 10th Sts.\nPortion of 8th St. from 11th Ave. to and including P. Jacinto, William Shaw, Macabagdal and S. Asistio Sts.; 12th Ave.; WCC Aeronautical & Technological College, Forms Intl. Ent. Corp. and Phil – Jap Ind. Mfg. Corp.\nPortion of 9th St. from 10th Ave. to Macabagdal St. including Notre Dame of Greater Manila, Skylab Mfg. Corp. and BWN Realty Corp.\nPortion of 12th Ave. from 8th St. to 10th St. including Word of Life Christian Ministries."
+        }
+      ],
+      "reason": "Replacement of hazardous wood poles along 11th Ave., 8th and 9th Sts. in Grace Park, Caloocan City.",
+      "points": [
+        {
+          "barangay": "Grace Park",
+          "city": "Caloocan City",
+          "lat": 14.64864011861578,
+          "lng": 120.9844631220933,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-7-2026-rizal-province-antipolo-city",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-7-2026-rizal-province-antipolo-city",
+      "title": "May 7, 2026 - Rizal Province (Antipolo City)",
+      "dates": [
+        "2026-05-07"
+      ],
+      "area": "Rizal Province",
+      "is_province": true,
+      "locations": [
+        "Antipolo City"
+      ],
+      "city": "Antipolo City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 10:00AM AND 3:00PM – PORTION OF CIRCUIT MASINAG 46WN",
+          "ranges": [
+            {
+              "start": "10:00",
+              "end": "15:00"
+            }
+          ],
+          "circuit": "MASINAG 46WN",
+          "description": "Portion of Sun Valley West Drive from Sun Valley Main Drive to and including Sun Valley Estate Subd. Phase 7, Mahogany Lane Subd. Phase 6A, Courtyard Subd. Phase 6 and Edgewood Place 2 Subd.; La Veranda at the Perch and Sun Valley Estate Residential & Golf Country Club Head Office in Bgy. Inarawan.\nPortion of Mahogany Ave., Jurema St. and Sun Valley North Drive from Sun Valley West Drive to and including Sun Valley West End Estate Subd., Sun Valley Estate Subd. Phase 7 Extension, Mahogany Lane Subd. Extension and Sun Valley S Estate Subd. Phase 9 (Narra Lane) in Bgys. Inarawan and San Juan.\nPortion of Golf Ave., Fairway Drive and Sun Valley East Drive from Sun Valley West Drive to and including Sun Valley Golf Residential Estate Phase 5, Sun Valley Estate Subd. Phases 2, 3, 5C, 5D, 6C, 8, Mahogany Lane Subd. Phase 6A, Court Yard Subd. Phase 6; Sun Valley Ave., Yew and Acacia Lane Sts.;, Sun Valley Estate Residential & Golf Country Club Pump Station and Sun Valley Estate Residential & Golf Country Club Clubhouse in Bgys. Inarawan and San Juan."
+        }
+      ],
+      "reason": "Retirement of poles and line reconductoring works in Sun Valley Subd., Bgy. Inarawan, Antipolo City, Rizal Province.",
+      "points": [
+        {
+          "barangay": "Antipolo City",
+          "city": "Antipolo City",
+          "lat": 14.617578175111717,
+          "lng": 121.17925456901216,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-7-2026-taguig-city-katuparan-and-north-signal-village",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-7-2026-taguig-city-katuparan-and-north-signal-village",
+      "title": "May 7, 2026 - Taguig City (Katuparan; And North Signal Village)",
+      "dates": [
+        "2026-05-07"
+      ],
+      "area": "Taguig City",
+      "is_province": false,
+      "locations": [
+        "Katuparan",
+        "North Signal Village"
+      ],
+      "city": "Taguig City",
+      "barangays": [
+        "Katuparan",
+        "North Signal Village"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 11:30PM AND 11:59PM – PORTION OF CIRCUIT SUN VALLEY 422WG",
+          "ranges": [
+            {
+              "start": "23:30",
+              "end": "23:59"
+            }
+          ],
+          "circuit": "SUN VALLEY 422WG",
+          "description": "Portion of Mabolo St. from 8th St. to Pag-asa St. including Santol, Guyabano, Lanzones and Balimbing Ext. Sts. in Zone 1 in Bgys. North Signal Village and Katuparan."
+        }
+      ],
+      "reason": "Line reconstruction works along 8th St. in Bgy. North Signal Village, Taguig City.",
+      "points": [
+        {
+          "barangay": "Katuparan",
+          "city": "Taguig City",
+          "lat": 14.518999938153039,
+          "lng": 121.0604232597344,
+          "source": "parquet"
+        },
+        {
+          "barangay": "North Signal Village",
+          "city": "Taguig City",
+          "lat": 14.516722688363254,
+          "lng": 121.05768487794155,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-7-2026-taguig-city-katuparan-and-ususan",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-7-2026-taguig-city-katuparan-and-ususan",
+      "title": "May 7, 2026 - Taguig City (Katuparan; And Ususan)",
+      "dates": [
+        "2026-05-07"
+      ],
+      "area": "Taguig City",
+      "is_province": false,
+      "locations": [
+        "Katuparan",
+        "Ususan"
+      ],
+      "city": "Taguig City",
+      "barangays": [
+        "Katuparan",
+        "Ususan"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 2:15AM AND 2:45AM – PORTION OF CIRCUIT SUN VALLEY 422WG",
+          "ranges": [
+            {
+              "start": "02:15",
+              "end": "02:45"
+            }
+          ],
+          "circuit": "SUN VALLEY 422WG",
+          "description": "Portion of 1st St. from 8th St. to and including 10th, 2nd, 3rd, 4th, 5th, 6th & 7th Sts in GHQ Village, Bgy. Katuparan.\nPortion of Pusawan St. from from near 7th St. to Block 1 St. in Bgy. Ususan"
+        }
+      ],
+      "reason": "Line reconstruction works along 8th St. in Bgy. North Signal Village, Taguig City.",
+      "points": [
+        {
+          "barangay": "Katuparan",
+          "city": "Taguig City",
+          "lat": 14.518999938153039,
+          "lng": 121.0604232597344,
+          "source": "parquet"
+        },
+        {
+          "barangay": "Ususan",
+          "city": "Taguig City",
+          "lat": 14.531232793956427,
+          "lng": 121.06472722292183,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-7-2026-taguig-city-north-signal-village",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-7-2026-taguig-city-north-signal-village",
+      "title": "May 7, 2026 - Taguig City (North Signal Village)",
+      "dates": [
+        "2026-05-07"
+      ],
+      "area": "Taguig City",
+      "is_province": false,
+      "locations": [
+        "North Signal Village"
+      ],
+      "city": "Taguig City",
+      "barangays": [
+        "North Signal Village"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 12:30AM AND 1:00AM – PORTION OF CIRCUIT SUN VALLEY 422WG",
+          "ranges": [
+            {
+              "start": "00:30",
+              "end": "01:00"
+            }
+          ],
+          "circuit": "SUN VALLEY 422WG",
+          "description": "Portion of 10th Ave. from 8th St. to Vergaño St. in Hen Headquarter Support Group Compound.\nPortion of 11th Ave. from Vergaño St. to near 11th Ave. Ext. in Hen Headquarter Support Group Compound."
+        }
+      ],
+      "reason": "Line reconstruction works along 8th St. in Bgy. North Signal Village, Taguig City.",
+      "points": [
+        {
+          "barangay": "North Signal Village",
+          "city": "Taguig City",
+          "lat": 14.516722688363254,
+          "lng": 121.05768487794155,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-8-2026-laguna-majayjay-and-luisiana",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-8-2026-laguna-majayjay-and-luisiana",
+      "title": "May 8, 2026 - Laguna (Majayjay And Luisiana)",
+      "dates": [
+        "2026-05-08"
+      ],
+      "area": "Laguna",
+      "is_province": true,
+      "locations": [
+        "Majayjay",
+        "Luisiana"
+      ],
+      "city": "Majayjay",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 10:30AM AND 3:30PM – PORTION OF CIRCUIT TAYABAS 48ZY – BOTOCAN 42D",
+          "ranges": [
+            {
+              "start": "10:30",
+              "end": "15:30"
+            }
+          ],
+          "circuit": null,
+          "description": ""
+        }
+      ],
+      "reason": "Line reconductoring works along Majayjay – Luisiana Road in Bgy. Botocan, Majayjay, Laguna.",
+      "points": [
+        {
+          "barangay": "Majayjay",
+          "city": "Majayjay",
+          "lat": 14.14564539362867,
+          "lng": 121.47620260035478,
+          "source": "parquet"
+        },
+        {
+          "barangay": "Luisiana",
+          "city": "Majayjay",
+          "lat": 14.186147510337328,
+          "lng": 121.51577541333816,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-8-2026-rizal-province-teresa",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-8-2026-rizal-province-teresa",
+      "title": "May 8, 2026 - Rizal Province (Teresa)",
+      "dates": [
+        "2026-05-08"
+      ],
+      "area": "Rizal Province",
+      "is_province": true,
+      "locations": [
+        "Teresa"
+      ],
+      "city": "Teresa",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 11:00AM AND 2:00PM – PORTIONS OF CIRCUIT NEW TERESA 42XP",
+          "ranges": [
+            {
+              "start": "11:00",
+              "end": "14:00"
+            }
+          ],
+          "circuit": "NEW TERESA 42XP",
+          "description": "Portion of La Trinidad St. from Filipinas Ave. to JD’S Barn including portion of B. San Diego St. in Bgys. Calumpang Sto. Cristo and Dulumbayan.\nPortion of Pantaleon St. in Bgy. Dulumbayan."
+        }
+      ],
+      "reason": "Line reconstruction works along La Trinidad and Pantaleon Sts. In Bgys. Calumpang Sto. Cristo and Dulumbayan in Teresa, Rizal Province.",
+      "points": [
+        {
+          "barangay": "Teresa",
+          "city": "Teresa",
+          "lat": 14.556106994878279,
+          "lng": 121.2133097732387,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-8-2026-taguig-city-katuparan-and-north-signal-0",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-8-2026-taguig-city-katuparan-and-north-signal-0",
+      "title": "May 8, 2026 - Taguig City (Katuparan; And North Signal Village)",
+      "dates": [
+        "2026-05-08"
+      ],
+      "area": "Taguig City",
+      "is_province": false,
+      "locations": [
+        "Katuparan",
+        "North Signal Village"
+      ],
+      "city": "Taguig City",
+      "barangays": [
+        "Katuparan",
+        "North Signal Village"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 3:00AM AND 3:30AM – PORTION OF CIRCUIT SUN VALLEY 422WG",
+          "ranges": [
+            {
+              "start": "03:00",
+              "end": "03:30"
+            }
+          ],
+          "circuit": "SUN VALLEY 422WG",
+          "description": "Portion of 7th St. from 8th St. to and including Santol, 4th, 5th and Mangga Sts. in Zone 1 in Bgys. North Signal Village and Katuparan."
+        }
+      ],
+      "reason": "Line reconstruction works along 8th St. in Bgy. North Signal Village, Taguig City.",
+      "points": [
+        {
+          "barangay": "Katuparan",
+          "city": "Taguig City",
+          "lat": 14.518999938153039,
+          "lng": 121.0604232597344,
+          "source": "parquet"
+        },
+        {
+          "barangay": "North Signal Village",
+          "city": "Taguig City",
+          "lat": 14.516722688363254,
+          "lng": 121.05768487794155,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-8-2026-taguig-city-katuparan-and-north-signal-village",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-8-2026-taguig-city-katuparan-and-north-signal-village",
+      "title": "May 8, 2026 - Taguig City (Katuparan; And North Signal Village)",
+      "dates": [
+        "2026-05-08"
+      ],
+      "area": "Taguig City",
+      "is_province": false,
+      "locations": [
+        "Katuparan",
+        "North Signal Village"
+      ],
+      "city": "Taguig City",
+      "barangays": [
+        "Katuparan",
+        "North Signal Village"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 1:30AM AND 2:30AM – PORTION OF CIRCUIT SUN VALLEY 422WG",
+          "ranges": [
+            {
+              "start": "01:30",
+              "end": "02:30"
+            }
+          ],
+          "circuit": "SUN VALLEY 422WG",
+          "description": "Portion of Macopa St. from 8th St. to Pag-asa St. including Kasoy, Karamay and Chesa Sts in Zone 1 in Bgys. North Signal Village and Katuparan.\nPortion of Pag-asa St. from 1st St. to Durian Ext. St. in Zone 1 in Bgys. North Signal Village and Katuparan."
+        }
+      ],
+      "reason": "Line reconstruction works along 8th St. in Bgy. North Signal Village, Taguig City.",
+      "points": [
+        {
+          "barangay": "Katuparan",
+          "city": "Taguig City",
+          "lat": 14.518999938153039,
+          "lng": 121.0604232597344,
+          "source": "parquet"
+        },
+        {
+          "barangay": "North Signal Village",
+          "city": "Taguig City",
+          "lat": 14.516722688363254,
+          "lng": 121.05768487794155,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-9-2026-laguna-calamba-city",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-9-2026-laguna-calamba-city",
+      "title": "May 9, 2026 - Laguna (Calamba City)",
+      "dates": [
+        "2026-05-09"
+      ],
+      "area": "Laguna",
+      "is_province": true,
+      "locations": [
+        "Calamba City"
+      ],
+      "city": "Calamba City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 9:00AM AND 2:00PM – THE WHOLE OF CIRCUITS CARMELRAY 423WQ AND 424WQ",
+          "ranges": [
+            {
+              "start": "09:00",
+              "end": "14:00"
+            }
+          ],
+          "circuit": null,
+          "description": "Toshiba Storage Device Philippines Inc. and Sercomm Philippines Inc. along Innovation Drive in Carmelray Industrial Park 1, Bgy. Canlubang."
+        }
+      ],
+      "reason": "Line reconductoring works along Innovation Drive in Carmelray Industrial Park 1, Bgy. Canlubang, Calamba City, Laguna.",
+      "points": [
+        {
+          "barangay": "Calamba City",
+          "city": "Calamba City",
+          "lat": 14.193624255979769,
+          "lng": 121.14431819590394,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-10-2026-manila-sta-ana",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-10-2026-manila-sta-ana",
+      "title": "May 10, 2026 - Manila (Sta. Ana)",
+      "dates": [
+        "2026-05-10"
+      ],
+      "area": "Manila",
+      "is_province": false,
+      "locations": [
+        "Sta. Ana"
+      ],
+      "city": "Manila",
+      "barangays": [
+        "Sta. Ana"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 12:01AM AND 12:30AM AND THEN BETWEEN 4:30AM AND 5:00AM – PORTIONS OF CIRCUIT TEGEN 56B",
+          "ranges": [
+            {
+              "start": "00:01",
+              "end": "00:30"
+            },
+            {
+              "start": "04:30",
+              "end": "05:00"
+            }
+          ],
+          "circuit": "TEGEN 56B",
+          "description": "Portion of Carreon St. from Holywood St. to Syquia St. to and including Delas Alas, Suter and Paco Roman Sts.\nPortion of Pedro Gil St. from Tejeron St. to\nNew Panaderos St. including Jesuita's St.; Savemore Market and XentroMall.\nPortion of Old Panaderos St. from Embarcadero St. to Lamayan St. including J. Pateno and Sta. Trinidad Sts.\nPortion of Punta - Daguisunan Subd. including Daguisunan, J. Posadas II and J. Posadas III Sts.\nPortion of Punta (Rest of Punta) including A. Cruz, A. Jorge, Cristobal, E. Jorge, F. Manalo, J. Esguerra, J. Posadas, J. Posadas Ext., Kalahi, M. Jorge, M. Obrero, Sto. Niño and Villanueva Sts.; and Malay Resources Inc."
+        }
+      ],
+      "reason": "Line reconstruction works and line reconductoring works along J. Posadas St. in Punta, Sta. Ana, Manila.",
+      "points": [
+        {
+          "barangay": "Sta. Ana",
+          "city": "Manila",
+          "lat": 14.576256408358592,
+          "lng": 121.00694257435289,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-10-2026-manila-sta-ana-0",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-10-2026-manila-sta-ana-0",
+      "title": "May 10, 2026 - Manila (Sta. Ana)",
+      "dates": [
+        "2026-05-10"
+      ],
+      "area": "Manila",
+      "is_province": false,
+      "locations": [
+        "Sta. Ana"
+      ],
+      "city": "Manila",
+      "barangays": [
+        "Sta. Ana"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 12:01AM AND 12:30AM AND THEN BETWEEN 4:30AM AND 5:00AM – PORTIONS OF CIRCUIT TEGEN 56B",
+          "ranges": [
+            {
+              "start": "00:01",
+              "end": "00:30"
+            },
+            {
+              "start": "04:30",
+              "end": "05:00"
+            }
+          ],
+          "circuit": "TEGEN 56B",
+          "description": "Portion of Dr. M. L. Carreon St. from Hollywood St. to Syquia St. to and including Delas Alas, Suter and Paco Roman Sts.\nPortion of Pedro Gil St. from Tejeron St. to\nNew Panaderos St. including Jesuita's St.; Savemore Market and XentroMall.\nPortion of Old Panaderos St. from Embarcadero St. to Lamayan St. including J. Pateno and Sta. Trinidad Sts.\nPortion of Punta - Daguisunan Subd. including Daguisunan, J. Posadas II and J. Posadas III Sts.\nPortion of Punta (Rest of Punta) including A. Cruz, A. Jorge, Cristobal, E. Jorge, F. Manalo, J. Esguerra, J. Posadas, J. Posadas Ext., Kalahi, M. Jorge, M. Obrero, Sto. Niño and Villanueva Sts.; and Malay Resources Inc."
+        }
+      ],
+      "reason": "Line reconstruction works and line reconductoring works along J. Posadas St. in Punta, Sta. Ana, Manila.",
+      "points": [
+        {
+          "barangay": "Sta. Ana",
+          "city": "Manila",
+          "lat": 14.576256408358592,
+          "lng": 121.00694257435289,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-12-13-2026-bulacan-baliuag-city",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-12-13-2026-bulacan-baliuag-city",
+      "title": "May 12 - 13, 2026 - Bulacan (Baliuag City)",
+      "dates": [
+        "2026-05-12",
+        "2026-05-13"
+      ],
+      "area": "Bulacan",
+      "is_province": true,
+      "locations": [
+        "Baliuag City"
+      ],
+      "city": "Baliuag City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 11:30PM (TUE., 05/12/26) AND 4:30AM (WED., 05/13/26) – PORTION OF CIRCUIT BALIWAG 315YW",
+          "ranges": [
+            {
+              "start": "23:30",
+              "end": "04:30"
+            }
+          ],
+          "circuit": "BALIWAG 315YW",
+          "description": "Portion of J. Buizon St. from near Benigno S. Aquino Ave. to La Rosa Santiago St. including portion of Receles St. in Bgys. Poblacion, Sto. Cristo and Bagong Nayon.\nPortion of Año 1733 and Año 1735 Sts. from Lopez Jaena St. to near R. E. Chico St. (J. M. Basa St.) in Bgys. Poblacion and Sto. Cristo.\nPortion of Balagtas St. from J. Buizon St. to Lopez Jaena St. in Bgy. Sto. Cristo.\nPortion of Lopez Jaena St. from Año 1733 St. to Daang Hari St. in Bgy. Sto. Cristo."
+        }
+      ],
+      "reason": "Line reconductoring and reconstruction works along J. Buizon and Lopez Jaena Sts. in Bgys. Poblacion and Sto. Cristo in Baliuag City, Bulacan.",
+      "points": [
+        {
+          "barangay": "Baliuag City",
+          "city": "Baliuag City",
+          "lat": 14.964821926050831,
+          "lng": 120.88894969784359,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-12-13-2026-caloocan-city-bagong-barrio",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-12-13-2026-caloocan-city-bagong-barrio",
+      "title": "May 12 - 13, 2026 - Caloocan City (Bagong Barrio)",
+      "dates": [
+        "2026-05-12",
+        "2026-05-13"
+      ],
+      "area": "Caloocan City",
+      "is_province": false,
+      "locations": [
+        "Bagong Barrio"
+      ],
+      "city": "Caloocan City",
+      "barangays": [
+        "Bagong Barrio"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 11:00PM (TUE., 05/12/26) AND 5:00AM (WED., 05/13/26) – PORTION OF CIRCUIT GRACE PARK 433RD",
+          "ranges": [
+            {
+              "start": "23:00",
+              "end": "05:00"
+            }
+          ],
+          "circuit": "GRACE PARK 433RD",
+          "description": "Portion of Milagrosa St. from Malolos Ave. to Reparo Road including portion of Intan, KKK, Miracle, Kaganapan, Aklan Silahis, Bencer, Jasmin, Kapayapaan, Rosal, Waling-Waling, Katarungan, Abraham, Akasya, Albay, Apitong, Bayanihan, Cavite, Cypress, David, Exodus, Isaac, Jacob, Kamagong, Kaunlaran, Moises, Mulawin, Narra, Nido, Pangasinan, Santan, San Juan, San Pablo, Solomon, Tindalo and San Pedro Sts.\nPortion of Reparo Road from Milagrosa St. to Katarungan St."
+        }
+      ],
+      "reason": "Line reconductoring works and replacement of poles along Milagrosa St. in Bagong Barrio, Caloocan City.",
+      "points": [
+        {
+          "barangay": "Bagong Barrio",
+          "city": "Caloocan City",
+          "lat": 14.668322227814937,
+          "lng": 120.9999041208907,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-12-2026-bulacan-san-jose-del-monte-city",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-12-2026-bulacan-san-jose-del-monte-city",
+      "title": "May 12, 2026 - Bulacan (San Jose Del Monte City)",
+      "dates": [
+        "2026-05-12"
+      ],
+      "area": "Bulacan",
+      "is_province": true,
+      "locations": [
+        "San Jose Del Monte City"
+      ],
+      "city": "San Jose Del Monte City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 12:01AM AND 5:00AM – PORTION OF CIRCUIT SAN JOSE 413SJ",
+          "ranges": [
+            {
+              "start": "00:01",
+              "end": "05:00"
+            }
+          ],
+          "circuit": "SAN JOSE 413SJ",
+          "description": "Portion of Road 5 from Road 1 to and including Road 11, Road 12, Road 14, Road 15 and Road 16 Sts.; Sakap Compound and Defense Village in Bgys. Minuyan III, IV & V."
+        }
+      ],
+      "reason": "Line reconductoring works along Road 12 St. in Bgy. Minuyan III, San Jose Del Monte City, Bulacan.",
+      "points": [
+        {
+          "barangay": "San Jose Del Monte City",
+          "city": "San Jose Del Monte City",
+          "lat": 14.835021635589356,
+          "lng": 121.06301617814866,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-13-2026-bulacan-meycauayan-city",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-13-2026-bulacan-meycauayan-city",
+      "title": "May 13, 2026 - Bulacan (Meycauayan City)",
+      "dates": [
+        "2026-05-13"
+      ],
+      "area": "Bulacan",
+      "is_province": true,
+      "locations": [
+        "Meycauayan City"
+      ],
+      "city": "Meycauayan City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 10:00AM AND 3:00PM – PORTION OF CIRCUIT MEYCAUAYAN 46YM",
+          "ranges": [
+            {
+              "start": "10:00",
+              "end": "15:00"
+            }
+          ],
+          "circuit": "MEYCAUAYAN 46YM",
+          "description": "Portion of El Camino Real St. from University Drive to and including Kendimaster Road; Members Church of God International (MCGI), Portalloy Industrial Supply Corp., Calco Industries Inc., Royaltern Corp., Supreme Steel Pipe Corp., Allied Packaging Corp., Anjene Industries Inc., C- World Interventures Inc., FJH 168 Trading, Housegem Construction Elements Corp., Kosko Steel Structural Corp., NC Power Sales Corp., Sunmaru Confectionery Manufacturing Corp. and Supreme Steel Pipe Corp. in Bgys. Bahay Pare and Perez."
+        }
+      ],
+      "reason": "Replacement of facilities along El Camino Real St.in Bgys. Perez and Bahay Pare in Meycauayan City, Bulacan.",
+      "points": [
+        {
+          "barangay": "Meycauayan City",
+          "city": "Meycauayan City",
+          "lat": 14.74456017419543,
+          "lng": 120.96905308967357,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-14-15-2026-cavite-imus-city",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-14-15-2026-cavite-imus-city",
+      "title": "May 14 - 15, 2026 - Cavite (Imus City)",
+      "dates": [
+        "2026-05-14",
+        "2026-05-15"
+      ],
+      "area": "Cavite",
+      "is_province": true,
+      "locations": [
+        "Imus City"
+      ],
+      "city": "Imus City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 11:30PM (THU., 05/14/26) AND 3:30AM (FRI., 05/15/26) – PORTION OF CIRCUIT IMUS 425WK",
+          "ranges": [
+            {
+              "start": "23:30",
+              "end": "03:30"
+            }
+          ],
+          "circuit": "IMUS 425WK",
+          "description": "The whole of Regatta Classics Subd. in Bgy. Anabu II-B."
+        }
+      ],
+      "reason": "Line reconstruction works and replacement of poles in Regatta Classics Subd., Bgy. Anabu II-B, Imus City, Cavite.",
+      "points": [
+        {
+          "barangay": "Imus City",
+          "city": "Imus City",
+          "lat": 14.409142011451035,
+          "lng": 120.9347319527915,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-14-15-2026-cavite-kawit",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-14-15-2026-cavite-kawit",
+      "title": "May 14 - 15, 2026 - Cavite (Kawit)",
+      "dates": [
+        "2026-05-14",
+        "2026-05-15"
+      ],
+      "area": "Cavite",
+      "is_province": true,
+      "locations": [
+        "Kawit"
+      ],
+      "city": "Kawit",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 11:00PM (THU., 05/14/26) AND 4:00AM (FRI., 05/15/26) – PORTION OF CIRCUITS BACOOR 412WX; AND LANCASTER 410LAN",
+          "ranges": [
+            {
+              "start": "23:00",
+              "end": "04:00"
+            }
+          ],
+          "circuit": null,
+          "description": "Portion of Toclong – San Sebastian Road from Advincula Ave. to and including Estrella Homes 4 Subd., Julie Ann Village, Kalayaan Homes – Kawit, Pinagkaloob Village and Rockwell Classic Homes in Bgy. Toclong."
+        }
+      ],
+      "reason": "Installation of facilities along Toclong – San Sebastian Road in Bgy. Toclong, Kawit, Cavite.",
+      "points": [
+        {
+          "barangay": "Kawit",
+          "city": "Kawit",
+          "lat": 14.44274860129935,
+          "lng": 120.9086754233469,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-14-2026-cavite-alfonso",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-14-2026-cavite-alfonso",
+      "title": "May 14, 2026 - Cavite (Alfonso)",
+      "dates": [
+        "2026-05-14"
+      ],
+      "area": "Cavite",
+      "is_province": true,
+      "locations": [
+        "Alfonso"
+      ],
+      "city": "Alfonso",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 12:30PM AND 1:15PM – PORTION OF CIRCUIT TAGAYTAY WEST 312TGW",
+          "ranges": [
+            {
+              "start": "12:30",
+              "end": "13:15"
+            }
+          ],
+          "circuit": "TAGAYTAY WEST 312TGW",
+          "description": "Portion of Pilipit Road from Kaytitinga – Magallanes Road to and including Casa Melor."
+        }
+      ],
+      "reason": "Line reconstruction works along Kaytitinga – Magallanes Road in Bgy. Kaytitinga I, Alfonso, Cavite.",
+      "points": [
+        {
+          "barangay": "Alfonso",
+          "city": "Alfonso",
+          "lat": 14.119350937117206,
+          "lng": 120.84861552573211,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-14-2026-cavite-alfonso-0",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-14-2026-cavite-alfonso-0",
+      "title": "May 14, 2026 - Cavite (Alfonso)",
+      "dates": [
+        "2026-05-14"
+      ],
+      "area": "Cavite",
+      "is_province": true,
+      "locations": [
+        "Alfonso"
+      ],
+      "city": "Alfonso",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 2:30PM AND 4:30PM – PORTION OF CIRCUIT TAGAYTAY WEST 312TGW",
+          "ranges": [
+            {
+              "start": "14:30",
+              "end": "16:30"
+            }
+          ],
+          "circuit": "TAGAYTAY WEST 312TGW",
+          "description": "Portion of Kaysuyo Road from near Door of Faith Church to and including Sitio Bigtasin and Sitio Imus Ng Kastila in Bgy. Kaysuyo."
+        }
+      ],
+      "reason": "Line reconstruction works along Kaysuyo Road in Bgy. Kaysuyo, Alfonso, Cavite.",
+      "points": [
+        {
+          "barangay": "Alfonso",
+          "city": "Alfonso",
+          "lat": 14.119350937117206,
+          "lng": 120.84861552573211,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-14-2026-cavite-alfonso-1",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-14-2026-cavite-alfonso-1",
+      "title": "May 14, 2026 - Cavite (Alfonso)",
+      "dates": [
+        "2026-05-14"
+      ],
+      "area": "Cavite",
+      "is_province": true,
+      "locations": [
+        "Alfonso"
+      ],
+      "city": "Alfonso",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 12:45PM AND 1:30PM – PORTION OF CIRCUIT TAGAYTAY WEST 312TGW",
+          "ranges": [
+            {
+              "start": "12:45",
+              "end": "13:30"
+            }
+          ],
+          "circuit": "TAGAYTAY WEST 312TGW",
+          "description": "Portion of Alfonso - Magallanes Road from Kaysuyo - Kaytitinga Road to near Bgy. Medina, Magallanes – Bgy. Kaytitinga II, Alfonso boundary in Bgy. Kaytitinga II."
+        }
+      ],
+      "reason": "Line reconstruction works along Alfonso - Magallanes Road in Bgy. Kaytitinga II, Alfonso, Cavite.",
+      "points": [
+        {
+          "barangay": "Alfonso",
+          "city": "Alfonso",
+          "lat": 14.119350937117206,
+          "lng": 120.84861552573211,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-14-2026-cavite-tagaytay-city-and-mendez-nunez",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-14-2026-cavite-tagaytay-city-and-mendez-nunez",
+      "title": "May 14, 2026 - Cavite (Tagaytay City; And Mendez - Nunez)",
+      "dates": [
+        "2026-05-14"
+      ],
+      "area": "Cavite",
+      "is_province": true,
+      "locations": [
+        "Tagaytay City",
+        "Mendez - Nunez"
+      ],
+      "city": "Tagaytay City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 9:30AM AND 10:30AM – PORTION OF CIRCUIT TAGAYTAY WEST 312TGW",
+          "ranges": [
+            {
+              "start": "09:30",
+              "end": "10:30"
+            }
+          ],
+          "circuit": "TAGAYTAY WEST 312TGW",
+          "description": "Portion of Zambal Road from Pines Cabin in Bgy. Zambal, Tagaytay City to Pidi Barzaga Farm in Bgy. Palocpoc I, Mendez – Nunez including Merlinda Residences Subd. in Bgy. Zambal, Tagaytay City."
+        }
+      ],
+      "reason": "Line reconstruction works along Zambal Road in Bgy. Zambal, Tagaytay City.",
+      "points": [
+        {
+          "barangay": "Tagaytay City",
+          "city": "Tagaytay City",
+          "lat": 14.117441691354834,
+          "lng": 120.95356948976878,
+          "source": "parquet"
+        },
+        {
+          "barangay": "Mendez - Nunez",
+          "city": "Tagaytay City",
+          "lat": 14.130474528637537,
+          "lng": 120.90056472725614,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-14-2026-cavite-trece-martirez-city",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-14-2026-cavite-trece-martirez-city",
+      "title": "May 14, 2026 - Cavite (Trece Martirez City)",
+      "dates": [
+        "2026-05-14"
+      ],
+      "area": "Cavite",
+      "is_province": true,
+      "locations": [
+        "Trece Martirez City"
+      ],
+      "city": "Trece Martirez City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 10:00AM AND 3:00PM – PORTION OF CIRCUIT TMC II 45WA",
+          "ranges": [
+            {
+              "start": "10:00",
+              "end": "15:00"
+            }
+          ],
+          "circuit": "TMC II 45WA",
+          "description": "Portion of Panungyanan Road from Governor’s Drive to and including Trece Martirez City Waste Recycling Plant; West Plains Subds. I & II and Lucky Prince Homes in Bgys. De Ocampo and San Agustin."
+        }
+      ],
+      "reason": "Relocation of facilities along Panungyanan Road in Bgy. San Agustin, Trece Martirez City, Cavite",
+      "points": [
+        {
+          "barangay": "Trece Martirez City",
+          "city": "Trece Martirez City",
+          "lat": 14.274859236533274,
+          "lng": 120.87209636717375,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-15-2026-muntinlupa-city-buli-and-sucat",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-15-2026-muntinlupa-city-buli-and-sucat",
+      "title": "May 15, 2026 - Muntinlupa City (Buli And Sucat)",
+      "dates": [
+        "2026-05-15"
+      ],
+      "area": "Muntinlupa City",
+      "is_province": false,
+      "locations": [
+        "Buli",
+        "Sucat"
+      ],
+      "city": "Muntinlupa City",
+      "barangays": [
+        "Buli",
+        "Sucat"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 1:00AM AND 6:00AM – PORTION OF CIRCUIT GARDNER 57GG",
+          "ranges": [
+            {
+              "start": "01:00",
+              "end": "06:00"
+            }
+          ],
+          "circuit": "GARDNER 57GG",
+          "description": "Portion of M. L. Quezon St. from Meralco – Gardner substation in Bgy. Sucat to Palawan Express Pawnshop in Bgy. Buli.\nPortion of Concepcion St. from M. L. Quezon St. to and including Rhapsody Residences Condominiums, U-BIX Compound and DFE Chemical Corp. in Bgy. Buli."
+        }
+      ],
+      "reason": "Repair works inside Meralco – Gardner substation.",
+      "points": [
+        {
+          "barangay": "Buli",
+          "city": "Muntinlupa City",
+          "lat": 14.443267211424699,
+          "lng": 121.04958002832231,
+          "source": "parquet"
+        },
+        {
+          "barangay": "Sucat",
+          "city": "Muntinlupa City",
+          "lat": 14.455962071020933,
+          "lng": 121.04926104361316,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-15-2026-quezon-city-mariana",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-15-2026-quezon-city-mariana",
+      "title": "May 15, 2026 - Quezon City (Mariana)",
+      "dates": [
+        "2026-05-15"
+      ],
+      "area": "Quezon City",
+      "is_province": false,
+      "locations": [
+        "Mariana"
+      ],
+      "city": "Quezon City",
+      "barangays": [
+        "Mariana"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 12:01AM AND 5:00AM – PORTION OF CIRCUIT STA. MESA 40F",
+          "ranges": [
+            {
+              "start": "00:01",
+              "end": "05:00"
+            }
+          ],
+          "circuit": "STA",
+          "description": "Portion of E. Rodriguez Sr. Ave. from near Sta. Ignacia St. to Broadway Ave."
+        }
+      ],
+      "reason": "Replacement and reconstruction of facilities along E. Rodriguez Sr. Ave. in Bgy. Mariana, Quezon City.",
+      "points": [
+        {
+          "barangay": "Mariana",
+          "city": "Quezon City",
+          "lat": 14.618991882060232,
+          "lng": 121.03331609421423,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-16-2026-quezon-city-cubao",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-16-2026-quezon-city-cubao",
+      "title": "May 16, 2026 - Quezon City (Cubao)",
+      "dates": [
+        "2026-05-16"
+      ],
+      "area": "Quezon City",
+      "is_province": false,
+      "locations": [
+        "Cubao"
+      ],
+      "city": "Quezon City",
+      "barangays": [
+        "Cubao"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 12:01AM AND 5:00AM – PORTION OF CIRCUITS CUBAO 52VQ; AND VALENCIA 414VAL",
+          "ranges": [
+            {
+              "start": "00:01",
+              "end": "05:00"
+            }
+          ],
+          "circuit": null,
+          "description": "Portion of N. Domingo St. from Institute of Formation and Religious Studies to P. Tuazon Blvd. including St. John St. in Bgy. Kaunlaran."
+        }
+      ],
+      "reason": "Replacement of primary line switch along N. Domingo St. in Bgy. Kaunlaran, Cubao, Quezon City.",
+      "points": [
+        {
+          "barangay": "Cubao",
+          "city": "Quezon City",
+          "lat": 14.645803988082427,
+          "lng": 121.04142423854921,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-17-2026-bulacan-bocaue",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-17-2026-bulacan-bocaue",
+      "title": "May 17, 2026 - Bulacan (Bocaue)",
+      "dates": [
+        "2026-05-17"
+      ],
+      "area": "Bulacan",
+      "is_province": true,
+      "locations": [
+        "Bocaue"
+      ],
+      "city": "Bocaue",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 9:00AM AND 2:00PM – PORTION OF CIRCUIT STA. MARIA 424YU",
+          "ranges": [
+            {
+              "start": "09:00",
+              "end": "14:00"
+            }
+          ],
+          "circuit": "STA",
+          "description": "The whole of Golden City Business Park in Bgy. Wakas."
+        }
+      ],
+      "reason": "Maintenance works inside Golden City Business Park in Bgy. Wakas, Bocaue, Bulacan.",
+      "points": [
+        {
+          "barangay": "Bocaue",
+          "city": "Bocaue",
+          "lat": 14.797688822787672,
+          "lng": 120.93190393427959,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-17-2026-bulacan-malolos-city",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-17-2026-bulacan-malolos-city",
+      "title": "May 17, 2026 - Bulacan (Malolos City)",
+      "dates": [
+        "2026-05-17"
+      ],
+      "area": "Bulacan",
+      "is_province": true,
+      "locations": [
+        "Malolos City"
+      ],
+      "city": "Malolos City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 3:00AM AND 8:00AM – PORTION OF CIRCUIT TABANG 35YH",
+          "ranges": [
+            {
+              "start": "03:00",
+              "end": "08:00"
+            }
+          ],
+          "circuit": "TABANG 35YH",
+          "description": "Portion of Camia St. from near MacArthur Highway to Philstar Ave. including Calle Hagonoy St.; and Purok 4 & 5 in Bgy. San Pablo.\nPortion of Philstar Ave. from Prima Plastic Manufacturing Corp. to and including Ever Pacific Steel Industries Inc., Coca-Cola Bottlers Phils. Malolos Sales office, Cargill Malolos Plant, Sucere Foods Corp., Cargill Malolos PlantLiquid Packaging Corporation Bulacan Plant, Reed Steel Fabricators Inc., Northfield Laboratories Inc., Lumar Pharmaceutical Laboratory, Integrated Packaging Corporation - Malolos Plant, Hammerlane Inc., Forms International Enterprises Corp. Malolos Plant, Duraprime Manufacturing Corp., Cosmetique Asia Corp., ; Blue Mountain Worldwide Distribution Inc Purok 4; Glowdel Ave. and Lloyd St. in First Bulacan Industrial City Compound in Bgys. Santor and Tikay."
+        }
+      ],
+      "reason": "Maintenance works inside Meralco - Tabang substation.",
+      "points": [
+        {
+          "barangay": "Malolos City",
+          "city": "Malolos City",
+          "lat": 14.837363402469705,
+          "lng": 120.82396853386949,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-17-2026-bulacan-malolos-city-0",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-17-2026-bulacan-malolos-city-0",
+      "title": "May 17, 2026 - Bulacan (Malolos City)",
+      "dates": [
+        "2026-05-17"
+      ],
+      "area": "Bulacan",
+      "is_province": true,
+      "locations": [
+        "Malolos City"
+      ],
+      "city": "Malolos City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 3:00AM AND 8:00AM – PORTION OF CIRCUIT TABANG 35YH",
+          "ranges": [
+            {
+              "start": "03:00",
+              "end": "08:00"
+            }
+          ],
+          "circuit": "TABANG 35YH",
+          "description": "Portion of Camia St. from near MacArthur Highway to Philstar Ave. including Calle Hagonoy St.; and Purok 4 & 5 in Bgy. San Pablo.\nPortion of Philstar Ave. from Prima Plastic Manufacturing Corp. to and including Ever Pacific Steel Industries Inc., Coca-Cola Bottlers Phils. Malolos Sales office, Cargill Malolos Plant, Sucere Foods Corp., Cargill Malolos Plant, Liquid Packaging Corporation Bulacan Plant, Reed Steel Fabricators Inc., Northfield Laboratories Inc., Lumar Pharmaceutical Laboratory, Integrated Packaging Corporation - Malolos Plant, Hammerlane Inc., Forms International Enterprises Corp. Malolos Plant, Duraprime Manufacturing Corp., Cosmetique Asia Corp., Blue Mountain Worldwide Distribution Inc Purok 4; Glowdel Ave. and Lloyd St. in First Bulacan Industrial City Compound in Bgys. Santor and Tikay."
+        }
+      ],
+      "reason": "Maintenance works inside Meralco - Tabang substation.",
+      "points": [
+        {
+          "barangay": "Malolos City",
+          "city": "Malolos City",
+          "lat": 14.837363402469705,
+          "lng": 120.82396853386949,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-18-19-2026-caloocan-city-sangandaan",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-18-19-2026-caloocan-city-sangandaan",
+      "title": "May 18 - 19, 2026 - Caloocan City (Sangandaan)",
+      "dates": [
+        "2026-05-18",
+        "2026-05-19"
+      ],
+      "area": "Caloocan City",
+      "is_province": false,
+      "locations": [
+        "Sangandaan"
+      ],
+      "city": "Caloocan City",
+      "barangays": [
+        "Sangandaan"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 11:00PM (MON., 05/18/26) AND 4:00AM (TUE., 05/19/26) – PORTION OF CIRCUIT MALABON 57YD",
+          "ranges": [
+            {
+              "start": "23:00",
+              "end": "04:00"
+            }
+          ],
+          "circuit": "MALABON 57YD",
+          "description": "Portion of Samson Road from Metrobank to near Heroes Del 96 St. including University of the East – Caloocan, STI College, CVMC Kidney & Dialysis Center and Shakey’s Pizza Parlor in Sangandaan, Caloocan City.\nPortion of Caimito Road from Samson Road to and including Thee Print in Sangandaan, Caloocan City.\nThe whole of University Hills Subd. excluding Dunwoody St. in Bgy. Potrero, Malabon City."
+        }
+      ],
+      "reason": "Line reconductoring works along Samson Road in Bgy. Sangandaan, Caloocan City.",
+      "points": [
+        {
+          "barangay": "Sangandaan",
+          "city": "Caloocan City",
+          "lat": 14.658193552959432,
+          "lng": 120.97154792997627,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-18-19-2026-malabon-city-potrero",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-18-19-2026-malabon-city-potrero",
+      "title": "May 18 - 19, 2026 - Malabon City (Potrero)",
+      "dates": [
+        "2026-05-18",
+        "2026-05-19"
+      ],
+      "area": "Malabon City",
+      "is_province": false,
+      "locations": [
+        "Potrero"
+      ],
+      "city": "Malabon City",
+      "barangays": [
+        "Potrero"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 11:00PM (MON., 05/18/26) AND 4:00AM (TUE., 05/19/26) – PORTION OF CIRCUIT MALABON 57YD",
+          "ranges": [
+            {
+              "start": "23:00",
+              "end": "04:00"
+            }
+          ],
+          "circuit": "MALABON 57YD",
+          "description": "Portion of Samson Road from Metrobank to near Heroes Del 96 St. including University of the East – Caloocan, STI College, CVMC Kidney & Dialysis Center and Shakey’s Pizza Parlor in Sangandaan, Caloocan City.\nPortion of Caimito Road from Samson Road to and including Thee Print in Sangandaan, Caloocan City.\nThe whole of University Hills Subd. excluding Dunwoody St. in Bgy. Potrero, Malabon City."
+        }
+      ],
+      "reason": "Line reconductoring works along Samson Road in Bgy. Sangandaan, Caloocan City.",
+      "points": [
+        {
+          "barangay": "Potrero",
+          "city": "Malabon City",
+          "lat": 14.668044120779804,
+          "lng": 120.98363152124877,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-19-2026-laguna-los-banos",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-19-2026-laguna-los-banos",
+      "title": "May 19, 2026 - Laguna (Los Baños)",
+      "dates": [
+        "2026-05-19"
+      ],
+      "area": "Laguna",
+      "is_province": true,
+      "locations": [
+        "Los Baños"
+      ],
+      "city": "Los Baños",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 10:00AM AND 2:00PM – PORTION OF CIRCUIT DILA 414DIA – LOS BAÑOS 421LB",
+          "ranges": [
+            {
+              "start": "10:00",
+              "end": "14:00"
+            }
+          ],
+          "circuit": null,
+          "description": "Portion of Silangan Road from near V. Menguito St. to and including Lapis Lazuli Event Place in Bgy. Bayog."
+        }
+      ],
+      "reason": "Relocation of facilities, and line reconstruction works along Silangan Road in Bgy. Bayog, Los Baños, Laguna.",
+      "points": [
+        {
+          "barangay": "Los Baños",
+          "city": "Los Baños",
+          "lat": 14.165986067926246,
+          "lng": 121.22932408926768,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-20-2026-pasig-city-kapitolyo",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-20-2026-pasig-city-kapitolyo",
+      "title": "May 20, 2026 - Pasig City (Kapitolyo)",
+      "dates": [
+        "2026-05-20"
+      ],
+      "area": "Pasig City",
+      "is_province": false,
+      "locations": [
+        "Kapitolyo"
+      ],
+      "city": "Pasig City",
+      "barangays": [
+        "Kapitolyo"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 12:01AM AND 5:00AM - PORTION OF CIRCUIT HILLCREST 416VZ",
+          "ranges": [
+            {
+              "start": "00:01",
+              "end": "05:00"
+            }
+          ],
+          "circuit": "HILLCREST 416VZ",
+          "description": "Portion of Shaw Blvd. from Shakey’s Pizza Parlor – Kapitolyo to and including Privato Hotel, Ynares Sports Arena and Dia Bldg."
+        }
+      ],
+      "reason": "Replacement of primary facilities along Shaw Blvd., Bgy. Kapitolyo, Pasig City.",
+      "points": [
+        {
+          "barangay": "Kapitolyo",
+          "city": "Pasig City",
+          "lat": 14.571167480956353,
+          "lng": 121.05976635953492,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-20-21-2026-laguna-los-banos",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-20-21-2026-laguna-los-banos",
+      "title": "May 20 - 21, 2026 - Laguna (Los Baños)",
+      "dates": [
+        "2026-05-20",
+        "2026-05-21"
+      ],
+      "area": "Laguna",
+      "is_province": true,
+      "locations": [
+        "Los Baños"
+      ],
+      "city": "Los Baños",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 11:30PM (WED., 05/20/26) AND 3:30AM (THU., 05/21/26) – PORTION OF CIRCUIT DILA 414DIA – LOS BAÑOS 421LB",
+          "ranges": [
+            {
+              "start": "23:30",
+              "end": "03:30"
+            }
+          ],
+          "circuit": null,
+          "description": "Portion of V. Menguito St. from Villanueva St. to and including Kanluran St. in Bgys. Mayondon and Bayog."
+        }
+      ],
+      "reason": "Relocation of facilities, and line reconstruction works along V. Menguito in Bgy. Mayondon, Los Baños, Laguna.",
+      "points": [
+        {
+          "barangay": "Los Baños",
+          "city": "Los Baños",
+          "lat": 14.165986067926246,
+          "lng": 121.22932408926768,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-21-22-2026-laguna-sta-rosa-city",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-21-22-2026-laguna-sta-rosa-city",
+      "title": "May 21 - 22, 2026 - Laguna (Sta. Rosa City)",
+      "dates": [
+        "2026-05-21",
+        "2026-05-22"
+      ],
+      "area": "Laguna",
+      "is_province": true,
+      "locations": [
+        "Sta. Rosa City"
+      ],
+      "city": "Sta. Rosa City",
+      "barangays": [],
+      "windows": [
+        {
+          "label": "BETWEEN 10:00PM (THU., 05/21/26) AND 6:00AM (FRI., 05/22/26) – PORTION OF CIRCUIT MESALAND 414MES",
+          "ranges": [
+            {
+              "start": "22:00",
+              "end": "06:00"
+            }
+          ],
+          "circuit": "MESALAND 414MES",
+          "description": "Healthway Qualimed Hospital, McDonalds Nuvali and S & R Membership Shopping along Evozone Parkway in Nuvali, Bgy. Sto. Domingo.\nPortion of Evolving Center Drive from Sta. Rosa – Tagaytay Road to and including Landers Nuvali, Ayala Malls Solenad, Solenad 3 and Robinsons Supermarket in Nuvali, Bgy. Sto. Domingo. Lakeside Evozone Nuvali along Baloi St. in Nuvali, Bgy. Sto. Domingo.\nPortion of Paoay St. in Nuvali, Bgy. Sto. Domingo."
+        }
+      ],
+      "reason": "Relocation of facilities along Ayala Malls Solenad in Nuvali, Bgy. Sto. Domingo, Sta. Rosa City, Laguna.",
+      "points": [
+        {
+          "barangay": "Sta. Rosa City",
+          "city": "Sta. Rosa City",
+          "lat": 14.294804915655735,
+          "lng": 121.10491071312377,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-22-23-2026-quezon-city-krus-na-ligas",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-22-23-2026-quezon-city-krus-na-ligas",
+      "title": "May 22 - 23, 2026 - Quezon City (Krus Na Ligas)",
+      "dates": [
+        "2026-05-22",
+        "2026-05-23"
+      ],
+      "area": "Quezon City",
+      "is_province": false,
+      "locations": [
+        "Krus Na Ligas"
+      ],
+      "city": "Quezon City",
+      "barangays": [
+        "Krus Na Ligas"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 11:00PM (FRI., 05/22/26) AND 5:00AM (SAT., 05/23/26) – PORTION OF CIRCUIT MARIKINA 54VG",
+          "ranges": [
+            {
+              "start": "23:00",
+              "end": "05:00"
+            }
+          ],
+          "circuit": "MARIKINA 54VG",
+          "description": "Portion of V. Francisco St. from B. Baluyot St. to and including P. Francisco, Eugenio and Angeles Sts.\nPortion of P. Francisco St. from Kabalitang St. to and including Lt. J. Francisco, S. Salvador, Tiburcio, E. Ramos and Gonzales Sts.\nPortion of Fernando St. from Kabalitang St. to and including M. Dela Cruz St."
+        }
+      ],
+      "reason": "Replacement of hazardous poles along V. Francisco St. in Bgy. Krus na Ligas, Quezon City.",
+      "points": [
+        {
+          "barangay": "Krus Na Ligas",
+          "city": "Quezon City",
+          "lat": 14.644322367060527,
+          "lng": 121.06278656062491,
+          "source": "parquet"
+        }
+      ]
+    },
+    {
+      "slug": "may-24-2026-manila-paco-and-ermita",
+      "url": "https://company.meralco.com.ph/news-and-advisories/maintenance-schedule/may-24-2026-manila-paco-and-ermita",
+      "title": "May 24, 2026 - Manila (Paco And Ermita)",
+      "dates": [
+        "2026-05-24"
+      ],
+      "area": "Manila",
+      "is_province": false,
+      "locations": [
+        "Paco",
+        "Ermita"
+      ],
+      "city": "Manila",
+      "barangays": [
+        "Paco",
+        "Ermita"
+      ],
+      "windows": [
+        {
+          "label": "BETWEEN 8:30AM AND 9:00AM AND THEN BETWEEN 1:00PM AND 1:30PM – PORTIONS OF CIRCUIT TEGEN 43B",
+          "ranges": [
+            {
+              "start": "08:30",
+              "end": "09:00"
+            },
+            {
+              "start": "13:00",
+              "end": "13:30"
+            }
+          ],
+          "circuit": "TEGEN 43B",
+          "description": "Portion of Natividad A. Lopez (Concepcion) and Romualdez Sts. from Cabral St. in Ermita to United Nations Ave. including Upson Realty & Development Corp. and PLDT in Paco; portion of T. Ayala, Sylvia, Mercedes, Cabral and Colon Sts.; Adamson-Ozanam Educational Institutions Inc., Gotesco Regency Twin Towers Condominium Corp., Grand Taipan Land Development Inc., Pricewide Inc., U.N. Development Corp., portion of Adamson University (AdU) Compound, Philippine Charity Sweepstakes Office (PCSO) and Suntrust Properties Inc. in Ermita.\nPortion of Ayala Blvd. from Natividad A. Lopez (Concepcion) St. to San Marcelino St. in Ermita.\nPortion of San Marcelino St. from Cabral St. to Ayala Blvd. in Ermita.\nPortion of Perez St. from near United Nations Ave. to near Paco Hong Giam Temple including Maxilite Merchandising Inc. and Monolith Construction & Development Corp. in Paco.\nPortion of Belen St. near Perez St. including Maynilad - Ermita Pump Station & Reservoir in Paco."
+        },
+        {
+          "label": "BETWEEN 8:30AM AND 1:30PM – PORTION OF CIRCUIT TEGEN 43B",
+          "ranges": [
+            {
+              "start": "08:30",
+              "end": "13:30"
+            }
+          ],
+          "circuit": "TEGEN 43B",
+          "description": "Portion of United Nations Ave. from Romualdez St. to Perez St. including Petron Gas Station in Paco."
+        }
+      ],
+      "reason": "Line reconductoring works along United Nations Ave. in Paco, Manila.",
+      "points": [
+        {
+          "barangay": "Paco",
+          "city": "Manila",
+          "lat": 14.581657869985042,
+          "lng": 120.99720346189865,
+          "source": "parquet"
+        },
+        {
+          "barangay": "Ermita",
+          "city": "Manila",
+          "lat": 14.58463583842929,
+          "lng": 120.98407174055994,
+          "source": "parquet"
+        }
+      ]
+    }
+  ]
+}
